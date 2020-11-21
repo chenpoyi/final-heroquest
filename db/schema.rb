@@ -52,6 +52,25 @@ ActiveRecord::Schema.define(version: 2020_11_21_013819) do
     t.index ["characters_id"], name: "index_character_artifacts_on_characters_id"
   end
 
+  create_table "character_potions", force: :cascade do |t|
+    t.integer "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "characters_id"
+    t.bigint "weapons_id"
+    t.index ["characters_id"], name: "index_character_potions_on_characters_id"
+    t.index ["weapons_id"], name: "index_character_potions_on_weapons_id"
+  end
+
+  create_table "character_weapons", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "characters_id"
+    t.bigint "weapons_id"
+    t.index ["characters_id"], name: "index_character_weapons_on_characters_id"
+    t.index ["weapons_id"], name: "index_character_weapons_on_weapons_id"
+  end
+
   create_table "characters", force: :cascade do |t|
     t.string "name"
     t.integer "attack"
@@ -127,6 +146,10 @@ ActiveRecord::Schema.define(version: 2020_11_21_013819) do
   add_foreign_key "character_armors", "characters", column: "characters_id"
   add_foreign_key "character_artifacts", "artifacts", column: "artifacts_id"
   add_foreign_key "character_artifacts", "characters", column: "characters_id"
+  add_foreign_key "character_potions", "characters", column: "characters_id"
+  add_foreign_key "character_potions", "weapons", column: "weapons_id"
+  add_foreign_key "character_weapons", "characters", column: "characters_id"
+  add_foreign_key "character_weapons", "weapons", column: "weapons_id"
   add_foreign_key "characters", "heros", column: "heros_id"
   add_foreign_key "characters", "users", column: "users_id"
 end
