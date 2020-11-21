@@ -1,0 +1,2 @@
+class CharacterPotion < ApplicationRecord
+end
