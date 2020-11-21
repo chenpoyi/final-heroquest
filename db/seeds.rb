@@ -17,9 +17,6 @@ unless Rails.env.development?
   exit 0
 end
 
-
-
-
 ## Hero
 
 puts "Re-creating Heros ..."
