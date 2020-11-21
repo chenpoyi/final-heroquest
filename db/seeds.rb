@@ -17,6 +17,9 @@ unless Rails.env.development?
   exit 0
 end
 
+
+
+
 ## Hero
 
 puts "Re-creating Heros ..."
@@ -24,7 +27,7 @@ puts "Re-creating Heros ..."
 Hero.destroy_all
 
 heroes = Hero.create({
-  race: barbarian, 
+  race: 'barbarian', 
   attack: 3, 
   defend: 2, 
   body: 8 , 
@@ -33,7 +36,7 @@ heroes = Hero.create({
   })
 
 heroes = Hero.create({
-  race: dwarf, 
+  race: 'dwarf', 
   attack: 2, 
   defend: 2, 
   body: 7, 
@@ -42,7 +45,7 @@ heroes = Hero.create({
   })
 
 heroes = Hero.create({
-  race: elf, 
+  race: 'elf', 
   attack: 2, 
   defend: 2, 
   body: 6, 
@@ -50,7 +53,7 @@ heroes = Hero.create({
   image: open_asset('Elf-small.gif')})
   
 heroes = Hero.create({
-  race: wizard, 
+  race: 'wizard', 
   attack: 1, 
   defend: 2, 
   body: 4, 
