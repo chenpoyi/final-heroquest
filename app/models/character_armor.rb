@@ -1,0 +1,2 @@
+class CharacterArmor < ApplicationRecord
+end
