@@ -1,7 +1,9 @@
 class Api::TestsController < ApplicationController
   def index
+    @hero = Hero.find 2
     render :json => {
-      message: "hello!"
+      message: @hero.image.inspect
     }
+    puts @hero.image.inspect
   end
 end
