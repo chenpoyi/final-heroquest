@@ -40,10 +40,10 @@ Deep inside another dimension, face battling barbarians and evil magic on a ques
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary">
+        <Button variant="contained" size="small" color="primary">
           Login
         </Button>
-        <Button size="small" color="primary">
+        <Button variant="contained" size="small" color="primary">
           Sign Up
         </Button>
       </CardActions>
