@@ -3,13 +3,17 @@ import axios from 'axios';
 import './App.css';
 
 import NavBar from './components/NavBar';
+import {getDrawerList} from './helpers/selectors';
+
 
 interface IProps {
+  
 
 }
 interface IState {
   message?: string;
 }
+
 
 class App extends Component<IProps, IState> {
   constructor(props: IProps) {
@@ -32,10 +36,12 @@ class App extends Component<IProps, IState> {
     }) 
   }
 
+  drawerList: string[] = getDrawerList();
+
   render() {
     return (
       <div className="App">
-        <NavBar />
+        <NavBar drawerList ={this.drawerList}/>
         <h1>{ this.state.message }</h1>
         <button onClick={this.fetchData} >
           Fetch Data

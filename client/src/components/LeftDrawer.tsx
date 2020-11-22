@@ -24,7 +24,11 @@ const useStyles = makeStyles({
 
 type Anchor = 'top' | 'left' | 'bottom' | 'right';
 
-export default function LeftDrawer() {
+type drawerList = {
+  drawerList: string[]
+}
+
+export default function LeftDrawer( {drawerList} :drawerList) {
   const classes = useStyles();
   const [state, setState] = React.useState({
     top: false,
@@ -57,22 +61,14 @@ export default function LeftDrawer() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        {['Paul', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+        {drawerList.map((text, index) => (
           <ListItem button key={text}>
             <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
             <ListItemText primary={text} />
           </ListItem>
         ))}
       </List>
-      <Divider />
-      <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
+      
     </div>
   );
 

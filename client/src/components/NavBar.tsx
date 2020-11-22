@@ -13,6 +13,8 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import LeftDrawer from './LeftDrawer';
 
+
+
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
@@ -30,7 +32,11 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-export default function NavBar() {
+type NavBarProps = {
+  drawerList: string[]
+}
+
+export default function NavBar({drawerList}: NavBarProps) {
   const classes = useStyles();
   const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -58,9 +64,7 @@ export default function NavBar() {
       </FormGroup>
       <AppBar position="static">
         <Toolbar>
-          <LeftDrawer />
-          
-          
+          <LeftDrawer drawerList={drawerList}/>
           <Typography variant="h6" className={classes.title}>
             HeroQuest
           </Typography>
