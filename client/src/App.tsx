@@ -2,8 +2,17 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import './App.css';
 
-class App extends Component {
-  constructor(props) {
+import NavBar from './components/NavBar';
+
+interface IProps {
+
+}
+interface IState {
+  message?: string;
+}
+
+class App extends Component<IProps, IState> {
+  constructor(props: IProps) {
     super(props)
     this.state = {
       message: 'Click the button to load data!'
@@ -26,6 +35,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <NavBar />
         <h1>{ this.state.message }</h1>
         <button onClick={this.fetchData} >
           Fetch Data

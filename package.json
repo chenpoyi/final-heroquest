@@ -25,5 +25,10 @@
   "bugs": {
     "url": "https://github.com/NimaBoscarino/stigma/issues"
   },
-  "homepage": "https://github.com/NimaBoscarino/stigma#readme"
+  "homepage": "https://github.com/NimaBoscarino/stigma#readme",
+  "dependencies": {
+    "@material-ui/core": "^4.11.0",
+    "@material-ui/icons": "^4.9.1",
+    "fontsource-roboto": "^3.0.3"
+  }
 }
