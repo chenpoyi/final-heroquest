@@ -10,11 +10,12 @@ import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: '100%',
+    maxWidth: '75%',
   },
   media: {
     height: 360,
   },
+  
 });
 
 export default function TitleCard() {
@@ -26,7 +27,7 @@ export default function TitleCard() {
         <CardMedia
           className={classes.media}
           image="https://i.imgur.com/tmhlFew.jpg"
-          title="Contemplative Reptile"
+          title="HeroQuest Title"
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
