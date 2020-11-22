@@ -3,6 +3,7 @@ import axios from 'axios';
 import './App.css';
 
 import NavBar from './components/NavBar';
+import MediaCard from './components/TitleCard';
 import {getDrawerList} from './helpers/selectors';
 
 
@@ -42,13 +43,15 @@ class App extends Component<IProps, IState> {
     return (
       <div className="App">
         <NavBar drawerList ={this.drawerList}/>
-        <h1>{ this.state.message }</h1>
-        <button onClick={this.fetchData} >
-          Fetch Data
-        </button>        
+        <MediaCard/>
       </div>
     );
   }
 }
 
 export default App;
+
+{/* <h1>{ this.state.message }</h1>
+        <button onClick={this.fetchData} >
+          Fetch Data
+        </button>    */}
