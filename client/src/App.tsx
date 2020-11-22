@@ -2,8 +2,15 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import './App.css';
 
-class App extends Component {
-  constructor(props) {
+interface IProps {
+
+}
+interface IState {
+  message?: string;
+}
+
+class App extends Component<IProps, IState> {
+  constructor(props: IProps) {
     super(props)
     this.state = {
       message: 'Click the button to load data!'
