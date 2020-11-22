@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import './App.css';
 
+import NavBar from './components/NavBar';
+
 interface IProps {
 
 }
@@ -33,6 +35,7 @@ class App extends Component<IProps, IState> {
   render() {
     return (
       <div className="App">
+        <NavBar />
         <h1>{ this.state.message }</h1>
         <button onClick={this.fetchData} >
           Fetch Data
