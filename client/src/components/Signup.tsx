@@ -48,9 +48,9 @@ export default function Signup() {
   
   return (
     <form onSubmit={handleSubmit} className={classes.root} noValidate autoComplete="off">
-      <TextField id="standard-basic" label="Email" onChange={e => setEmail(e.target.value)}/>
-      <TextField id="standard-basic" type="password" label="Password" onChange={e => setPassword(e.target.value)}/>
-      <TextField id="standard-basic" type="password" label="Password Confirmation" onChange={e => setPasswordConfirmation(e.target.value)}/>
+      <TextField id="standard-basic-email" label="Email" onChange={e => setEmail(e.target.value)}/>
+      <TextField id="standard-basic-password" type="password" label="Password" onChange={e => setPassword(e.target.value)}/>
+      <TextField id="standard-basic-password-confirmation" type="password" label="Password Confirmation" onChange={e => setPasswordConfirmation(e.target.value)}/>
       <Button type="submit" variant="contained" size="small" color="primary">
         Sign Up
       </Button>
