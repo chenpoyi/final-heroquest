@@ -1,6 +1,5 @@
 class User < ActiveRecord::Base
   before_validation :email_sanitize
-    validates :name, presence: true
     validates :email, presence: true
     validates :email,
               format: { with: /\A^(.+)@(.+)$\z/, message: "Email invalid"  },

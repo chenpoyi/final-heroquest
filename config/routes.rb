@@ -7,6 +7,10 @@ Rails.application.routes.draw do
     
     post '/signup', to: 'users#create'
 
+    ## routes are for showing users a login form, logging them in, and logging them out.
+    post '/login' => 'sessions#create'
+    get '/logout' => 'sessions#destroy'
+
     # resources :dogs
 
   end
