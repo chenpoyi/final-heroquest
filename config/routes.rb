@@ -5,7 +5,9 @@ Rails.application.routes.draw do
 
     get '/data', to: 'tests#index'
     
-    resources :dogs
+    post '/signup', to: 'users#create'
+
+    # resources :dogs
 
   end
 
