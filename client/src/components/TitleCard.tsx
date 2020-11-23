@@ -8,16 +8,29 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
+import Signup from "./Signup"
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  Redirect,
+  useRouteMatch
+} from "react-router-dom";
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: '75%',
+    maxWidth: '100%',
+    
   },
   media: {
-    height: 360,
+    height: "400px",
   },
   
 });
+
+
+
 
 export default function TitleCard() {
   const classes = useStyles();
@@ -43,12 +56,15 @@ export default function TitleCard() {
           </CardContent>
         </CardActionArea>
         <CardActions>
-          <Button variant="contained" size="small" color="primary">
+         
+          <Button href="/login" variant="contained" size="small" color="primary">
             Login
           </Button>
-          <Button variant="contained" size="small" color="primary">
-            Sign Up
-          </Button>
+            <Button  href="/signup" variant="contained" size="small" color="primary">
+              Sign Up
+            </Button>
+       
+          
         </CardActions>
       </Card>
     </Grid>
