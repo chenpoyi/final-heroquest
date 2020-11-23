@@ -6,6 +6,7 @@ import NavBar from "./components/NavBar";
 import MediaCard from "./components/TitleCard";
 
 import Signup from "./components/Signup";
+import Login from "./components/Login";
 
 import { getDrawerList } from "./helpers/selectors";
 import {
@@ -83,9 +84,7 @@ function Home() {
   );
 }
 
-function Login() {
-  return <h2>login</h2>;
-}
+
 
 function Topic() {
   let { topicId } = useParams<{ topicId: string }>();

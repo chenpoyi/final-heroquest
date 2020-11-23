@@ -29,7 +29,7 @@ heroes = Hero.create({
   defend: 2, 
   body: 8 , 
   mind: 2, 
-  image: open_asset('https://i.imgur.com/h0nbSUe.gif')
+  image:'https://i.imgur.com/h0nbSUe.gif'
   })
 
 heroes = Hero.create({
@@ -38,7 +38,7 @@ heroes = Hero.create({
   defend: 2, 
   body: 7, 
   mind: 3, 
-  image: open_asset('https://i.imgur.com/jHZRMeu.gif')
+  image:'https://i.imgur.com/jHZRMeu.gif'
   })
 
 heroes = Hero.create({
@@ -47,7 +47,8 @@ heroes = Hero.create({
   defend: 2, 
   body: 6, 
   mind: 4, 
-  image: open_asset('https://imgur.com/a/j5ow8li')})
+  image: 'https://imgur.com/a/j5ow8li'
+  })
   
 heroes = Hero.create({
   race: 'wizard', 
@@ -55,4 +56,5 @@ heroes = Hero.create({
   defend: 2, 
   body: 4, 
   mind: 6, 
-  image: open_asset('https://i.imgur.com/PEM18xf.gif')})
+  image:'https://i.imgur.com/PEM18xf.gif'
+  })

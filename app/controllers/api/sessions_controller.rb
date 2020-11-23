@@ -13,6 +13,7 @@ class Api::SessionsController < ApplicationController
     else
     # If user's login doesn't work, send them back to the login form.
       redirect_to '/'
+      alert('Login doesnt work')
     end
   end
 
