@@ -85,7 +85,7 @@ export default function Armory() {
   return (
     <>
       <Typography variant="body2" component="p">
-        This character has: {characters[currentChar].gold} gold.
+        This character has: {characters[char].gold} gold.
       </Typography>
       <FormControl className={classes.formControl}>
         <InputLabel id="demo-simple-select-helper-label">Character</InputLabel>
