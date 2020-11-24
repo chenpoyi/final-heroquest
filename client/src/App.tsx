@@ -9,6 +9,7 @@ import MediaCard from "./components/TitleCard";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
 import CharacterCard from "./components/CharacterCard"
+import Armory from "./components/Armory"
 
 import { getDrawerList } from "./helpers/selectors";
 import {
@@ -106,9 +107,13 @@ class App extends Component<IProps, IState> {
             <Route path="/signup">
               <Signup />
             </Route>
+            <Route path="/armory">
+              <Armory />
+            </Route>
             <Route path="/">
               <Home />
             </Route>
+            
           </Switch>
             </Grid>
           </Grid>

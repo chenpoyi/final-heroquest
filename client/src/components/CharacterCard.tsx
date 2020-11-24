@@ -38,7 +38,7 @@ type CharacterCardProps = {
 export default function CharacterCard({charName, dateCreated , lastUsed, race , questsCompleted , imgSrc, body, mind, attack, defense, movement } :CharacterCardProps){
 
   const classes = useStyles();
-  const bull = <span className={classes.bullet}>•</span>;
+  // const bull = <span className={classes.bullet}>•</span>;
   
   return (
     <Card className={classes.root}>
