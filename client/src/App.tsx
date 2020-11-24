@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
 import "./App.css";
-
 import NavBar from "./components/NavBar";
 import MediaCard from "./components/TitleCard";
 
@@ -18,17 +17,37 @@ import {
   useParams,
 } from "react-router-dom";
 
-interface IProps {}
+interface IProps {
+  // history: string[];
+}
 interface IState {
   message?: string;
+  loggedInStatus: boolean;
+  user: {} | null;
 }
 
+
+
 class App extends Component<IProps, IState> {
+  
   constructor(props: IProps) {
     super(props);
+    
     this.state = {
       message: "Click the button to load data!",
+      loggedInStatus: false,
+      user: null
     };
+    this.handleSuccessfulLogin = this.handleSuccessfulLogin.bind(this);
+  }
+
+  handleSuccessfulLogin(data :{}) {
+    // this.props.history.push("/");
+    // console.log("HERE")
+    this.setState({
+      loggedInStatus: true,
+      user: data
+    })
   }
 
   fetchData = () => {
@@ -51,13 +70,13 @@ class App extends Component<IProps, IState> {
     return (
       <Router>
         <div className="App">
-          <NavBar drawerList={this.drawerList} />
+          <NavBar drawerList={this.drawerList} loggedInStatus={this.state.loggedInStatus} />
         </div>
 
         <div>
           <Switch>
             <Route path="/login">
-              <Login />
+              <Login handleSuccessfulLogin={this.handleSuccessfulLogin} loggedIn = {this.state.loggedInStatus}/>
             </Route>
             <Route path="/signup">
               <Signup />
@@ -72,9 +91,9 @@ class App extends Component<IProps, IState> {
   }
 }
 
-type homeProp = {
-  drawerList: string[];
-};
+// type homeProp = {
+//   drawerList: string[];
+// };
 
 function Home() {
   return (
@@ -84,12 +103,6 @@ function Home() {
   );
 }
 
-
-
-function Topic() {
-  let { topicId } = useParams<{ topicId: string }>();
-  return <h3>Requested topic ID: {topicId}</h3>;
-}
 
 export default App;
 

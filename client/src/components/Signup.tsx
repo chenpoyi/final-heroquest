@@ -24,7 +24,7 @@ export default function Signup() {
 
   const handleSubmit = (evt :any) => {
     evt.preventDefault();
-    alert(`Submitting Email ${email}`)
+    //alert(`Submitting Email ${email}`)
 
     const user = {
       email,
