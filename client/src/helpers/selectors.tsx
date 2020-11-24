@@ -1,10 +1,23 @@
+
+import axios from "axios";
+
 export function getDrawerList():string[] {
   //... returns an array of the items on the left drawer
   return ['Game', 'Statistics', 'Resources', 'Settings'];
 }
 
 export const getCharacters = function(){
-  return charactersData;
+  return axios 
+      .get("/api/characters/1") // You can simply make your requests to "/api/whatever you want"
+      .then((response) => {
+        // handle success
+        // console.log(response.data.characters); // The entire response from the Rails API
+        return response.data.characters
+      }).catch((err)=>{
+        console.log(err)
+      });
+
+  // return charactersData;
 }
 
 export const getWeapons = function(){
@@ -15,7 +28,8 @@ const charactersData = [
   { name: 'Character 1', gold: 60 },
   { name: 'Character 2', gold: 90 },
   { name: 'Character 3', gold: 120 },
-  { name: 'Character 4', gold: 150 }];
+  { name: 'Character 4', gold: 150 }
+];
 
 
 const weaponsData = [

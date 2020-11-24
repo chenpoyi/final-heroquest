@@ -27,13 +27,18 @@ const useStyles = makeStyles((theme: Theme) =>
     },
   }),
 );
+type Character = {
+  name :string,
+  gold :number
 
+}
 export default function Armory() {
   const classes = useStyles();
   const [currentChar, setcurrentChar] = React.useState(0);
   const [selections, setSelection] = React.useState<RowId[]>([]);
   const [total, setTotal] = React.useState<number>(0);
-  const [characters, setCharacters] = React.useState([])
+  const [characters, setCharacters] = React.useState<Character[]>([]);
+
   const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
     setcurrentChar(event.target.value as number);
   };
@@ -57,8 +62,6 @@ export default function Armory() {
 
   const handleSelectionChange = (newSelection: any) => {
     setSelection(newSelection.rowIds);
-    // console.log(selections);
-
   }
 
   const calculateTotal = () => {
@@ -81,18 +84,31 @@ export default function Armory() {
   React.useEffect(calculateTotal
     , [selections])
 
+  React.useEffect(()=>{
+    getCharacters()
+    .then((characters)=>{
+      setCharacters(characters);
+    });
+  },[])
+
+  const gold = ()=>{
+    if(characters[currentChar]){
+      return characters[currentChar].gold
+    } 
+    return 0;
+  }
 
   return (
     <>
       <Typography variant="body2" component="p">
-        This character has: {characters[char].gold} gold.
+        This character has: {gold()} gold.
       </Typography>
       <FormControl className={classes.formControl}>
         <InputLabel id="demo-simple-select-helper-label">Character</InputLabel>
         <Select
           // labelId="demo-simple-select-helper-label"
           id="demo-simple-select-helper"
-          value={char}
+          value={currentChar}
           onChange={handleChange}
         >
           {list}
