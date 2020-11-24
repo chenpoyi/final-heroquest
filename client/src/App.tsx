@@ -34,7 +34,10 @@ interface IState {
   user: {} | null;
 }
 
-
+const styles = {
+  paperContainer: {
+     backgroundImage: "http://7-themes.com/data_images/out/75/7029709-old-paper-picture.jpg"  }
+};
 
 class App extends Component<IProps, IState> {
   
@@ -81,12 +84,14 @@ class App extends Component<IProps, IState> {
 
   drawerList: string[] = getDrawerList();
 
+  
+
   render() {
     return (
      
       <Router>
          
-         <Paper elevation={0} />
+         <div style={styles.paperContainer} >
         <Grid container direction="column">
           <Grid item className="App">
           <NavBar drawerList={this.drawerList} loggedInStatus={this.state.loggedInStatus} handleSuccessfulLogout={this.handleSuccessfulLogout} user={this.state.user}/>
@@ -108,7 +113,7 @@ class App extends Component<IProps, IState> {
             </Grid>
           </Grid>
         </Grid>
-   
+      </div>
       </Router>
       
     );
@@ -132,7 +137,7 @@ const characterInfo = {
 function Home() {
   return (
   <>
-  <CharacterCard {...characterInfo}/>
+  {/* <CharacterCard {...characterInfo}/> */}
   <MediaCard />
   </>);
 }
