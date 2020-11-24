@@ -49,8 +49,8 @@ export default function Login({handleSuccessfulLogin, loggedIn}: LoginProps) {
         handleSuccessfulLogin(response.data);
         //setLoggedIn(true);
 
-        // return <Redirect to='/'  />
-        return <Route path="/" render={TitleCard} />
+        return <Redirect to='/'  />
+        //return <Route path="/" render={TitleCard} />
       });
 
     

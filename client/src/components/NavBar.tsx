@@ -14,6 +14,7 @@ import Menu from '@material-ui/core/Menu';
 import LeftDrawer from './LeftDrawer';
 
 import axios from 'axios';
+import  { Redirect, Route } from 'react-router-dom'
 
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -36,14 +37,15 @@ const useStyles = makeStyles((theme: Theme) =>
 type NavBarProps = {
   drawerList: string[],
   loggedInStatus: boolean;
+  handleSuccessfulLogout :any
+  user :any
 }
 
-export default function NavBar({drawerList, loggedInStatus}: NavBarProps) {
+export default function NavBar({drawerList, loggedInStatus, handleSuccessfulLogout, user}: NavBarProps) {
   const classes = useStyles();
   const [auth, setAuth] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
-  const [email, setEmail] = React.useState<string | null>(null)
   
 
   // useEffect(() => {
@@ -77,8 +79,10 @@ export default function NavBar({drawerList, loggedInStatus}: NavBarProps) {
       .get("/api/logout")// You can simply make your requests to "/api/whatever you want"
       .then((response) => {
         // handle success
-        localStorage.removeItem('email')
-        
+        handleSuccessfulLogout();
+        return <Redirect to='/'  />
+
+        // return <Route path="/" render={TitleCard} />
       });
 
   }
@@ -92,8 +96,9 @@ export default function NavBar({drawerList, loggedInStatus}: NavBarProps) {
             HeroQuest {loggedInStatus.toString()}
           </Typography>
 
-          {auth && (
+          {loggedInStatus && user && (
             <div>
+            
               <IconButton
                 aria-label="account of current user"
                 aria-controls="menu-appbar"
@@ -118,7 +123,7 @@ export default function NavBar({drawerList, loggedInStatus}: NavBarProps) {
                 open={open}
                 onClose={handleClose}
               >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
+                <MenuItem onClick={handleClose}>{user.email}</MenuItem>
                 <MenuItem onClick={handleClose}>My account</MenuItem>
                 <MenuItem onClick={handleLogout}>Logout</MenuItem>
               </Menu>

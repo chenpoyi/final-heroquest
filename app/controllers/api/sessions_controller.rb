@@ -11,7 +11,9 @@ class Api::SessionsController < ApplicationController
       session[:user_id] = user.id
       puts 'login: '
       puts user.id
-      redirect_to '/'
+      render :json => 
+       user
+        
       # render :json => {:name => "any name"}
     else
     # If user's login doesn't work, send them back to the login form.

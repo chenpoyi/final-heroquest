@@ -41,6 +41,7 @@ class App extends Component<IProps, IState> {
       user: null
     };
     this.handleSuccessfulLogin = this.handleSuccessfulLogin.bind(this);
+    this.handleSuccessfulLogout = this.handleSuccessfulLogout.bind(this);
   }
 
   handleSuccessfulLogin(data :{}) {
@@ -48,6 +49,13 @@ class App extends Component<IProps, IState> {
     this.setState({
       loggedInStatus: true,
       user: data
+    })
+  }
+
+  handleSuccessfulLogout() {
+    this.setState({
+      loggedInStatus: false,
+      user: null
     })
   }
 
@@ -72,7 +80,7 @@ class App extends Component<IProps, IState> {
       <Router>
         <Grid container direction="column">
           <Grid item className="App">
-          <NavBar drawerList={this.drawerList} loggedInStatus={this.state.loggedInStatus} />
+          <NavBar drawerList={this.drawerList} loggedInStatus={this.state.loggedInStatus} handleSuccessfulLogout={this.handleSuccessfulLogout} user={this.state.user}/>
           </Grid>
           <Grid item container>
             <Grid xs={false} sm={2} />

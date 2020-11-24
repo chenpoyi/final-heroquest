@@ -7,7 +7,9 @@ class Api::UsersController < ApplicationController
     user = User.new(user_params)
     if user.save
       session[:user_id] = user.id
-      redirect_to '/'
+      render :json => {
+        user: user
+      }
     else
       redirect_to '/signup'
     end
