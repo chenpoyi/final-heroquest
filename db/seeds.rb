@@ -29,11 +29,7 @@ heroes = Hero.create({
   defend: 2, 
   body: 8 , 
   mind: 2, 
-<<<<<<< HEAD
   image: 'https://i.imgur.com/h0nbSUe.gif'
-=======
-  image:'https://i.imgur.com/h0nbSUe.gif'
->>>>>>> feature/login-page
   })
 
 heroes = Hero.create({
@@ -62,3 +58,332 @@ heroes = Hero.create({
   mind: 6, 
   image:'https://i.imgur.com/PEM18xf.gif'
   })
+
+heroes = Hero.create({
+  race: 'zargon', 
+  attack: 1, 
+  defend: 2, 
+  body: 4, 
+  mind: 6, 
+  image:'https://i.imgur.com/PEM18xf.gif'
+  })
+
+  ## Users
+
+puts "Re-creating Users ..."
+
+User.destroy_all
+
+users = User.create!({
+  email: "scott@m.ca",
+  password: "password",
+  password_confirmation: "password"
+})
+
+users = User.create({
+  email: "paul@c.ca",
+  password: "password",
+  password_confirmation: "password"
+
+})
+
+users = User.create({
+  email: "jake@p.ca",
+  password: "password",
+  password_confirmation: "password"
+})
+
+users = User.create({
+  email: "john@m.ca",
+  password: "password",
+  password_confirmation: "password"
+})
+
+users = User.create({
+  email: "howard@c.ca",
+  password: "password",
+  password_confirmation: "password"
+})
+  ## Characters for Users
+
+  puts "Re-creating Characters for users ..."
+
+  Character.destroy_all
+
+user_character = Character.create! ({
+  name:"Ragnor",
+  attack: "3D6",
+  defend: "2D6",
+  body: 8, 
+  mind: 2,
+  gold: 400,
+  users_id: 3,
+  heros_id: 1,
+  movement: "2D6",
+  weapon: "Broadsword"
+
+})
+
+user_character = Character.create! ({
+  name:"Zargon",
+  attack: "1D6",
+  defend: "2D6",
+  body: 4, 
+  mind: 6,
+  gold: 0,
+  users_id: 2,
+  heros_id: 5,
+  movement: "Check Monsters",
+  weapon: "Spells and Monsters"
+
+})
+
+user_character = Character.create! ({
+  name:"Saurlith",
+  attack: "2D6",
+  defend: "2D6",
+  body: 7, 
+  mind: 3,
+  gold: 450,
+  users_id: 4,
+  heros_id: 2,
+  movement: "2D6",
+  weapon: "Short Sword"
+
+})
+
+user_character = Character.create! ({
+  name:"Maursin",
+  attack: "2D6",
+  defend: "2D6",
+  body: 6, 
+  mind: 4,
+  gold: 600,
+  users_id: 1,
+  heros_id: 3,
+  movement: "2D6",
+  weapon: "Short Sword"
+
+})
+
+user_character = Character.create! ({
+  name:"Elsin",
+  attack: "1D6",
+  defend: "2D6",
+  body: 4, 
+  mind: 6,
+  gold: 300,
+  users_id: 5,
+  heros_id: 4,
+  movement: "2D6",
+  weapon: "Dagger"
+
+})
+
+## extra characters for user 1
+
+
+user_character = Character.create! ({
+  name:"Detrix",
+  attack: "3D6",
+  defend: "2D6",
+  body: 8, 
+  mind: 2,
+  gold: 400,
+  users_id: 1,
+  heros_id: 1,
+  movement: "2D6",
+  weapon: "Broadsword"
+
+})
+
+user_character = Character.create! ({
+  name:"Axios",
+  attack: "2D6",
+  defend: "2D6",
+  body: 6, 
+  mind: 4,
+  gold: 600,
+  users_id: 1,
+  heros_id: 2,
+  movement: "2D6",
+  weapon: "Short Sword"
+
+})
+
+user_character = Character.create! ({
+  name:"Doloman the Wise",
+  attack: "1D6",
+  defend: "2D6",
+  body: 4, 
+  mind: 6,
+  gold: 300,
+  users_id: 1,
+  heros_id: 4,
+  movement: "2D6",
+  weapon: "Dagger"
+
+})
+
+  ## Weapons for Armory
+
+  puts "Re-creating Weapons for Armory..."
+
+  Weapon.destroy_all
+
+  weapon = Weapon.create!({
+    name: "Battle Axe",
+    price: 400,
+    attack: 4,
+    wizard: false,
+    description: "This heavy, double-edged axe gives you the attack strength of 4 combat dice. You may not use a shield when using this weapon.",
+    image: "https://i5.walmartimages.com/asr/489802ea-9efd-4619-864a-9878b2d05ac0_1.4b632c00d7bd43d3442d04cd9d773271.jpeg?odnHeight=450&odnWidth=450&odnBg=ffffff"
+
+  })
+
+  weapon = Weapon.create!({
+    name: "Braodsword",
+    price: 250,
+    attack: 3,
+    wizard: false,
+    description: "This wide blade gives you the attack of 3 combat dice.",
+    image: "https://samuraiswords.store/wp-content/uploads/2017/08/Viking-Broadsword.jpg"
+
+  })
+
+  weapon = Weapon.create!({
+    name: "Crossbow",
+    price: 350,
+    attack: 3,
+    wizard: false,
+    description: "This long-range weapon gives you the attack strength of 3 combat dice. You may fire at any monster that you can see. However, you cannot fire at a monster that is adjacent to you. You have an unlimited supply of arrows.",
+    image: "https://www.bogensportwelt.de/media/image/product/1631/lg/medieval-crossbow-79cm-approx-80-100lbs.jpg"
+
+  })
+
+  weapon = Weapon.create!({
+    name: "Dagger",
+    price: 25,
+    attack: 1,
+    wizard: true,
+    description: "This sharp knife gives you the attack strength of 1 combat die. A dagger can also be thrown at any monster you can see, but is lost once it is thrown.",
+    image: "https://images-na.ssl-images-amazon.com/images/I/51xTt-2VZ8L._AC_SL1000_.jpg"
+
+  })
+
+  weapon = Weapon.create!({
+    name: "Hand Axe",
+    price: 150,
+    attack: 2,
+    wizard: false,
+    description: "The hand axe allows to roll 2 combat dice in attack. It can also be thrown at any monster you can see, but is lost once it is thrown.",
+    image: "https://cdn.shopify.com/s/files/1/0925/7092/products/forged-carbon-steel-iroquois-throwing-axe.jpg?v=1575940653"
+
+  })
+
+  weapon = Weapon.create!({
+    name: "Longsword",
+    price: 350,
+    attack: 3,
+    wizard: false,
+    description: "This long blade gives you the attack of 3 combat dice. Because of its length, the longsword enables you to attack diagonally.",
+    image: "https://medievalbritain.com/wp-content/uploads/2019/11/The-Writhen-Hilt_Sword.jpg"
+
+  })
+
+  weapon = Weapon.create!({
+    name: "Short sword",
+    price: 150,
+    attack: 2,
+    wizard: false,
+    description: "This short blade gives you the attack strength of 2 combat dice.",
+    image: "https://s3.amazonaws.com/content.sellbrite.com/19698/41773623/img/49500969/large/__57.jpg?1476220713"
+
+  })
+
+  weapon = Weapon.create!({
+    name: "Spear",
+    price: 150,
+    attack: 2,
+    wizard: false,
+    description: "The spear allows to roll 2 combat dice in attack. Because of its length, it enables you to attack diagonally. It can also be thrown at any monster you can see, but is lost once it is thrown.",
+    image: "https://26r1162iqrnz10wquy34bg3o-wpengine.netdna-ssl.com/wp-content/uploads/2020/05/600314-300x300.jpg"
+
+  })
+
+  weapon = Weapon.create!({
+    name: "Spear",
+    price: 150,
+    attack: 2,
+    wizard: false,
+    description: "The spear allows to roll 2 combat dice in attack. Because of its length, it enables you to attack diagonally. It can also be thrown at any monster you can see, but is lost once it is thrown.",
+    image: "https://26r1162iqrnz10wquy34bg3o-wpengine.netdna-ssl.com/wp-content/uploads/2020/05/600314-300x300.jpg"
+
+  })
+
+  weapon = Weapon.create!({
+    name: "Staff",
+    price: 100,
+    attack: 1,
+    wizard: true,
+    description: "This long, sturdy, wooden staff gives you the attack strength of 1 combat die. Because of its length, the staff enables you to attack diagonally. You may not use a shield when using this weapon.",
+    image: "https://i.pinimg.com/originals/fc/28/be/fc28bee6dcbfb3fa077761f7bd362831.jpg"
+
+  })
+
+  ## Weapons for Armory
+
+  puts "Re-creating Armor for Armory..."
+
+  Armor.destroy_all
+  
+  weapon = Armor.create!({
+    name: "Chain mail",
+    price: 450,
+    defense: 3,
+    wizard: false,
+    description: "This light metal armor gives you 1 extra combat die in defense. May be combined with the Helmet and/or Shield.",
+    image: "https://image.shutterstock.com/image-photo/portrait-medieval-dirty-face-warrior-260nw-411742261.jpg"
+
+  })
+
+  weapon = Armor.create!({
+    name: "Helmet",
+    price: 125,
+    defense: 1,
+    wizard: false,
+    description: "This protective headpiece gives you 1 extra combat die in defense",
+    image: "https://www.heritagecostumes.com/images/products/18189.jpg"
+
+  })
+
+  weapon = Armor.create!({
+    name: "Plate Armor",
+    price: 850,
+    defense: 4,
+    wizard: false,
+    description: "This heavy metal armor gives you 2 extra combat dice in defense. However, because it is so heavy, you may only roll 1 red die for movement while wearing it. May be combined with the Helmet and/or Shield.",
+    image: "https://static.turbosquid.com/Preview/2020/03/30__06_51_41/Medieval_Knight_Plate_Armor_with_Zweihander_Rigged_c4d_00.jpg8CC120C3-6ADE-4C15-85FC-ACF3FFEC0DFCLarge.jpg"
+
+  })
+
+  weapon = Armor.create!({
+    name: "Shield",
+    price: 100,
+    defense: 1,
+    wizard: false,
+    description: "This hand-held armor gives you 1 extra combat die in defense. May not be used with the Battle Axe or the Staff.",
+    image: "https://cdn.shopify.com/s/files/1/1551/9675/products/970_8_6aab293d-fce7-4bd0-8b1f-85c392302ee0_1024x1024.jpg?v=1591025229"
+
+  })
+
+  # t.string "name"
+  # t.integer "price"
+  # t.integer "attack"
+  # t.boolean "wizard"
+  # t.string "description"
+  # t.string "image"
+  # t.datetime "created_at", null: false
+  # t.datetime "updated_at", null: false
+
+
