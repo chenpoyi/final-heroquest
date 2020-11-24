@@ -30,14 +30,15 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export default function Armory() {
   const classes = useStyles();
-  const [char, setChar] = React.useState(0);
+  const [currentChar, setcurrentChar] = React.useState(0);
   const [selections, setSelection] = React.useState<RowId[]>([]);
   const [total, setTotal] = React.useState<number>(0);
+  const [characters, setCharacters] = React.useState([])
   const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
-    setChar(event.target.value as number);
+    setcurrentChar(event.target.value as number);
   };
 
-  const characters = getCharacters();
+  // const characters = getCharacters();
   const weapons = getWeapons();
   
   const list = characters.map((character, index) => {
@@ -84,7 +85,7 @@ export default function Armory() {
   return (
     <>
       <Typography variant="body2" component="p">
-        This character has: {characters[char].gold} gold.
+        This character has: {characters[currentChar].gold} gold.
       </Typography>
       <FormControl className={classes.formControl}>
         <InputLabel id="demo-simple-select-helper-label">Character</InputLabel>
