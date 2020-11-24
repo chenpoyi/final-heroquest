@@ -1,12 +1,9 @@
 import React, { Component } from "react";
 import axios from "axios";
 import "./App.css";
-
 import NavBar from "./components/NavBar";
 import MediaCard from "./components/TitleCard";
-
 import Signup from "./components/Signup";
-
 import { getDrawerList } from "./helpers/selectors";
 import {
   BrowserRouter as Router,
@@ -16,6 +13,9 @@ import {
   useRouteMatch,
   useParams,
 } from "react-router-dom";
+import Grid from "@material-ui/core/Grid";
+import TitleCard from "./components/TitleCard";
+import Content from "./components/Content";
 
 interface IProps {}
 interface IState {
@@ -49,23 +49,27 @@ class App extends Component<IProps, IState> {
   render() {
     return (
       <Router>
-        <div className="App">
-          <NavBar drawerList={this.drawerList} />
-        </div>
-
-        <div>
-          <Switch>
-            <Route path="/login">
-              <Login />
-            </Route>
-            <Route path="/signup">
-              <Signup />
-            </Route>
-            <Route path="/">
-              <Home />
-            </Route>
-          </Switch>
-        </div>
+        <Grid container direction="column">
+          <Grid item className="App">
+            <NavBar drawerList={this.drawerList} />
+          </Grid>
+          <Grid item container>
+            <Grid xs={false} sm={2} />
+            <Grid xs={12} sm={8}>
+              <Switch>
+                <Route path="/login">
+                  <Login />
+                </Route>
+                <Route path="/signup">
+                  <Signup />
+                </Route>
+                <Route path="/">
+                  <Home />
+                </Route>
+              </Switch>
+            </Grid>
+          </Grid>
+        </Grid>
       </Router>
     );
   }
@@ -76,15 +80,11 @@ type homeProp = {
 };
 
 function Home() {
-  return (
-
-      <MediaCard />
-   
-  );
+  return <MediaCard />;
 }
 
 function Login() {
-  return <h2>login</h2>;
+  return <h2>login Once logged in need to redirect to create character page</h2>;
 }
 
 function Topic() {
@@ -93,8 +93,6 @@ function Topic() {
 }
 
 export default App;
-
-
 
 // let match = useRouteMatch();
 
