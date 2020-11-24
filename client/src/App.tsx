@@ -4,6 +4,8 @@ import "./App.css";
 import NavBar from "./components/NavBar";
 import MediaCard from "./components/TitleCard";
 import Signup from "./components/Signup";
+import Login from "./components/Login";
+
 import { getDrawerList } from "./helpers/selectors";
 import {
   BrowserRouter as Router,
@@ -17,17 +19,36 @@ import Grid from "@material-ui/core/Grid";
 import TitleCard from "./components/TitleCard";
 import Content from "./components/Content";
 
-interface IProps {}
+interface IProps {
+  // history: string[];
+}
 interface IState {
   message?: string;
+  loggedInStatus: boolean;
+  user: {} | null;
 }
 
+
+
 class App extends Component<IProps, IState> {
+  
   constructor(props: IProps) {
     super(props);
+    
     this.state = {
       message: "Click the button to load data!",
+      loggedInStatus: false,
+      user: null
     };
+    this.handleSuccessfulLogin = this.handleSuccessfulLogin.bind(this);
+  }
+
+  handleSuccessfulLogin(data :{}) {
+    
+    this.setState({
+      loggedInStatus: true,
+      user: data
+    })
   }
 
   fetchData = () => {
@@ -51,22 +72,22 @@ class App extends Component<IProps, IState> {
       <Router>
         <Grid container direction="column">
           <Grid item className="App">
-            <NavBar drawerList={this.drawerList} />
+          <NavBar drawerList={this.drawerList} loggedInStatus={this.state.loggedInStatus} />
           </Grid>
           <Grid item container>
             <Grid xs={false} sm={2} />
             <Grid xs={12} sm={8}>
-              <Switch>
-                <Route path="/login">
-                  <Login />
-                </Route>
-                <Route path="/signup">
-                  <Signup />
-                </Route>
-                <Route path="/">
-                  <Home />
-                </Route>
-              </Switch>
+            <Switch>
+            <Route path="/login">
+              <Login handleSuccessfulLogin={this.handleSuccessfulLogin} loggedIn = {this.state.loggedInStatus}/>
+            </Route>
+            <Route path="/signup">
+              <Signup />
+            </Route>
+            <Route path="/">
+              <Home />
+            </Route>
+          </Switch>
             </Grid>
           </Grid>
         </Grid>
@@ -75,22 +96,12 @@ class App extends Component<IProps, IState> {
   }
 }
 
-type homeProp = {
-  drawerList: string[];
-};
+
 
 function Home() {
   return <MediaCard />;
 }
 
-function Login() {
-  return <h2>login Once logged in need to redirect to create character page</h2>;
-}
-
-function Topic() {
-  let { topicId } = useParams<{ topicId: string }>();
-  return <h3>Requested topic ID: {topicId}</h3>;
-}
 
 export default App;
 

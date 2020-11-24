@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -13,6 +13,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import LeftDrawer from './LeftDrawer';
 
+import axios from 'axios';
 
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -33,14 +34,29 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 type NavBarProps = {
-  drawerList: string[]
+  drawerList: string[],
+  loggedInStatus: boolean;
 }
 
-export default function NavBar({drawerList}: NavBarProps) {
+export default function NavBar({drawerList, loggedInStatus}: NavBarProps) {
   const classes = useStyles();
-  const [auth, setAuth] = React.useState(true);
+  const [auth, setAuth] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
+  const [email, setEmail] = React.useState<string | null>(null)
+  
+
+  // useEffect(() => {
+  //   if(localStorage.getItem('email')){
+  //     console.log('here')
+  //     setAuth(true)
+  //     setEmail(localStorage.getItem('email'))
+  //   }
+  //   else {
+  //     setAuth(false)
+  //     setEmail(null)
+  //   }
+  // });
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setAuth(event.target.checked);
@@ -54,14 +70,28 @@ export default function NavBar({drawerList}: NavBarProps) {
     setAnchorEl(null);
   };
 
+  const handleLogout = () => {
+    setAnchorEl(null);
+
+    axios
+      .get("/api/logout")// You can simply make your requests to "/api/whatever you want"
+      .then((response) => {
+        // handle success
+        localStorage.removeItem('email')
+        
+      });
+
+  }
+
   return (
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
           <LeftDrawer drawerList={drawerList}/>
           <Typography variant="h6" className={classes.title}>
-            HeroQuest
+            HeroQuest {loggedInStatus.toString()}
           </Typography>
+
           {auth && (
             <div>
               <IconButton
@@ -90,6 +120,7 @@ export default function NavBar({drawerList}: NavBarProps) {
               >
                 <MenuItem onClick={handleClose}>Profile</MenuItem>
                 <MenuItem onClick={handleClose}>My account</MenuItem>
+                <MenuItem onClick={handleLogout}>Logout</MenuItem>
               </Menu>
             </div>
           )}
