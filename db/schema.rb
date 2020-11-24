@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_24_174604) do
+ActiveRecord::Schema.define(version: 2020_11_24_193708) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,8 +73,8 @@ ActiveRecord::Schema.define(version: 2020_11_24_174604) do
 
   create_table "characters", force: :cascade do |t|
     t.string "name"
-    t.integer "attack"
-    t.integer "defend"
+    t.string "attack"
+    t.string "defend"
     t.integer "body"
     t.integer "mind"
     t.integer "gold"
@@ -82,6 +82,8 @@ ActiveRecord::Schema.define(version: 2020_11_24_174604) do
     t.datetime "updated_at", null: false
     t.bigint "users_id"
     t.bigint "heros_id"
+    t.string "movement"
+    t.string "weapon"
     t.index ["heros_id"], name: "index_characters_on_heros_id"
     t.index ["users_id"], name: "index_characters_on_users_id"
   end
