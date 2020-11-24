@@ -1,10 +1,14 @@
 import React, { Component } from "react";
 import axios from "axios";
 import "./App.css";
+import Paper from '@material-ui/core/Paper';
+
+
 import NavBar from "./components/NavBar";
 import MediaCard from "./components/TitleCard";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
+import CharacterCard from "./components/CharacterCard"
 
 import { getDrawerList } from "./helpers/selectors";
 import {
@@ -19,6 +23,8 @@ import Grid from "@material-ui/core/Grid";
 import TitleCard from "./components/TitleCard";
 import Content from "./components/Content";
 
+import  {ThemeProvider}  from '@material-ui/styles';
+
 interface IProps {
   // history: string[];
 }
@@ -28,7 +34,10 @@ interface IState {
   user: {} | null;
 }
 
-
+const styles = {
+  paperContainer: {
+     backgroundImage: "http://7-themes.com/data_images/out/75/7029709-old-paper-picture.jpg"  }
+};
 
 class App extends Component<IProps, IState> {
   
@@ -75,9 +84,14 @@ class App extends Component<IProps, IState> {
 
   drawerList: string[] = getDrawerList();
 
+  
+
   render() {
     return (
+     
       <Router>
+         
+         <div style={styles.paperContainer} >
         <Grid container direction="column">
           <Grid item className="App">
           <NavBar drawerList={this.drawerList} loggedInStatus={this.state.loggedInStatus} handleSuccessfulLogout={this.handleSuccessfulLogout} user={this.state.user}/>
@@ -99,15 +113,33 @@ class App extends Component<IProps, IState> {
             </Grid>
           </Grid>
         </Grid>
+      </div>
       </Router>
+      
     );
   }
 }
 
-
+const characterInfo = {
+  charName: "Ragnor", 
+  dateCreated: "Nov 19, 2020", 
+  lastUsed: "Nov 21, 2020", 
+  race: "Barbarian", 
+  questsCompleted: 3, 
+  imgSrc: "https://i.imgur.com/h0nbSUe.gif",
+  body: 3,
+  mind: 4,
+  attack: 5,
+  defense: 6,
+  movement: 7,
+}
 
 function Home() {
-  return <MediaCard />;
+  return (
+  <>
+  {/* <CharacterCard {...characterInfo}/> */}
+  <MediaCard />
+  </>);
 }
 
 
