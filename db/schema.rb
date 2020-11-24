@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_23_001742) do
+ActiveRecord::Schema.define(version: 2020_11_24_174604) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -93,6 +93,8 @@ ActiveRecord::Schema.define(version: 2020_11_23_001742) do
     t.integer "body"
     t.integer "mind"
     t.string "image"
+    t.string "weapon"
+    t.string "movement"
   end
 
   create_table "monsters", force: :cascade do |t|

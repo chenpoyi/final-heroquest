@@ -29,11 +29,7 @@ heroes = Hero.create({
   defend: 2, 
   body: 8 , 
   mind: 2, 
-<<<<<<< HEAD
   image: 'https://i.imgur.com/h0nbSUe.gif'
-=======
-  image:'https://i.imgur.com/h0nbSUe.gif'
->>>>>>> feature/login-page
   })
 
 heroes = Hero.create({
@@ -62,3 +58,8 @@ heroes = Hero.create({
   mind: 6, 
   image:'https://i.imgur.com/PEM18xf.gif'
   })
+
+  ## Users
+
+puts "Re-creating Users ..."
+
