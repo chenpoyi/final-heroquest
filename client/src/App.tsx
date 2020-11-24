@@ -42,8 +42,7 @@ class App extends Component<IProps, IState> {
   }
 
   handleSuccessfulLogin(data :{}) {
-    // this.props.history.push("/");
-    // console.log("HERE")
+    
     this.setState({
       loggedInStatus: true,
       user: data
@@ -91,9 +90,7 @@ class App extends Component<IProps, IState> {
   }
 }
 
-// type homeProp = {
-//   drawerList: string[];
-// };
+
 
 function Home() {
   return (
