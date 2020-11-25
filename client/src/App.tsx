@@ -25,6 +25,7 @@ import Content from "./components/Content";
 
 import  {ThemeProvider}  from '@material-ui/styles';
 import QuestList from "./components/QuestList";
+import Lobby from "./components/Lobby/index";
 
 interface IProps {
   // history: string[];
@@ -91,7 +92,6 @@ class App extends Component<IProps, IState> {
     return (
      
       <Router>
-         <QuestList />
          <div style={styles.paperContainer} >
         <Grid container direction="column">
           <Grid item className="App">
@@ -110,10 +110,13 @@ class App extends Component<IProps, IState> {
             <Route path="/armory" >
               <Armory user={this.state.user} />
             </Route>
+            <Route path="/lobby" >
+              <Lobby />
+            </Route>
             <Route path="/">
               <Home user={this.state.user}/>
             </Route>
-            
+           
           </Switch>
             </Grid>
           </Grid>

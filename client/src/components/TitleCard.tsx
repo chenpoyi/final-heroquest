@@ -69,6 +69,11 @@ export default function TitleCard(user :any) {
               Armory
             </Button>
           </Link>
+          <Link to="/lobby">
+            <Button variant="contained" size="small" color="primary">
+              To lobby
+            </Button>
+          </Link>
         </CardActions>
       </Card>
     </Grid>
