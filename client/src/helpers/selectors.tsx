@@ -19,6 +19,7 @@ export const getCharacters = function(user : any){
       .then((response) => {
         // handle success
         // console.log(response.data.characters); // The entire response from the Rails API
+        console.log(response.data.characters)
         return response.data.characters
       }).catch((err)=>{
         console.log(err)

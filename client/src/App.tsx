@@ -41,6 +41,19 @@ const styles = {
      backgroundImage: "http://7-themes.com/data_images/out/75/7029709-old-paper-picture.jpg"  }
 };
 
+// PLACEHOLDER USER
+const tempUser = {
+created_at:
+"2020-11-25T18:37:44.611Z",
+email:
+"scott@m.ca",
+id:1,
+password_digest:
+"$2a$12$RTewzsa94Rkll8RuyXVrKOyECyv3gQC.2yvdfPgDvgIs/chrpdejK",
+updated_at:
+"2020-11-25T18:37:44.611Z"
+}
+
 class App extends Component<IProps, IState> {
   
   constructor(props: IProps) {
@@ -48,8 +61,8 @@ class App extends Component<IProps, IState> {
     
     this.state = {
       message: "Click the button to load data!",
-      loggedInStatus: false,
-      user: null
+      loggedInStatus: true,
+      user: tempUser
     };
     this.handleSuccessfulLogin = this.handleSuccessfulLogin.bind(this);
     this.handleSuccessfulLogout = this.handleSuccessfulLogout.bind(this);
@@ -111,7 +124,7 @@ class App extends Component<IProps, IState> {
               <Armory user={this.state.user} />
             </Route>
             <Route path="/lobby" >
-              <Lobby />
+              <Lobby user={this.state.user}/>
             </Route>
             <Route path="/">
               <Home user={this.state.user}/>
@@ -129,7 +142,7 @@ class App extends Component<IProps, IState> {
 }
 
 const characterInfo = {
-  charName: "Ragnor", 
+  name: "Ragnor", 
   dateCreated: "Nov 19, 2020", 
   lastUsed: "Nov 21, 2020", 
   race: "Barbarian", 

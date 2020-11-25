@@ -13,15 +13,20 @@ import Typography from '@material-ui/core/Typography';
 import { DataGrid, RowId, ColDef, ValueGetterParams } from '@material-ui/data-grid';
 import { SettingsOverscanOutlined } from '@material-ui/icons';
 
+import CharacterModal from './CharacterModal'
 
+type LobbyProps = {
 
+  user: any
+}
+export default function Lobby({ user }: LobbyProps) {
+  const [character, setCharacter] = React.useState('0');
 
-export default function Lobby() {
-  
 
   return (
     <>
       <h1>This is the lobby page</h1>
+      <CharacterModal user={user} setCharacter={setCharacter} />
     </>
   );
 }

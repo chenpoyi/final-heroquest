@@ -22,7 +22,7 @@ const useStyles = makeStyles({
  } );
 
 type CharacterCardProps = {
-  charName :string, 
+  name :string, 
   dateCreated :string, 
   lastUsed :string, 
   race :string, 
@@ -35,7 +35,7 @@ type CharacterCardProps = {
   movement :number,
 }
 
-export default function CharacterCard({charName, dateCreated , lastUsed, race , questsCompleted , imgSrc, body, mind, attack, defense, movement } :CharacterCardProps){
+export default function CharacterCard({name, dateCreated , lastUsed, race , questsCompleted , imgSrc, body, mind, attack, defense, movement } :CharacterCardProps){
 
   const classes = useStyles();
   // const bull = <span className={classes.bullet}>•</span>;
@@ -43,7 +43,7 @@ export default function CharacterCard({charName, dateCreated , lastUsed, race , 
   return (
     <Card className={classes.root}>
       <CardHeader 
-        title={charName}
+        title={name}
         subheader={race}
       >
       
