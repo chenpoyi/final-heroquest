@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_25_165802) do
+ActiveRecord::Schema.define(version: 2020_11_25_183132) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,8 +57,11 @@ ActiveRecord::Schema.define(version: 2020_11_25_165802) do
     t.datetime "updated_at", null: false
     t.bigint "characters_id"
     t.bigint "lobbies_id"
+    t.bigint "users_id"
+    t.integer "user_id"
     t.index ["characters_id"], name: "index_character_lobbies_on_characters_id"
     t.index ["lobbies_id"], name: "index_character_lobbies_on_lobbies_id"
+    t.index ["users_id"], name: "index_character_lobbies_on_users_id"
   end
 
   create_table "character_potions", force: :cascade do |t|
@@ -193,6 +196,7 @@ ActiveRecord::Schema.define(version: 2020_11_25_165802) do
   add_foreign_key "character_artifacts", "characters", column: "characters_id"
   add_foreign_key "character_lobbies", "characters", column: "characters_id"
   add_foreign_key "character_lobbies", "lobbies", column: "lobbies_id"
+  add_foreign_key "character_lobbies", "users", column: "users_id"
   add_foreign_key "character_potions", "characters", column: "characters_id"
   add_foreign_key "character_potions", "weapons", column: "weapons_id"
   add_foreign_key "character_quests", "characters", column: "characters_id"

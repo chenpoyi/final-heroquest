@@ -554,3 +554,50 @@ rule = Rule.create! ({
   name: "Jumping a Trap",
   description: "You must have at least two remaining movement squares. Rolling anything but a skull to jump the trap. If you roll a skull then the trap is sprung and you suffer body damage.",
 })
+
+## Lobbies
+puts "Re-creating lobbies"
+
+Lobby.destroy_all
+
+lobby = Lobby.create! ({
+  name: "Lobby 1",
+  url: "abcd",
+  status: "prep",
+})
+
+## Quest descriptions 
+puts "Re-creating CharacterLobby..."
+
+CharacterLobby.destroy_all
+
+character_lobby = CharacterLobby.create!({
+  characters_id: 4,
+  user_id: 1,
+  lobbies_id: 1,
+})
+
+character_lobby = CharacterLobby.create!({
+  characters_id: 2,
+  user_id: 2,
+  lobbies_id: 1,
+})
+character_lobby = CharacterLobby.create!({
+  characters_id: 1,
+  user_id: 3,
+  lobbies_id: 1,
+})
+
+character_lobby = CharacterLobby.create!({
+  characters_id: 3,
+  user_id: 4,
+  lobbies_id: 1,
+})
+# create_table "character_lobbies", force: :cascade do |t|
+#   t.datetime "created_at", null: false
+#   t.datetime "updated_at", null: false
+#   t.bigint "characters_id"
+#   t.bigint "lobbies_id"
+#   t.index ["characters_id"], name: "index_character_lobbies_on_characters_id"
+#   t.index ["lobbies_id"], name: "index_character_lobbies_on_lobbies_id"
+# end
