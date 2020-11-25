@@ -377,13 +377,68 @@ user_character = Character.create! ({
 
   })
 
-  # t.string "name"
-  # t.integer "price"
-  # t.integer "attack"
-  # t.boolean "wizard"
-  # t.string "description"
-  # t.string "image"
-  # t.datetime "created_at", null: false
-  # t.datetime "updated_at", null: false
+## MONSTERS for Zargon
+
+puts "Re-creating MONSTERS for Zargon..."
+
+Monster.destroy_all
+
+monster = Monster.create! ({
+  name:"Orc",
+  attack: 3,
+  defend: 2,
+  body: 1, 
+  mind: 2,
+  movement: 10,
+  image: "https://i.imgur.com/MrwYk8c.jpg"
+
+})
+
+monster = Monster.create! ({
+  name:"Chaos Warrior",
+  attack: 4,
+  defend: 4,
+  body: 3, 
+  mind: 3,
+  movement: 7,
+  image: "https://i.imgur.com/QPPVnmi.jpg"
+
+})
+
+monster = Monster.create! ({
+  name:"Verag",
+  attack: 4,
+  defend: 4,
+  body: 3, 
+  mind: 3,
+  movement: 7,
+  image: "https://i.imgur.com/QPPVnmi.jpg"
+
+})
 
 
+## Quest descriptions 
+puts "Re-creating Quests..."
+
+Quest.destroy_all
+
+quest = Quest.create! ({
+  name: "Quest 1: The Trial",
+  description: "You have learned well, my friends. Now has come the time for your first trial. You must first enter the catacombs which contain Fellmarg’s tomb. You must seek out and destroy Verag, a foul Gargoyle who hides in the catacombs. This Quest is not easy and you must work together in order to survive. This is your first step on the road to becoming true Heroes. Tread carefully my friends.",
+  image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhbTKVxzr5gwFu2pVTcmtoshNYZNXSRoAPhA&usqp=CAU"
+
+})
+
+quest = Quest.create!({
+  name: "Quest 2: The Resuce of Sir Ragnar",
+  description: "Sir Ragnar, of the Emperor’s most powerful knights, has been captured. There is reason to believe that he is being held prisoner but Ulag, the orc Warlord. You are to find Sir Ragnar and bring him back to the stairway. Prince Magnus will pay 240 gold coins to be divided among the heroes if they rescue Sir Ragnar. No reward will be paid if Sir Ragnar is killed during the escape.",
+  image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhbTKVxzr5gwFu2pVTcmtoshNYZNXSRoAPhA&usqp=CAU"
+
+})
+
+quest = Quest.create!({
+  name: "Quest 3: Lair of the Orc Warlord",
+  description: "Prince Magnus has ordered that the Orc Warlord, Ulag, who was responsible for the imprisonment of Sir Ragnar, be sought out and destroyed. When Ulag is destroyed, the Heroes will receive a reward of 180 gold coins to be divided among them. Any treasure found in Ulag’s stronghold may be kept by the finder alone.",
+  image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhbTKVxzr5gwFu2pVTcmtoshNYZNXSRoAPhA&usqp=CAU"
+
+})
