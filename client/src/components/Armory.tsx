@@ -152,8 +152,8 @@ export default function Armory({user}:ArmoryProps) {
         <FormHelperText>Select a character</FormHelperText>
       </FormControl>
 
-      <div style={{ height: 400, width: '100%' }}>
-        <DataGrid rows={weapons} columns={columns} pageSize={5} checkboxSelection
+      <div style={{ height: 650, width: '100%' }}>
+        <DataGrid rows={weapons} columns={columns} pageSize={20} checkboxSelection
           onSelectionChange={(newSelection) => {
             handleSelectionChange(newSelection)
           }} />

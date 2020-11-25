@@ -301,15 +301,6 @@ user_character = Character.create! ({
 
   })
 
-  weapon = Weapon.create!({
-    name: "Spear",
-    price: 150,
-    attack: 2,
-    wizard: false,
-    description: "The spear allows to roll 2 combat dice in attack. Because of its length, it enables you to attack diagonally. It can also be thrown at any monster you can see, but is lost once it is thrown.",
-    image: "https://26r1162iqrnz10wquy34bg3o-wpengine.netdna-ssl.com/wp-content/uploads/2020/05/600314-300x300.jpg"
-
-  })
 
   weapon = Weapon.create!({
     name: "Spear",
