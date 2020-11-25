@@ -442,3 +442,83 @@ quest = Quest.create!({
   image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhbTKVxzr5gwFu2pVTcmtoshNYZNXSRoAPhA&usqp=CAU"
 
 })
+
+## Quest descriptions 
+puts "Re-creating CharacterQuests..."
+
+CharacterQuest.destroy_all
+
+quest_list = CharacterQuest.create!({
+  characters_id: 1,
+  quests_id: 1,
+})
+
+quest_list = CharacterQuest.create!({
+  characters_id: 1,
+  quests_id: 2,
+})
+
+quest_list = CharacterQuest.create!({
+  characters_id: 1,
+  quests_id: 3,
+})
+
+quest_list = CharacterQuest.create!({
+  characters_id: 2,
+  quests_id: 1,
+})
+
+quest_list = CharacterQuest.create!({
+  characters_id: 2,
+  quests_id: 2,
+})
+
+quest_list = CharacterQuest.create!({
+  characters_id: 2,
+  quests_id: 3,
+})
+
+quest_list = CharacterQuest.create!({
+  characters_id: 3,
+  quests_id: 1,
+})
+
+quest_list = CharacterQuest.create!({
+  characters_id: 3,
+  quests_id: 2,
+})
+
+quest_list = CharacterQuest.create!({
+  characters_id: 3,
+  quests_id: 3,
+})
+
+quest_list = CharacterQuest.create!({
+  characters_id: 4,
+  quests_id: 1,
+})
+
+quest_list = CharacterQuest.create!({
+  characters_id: 4,
+  quests_id: 2,
+})
+
+quest_list = CharacterQuest.create!({
+  characters_id: 4,
+  quests_id: 3,
+})
+
+quest_list = CharacterQuest.create!({
+  characters_id: 5,
+  quests_id: 1,
+})
+
+quest_list = CharacterQuest.create!({
+  characters_id: 5,
+  quests_id: 2,
+})
+
+quest_list = CharacterQuest.create!({
+  characters_id: 5,
+  quests_id: 3,
+})

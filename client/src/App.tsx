@@ -25,6 +25,7 @@ import TitleCard from "./components/TitleCard";
 import Content from "./components/Content";
 
 import  {ThemeProvider}  from '@material-ui/styles';
+import QuestList from "./components/QuestList";
 
 interface IProps {
   // history: string[];
@@ -91,7 +92,7 @@ class App extends Component<IProps, IState> {
     return (
      
       <Router>
-         
+         <QuestList />
          <div style={styles.paperContainer} >
         <Grid container direction="column">
           <Grid item className="App">

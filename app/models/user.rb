@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  has_many :characters
   before_validation :email_sanitize
     validates :email, presence: true
     validates :email,
@@ -10,7 +11,7 @@ class User < ActiveRecord::Base
   
     validates :password_confirmation, presence: true
     has_secure_password
-  
+
     
     def self.authenticate_with_credentials(email, password) 
      if email && password
