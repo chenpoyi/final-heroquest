@@ -31,7 +31,6 @@ type Character = {
   id :number,
   name :string,
   gold :number
-
 }
 type Weapon = {
   id: number,

@@ -6,6 +6,7 @@ class Api::CharactersController < ApplicationController
       characters: @characters
     }
   end
+  
 
 end
 

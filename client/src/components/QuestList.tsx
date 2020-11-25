@@ -15,6 +15,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import { getQuests } from '../helpers/selectors';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -41,13 +42,26 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
+type Quest = {
+  name :string,
+  description :string
+}
+
 export default function QuestList() {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
+  const [quests, setQuest] = React.useState<Quest[]>([]);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
+
+  React.useEffect(()=>{
+    getQuests()
+    .then((quests)=>{
+      setQuest(quests);
+    });
+  },[])
 
   return (
     <Card className={classes.root}>
