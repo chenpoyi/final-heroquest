@@ -34,13 +34,13 @@ type Character = {
 }
 export default function Armory() {
   const classes = useStyles();
-  const [char, setChar] = React.useState(0);
+  const [currentChar, setcurrentChar] = React.useState(0);
   const [selections, setSelection] = React.useState<RowId[]>([]);
   const [total, setTotal] = React.useState<number>(0);
   const [characters, setCharacters] = React.useState<Character[]>([]);
 
   const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
-    setChar(event.target.value as number);
+    setcurrentChar(event.target.value as number);
   };
 
   // const characters = getCharacters();
@@ -92,8 +92,8 @@ export default function Armory() {
   },[])
 
   const gold = ()=>{
-    if(characters[char]){
-      return characters[char].gold
+    if(characters[currentChar]){
+      return characters[currentChar].gold
     } 
     return 0;
   }
@@ -108,7 +108,7 @@ export default function Armory() {
         <Select
           // labelId="demo-simple-select-helper-label"
           id="demo-simple-select-helper"
-          value={char}
+          value={currentChar}
           onChange={handleChange}
         >
           {list}
