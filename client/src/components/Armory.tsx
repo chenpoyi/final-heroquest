@@ -30,8 +30,8 @@ const useStyles = makeStyles((theme: Theme) =>
 type Character = {
   name :string,
   gold :number
-
 }
+
 export default function Armory() {
   const classes = useStyles();
   const [currentChar, setcurrentChar] = React.useState(0);

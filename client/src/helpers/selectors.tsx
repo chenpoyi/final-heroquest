@@ -24,6 +24,20 @@ export const getWeapons = function(){
   return weaponsData;
 }
 
+export const getQuests = function(){
+  return axios 
+      .get("/api/quests/1") // You can simply make your requests to "/api/whatever you want"
+      .then((response) => {
+        // handle success
+        // console.log(response.data.characters); // The entire response from the Rails API
+        return response.data.quests
+      }).catch((err)=>{
+        console.log(err)
+      });
+
+  // return charactersData;
+}
+
 const charactersData = [
   { name: 'Character 1', gold: 60 },
   { name: 'Character 2', gold: 90 },
