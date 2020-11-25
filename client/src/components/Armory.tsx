@@ -28,23 +28,35 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 type Character = {
+  id :number,
   name :string,
   gold :number
 
 }
-export default function Armory() {
+type Weapon = {
+  id: number,
+  name: string,
+  description: string,
+  price: number
+}
+type ArmoryProps = {
+  user :{} | null
+}
+
+export default function Armory({user}:ArmoryProps) {
   const classes = useStyles();
   const [currentChar, setcurrentChar] = React.useState(0);
   const [selections, setSelection] = React.useState<RowId[]>([]);
   const [total, setTotal] = React.useState<number>(0);
   const [characters, setCharacters] = React.useState<Character[]>([]);
+  const [weapons, setWeapons] = React.useState<Weapon[]>([]);
 
   const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
     setcurrentChar(event.target.value as number);
   };
 
   // const characters = getCharacters();
-  const weapons = getWeapons();
+  //const weapons = 
   
   const list = characters.map((character, index) => {
     return (<MenuItem key={index} value={index}>{character.name}</MenuItem>)
@@ -57,7 +69,7 @@ export default function Armory() {
   const columns: ColDef[] = [
     { field: 'name', headerName: 'Name', width: 150 },
     { field: 'description', headerName: 'Description', width: 150 },
-    { field: 'cost', headerName: 'Cost', width: 100 },
+    { field: 'price', headerName: 'Cost', width: 100 },
   ];
 
   const handleSelectionChange = (newSelection: any) => {
@@ -66,7 +78,7 @@ export default function Armory() {
 
   const calculateTotal = () => {
     console.log(weaponInfo)
-    setTotal(weaponInfo.reduce((a, b) => a + (b['cost'] || 0), 0));
+    setTotal(weaponInfo.reduce((a, b) => a + (b['price'] || 0), 0));
     console.log(total)
   }
 
@@ -77,7 +89,27 @@ export default function Armory() {
   })
 
   const handleBuy = () => {
-    alert('SUBMIT')
+    //alert('SUBMIT')
+    if (total <= characters[currentChar].gold && total > 0) {
+      
+      console.log(weaponInfo);
+      console.log(characters[currentChar].id)
+      const sendData = weaponInfo.map((weapon)=>{
+        return weapon.id
+      })
+      console.log('sendData: ', sendData);
+      axios
+      .post("/api/weapons/purchase", {id: characters[currentChar].id, total, sendData})// You can simply make your requests to "/api/whatever you want"
+      .then((response) => {
+        // handle success
+        characters[currentChar].gold -= total;
+        setCharacters(characters)
+        console.log(response.data); // The entire response from the Rails API
+        setSelection([]);
+        console.log(response.data.message); // Just the message
+        
+      });
+    }
   }
 
 
@@ -85,9 +117,13 @@ export default function Armory() {
     , [selections])
 
   React.useEffect(()=>{
-    getCharacters()
+    getCharacters(user)
     .then((characters)=>{
       setCharacters(characters);
+    });
+    getWeapons()
+    .then((weapons)=>{
+      setWeapons(weapons)
     });
   },[])
 

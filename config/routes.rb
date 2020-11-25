@@ -14,6 +14,8 @@ Rails.application.routes.draw do
     # resources :dogs
     # get '/', action: :index, controller: 'test'
     get 'characters/:id' => 'characters#index'
+    post '/weapons/purchase' => 'weapons#purchase'
+    get '/weapons' => 'weapons#index'
   end
 
   get '*path', to: "static_pages#fallback_index_html", constraints: ->(request) do

@@ -24,7 +24,7 @@ const useStyles = makeStyles({
 });
 
 type CheckoutCardProps = {
-  weapons :{id: number,name: string, description: string, cost: number}[],
+  weapons :{id: number,name: string, description: string, price: number}[],
   selections :(string | number)[],
   total: number,
   handleBuy: ()=> void

@@ -27,7 +27,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function TitleCard() {
+export default function TitleCard(user :any) {
   const classes = useStyles();
 
   return (
@@ -62,6 +62,11 @@ export default function TitleCard() {
           <Link to="/signup">
             <Button variant="contained" size="small" color="primary">
               Sign Up
+            </Button>
+          </Link>
+          <Link to="/armory">
+            <Button variant="contained" size="small" color="primary">
+              Armory
             </Button>
           </Link>
         </CardActions>

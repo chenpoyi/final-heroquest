@@ -5,7 +5,6 @@ import Paper from '@material-ui/core/Paper';
 
 
 import NavBar from "./components/NavBar";
-import MediaCard from "./components/TitleCard";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
 import CharacterCard from "./components/CharacterCard"
@@ -107,11 +106,11 @@ class App extends Component<IProps, IState> {
             <Route path="/signup">
               <Signup />
             </Route>
-            <Route path="/armory">
-              <Armory />
+            <Route path="/armory" >
+              <Armory user={this.state.user} />
             </Route>
             <Route path="/">
-              <Home />
+              <Home user={this.state.user}/>
             </Route>
             
           </Switch>
@@ -139,11 +138,11 @@ const characterInfo = {
   movement: 7,
 }
 
-function Home() {
+function Home(user :any) {
   return (
   <>
   {/* <CharacterCard {...characterInfo}/> */}
-  <MediaCard />
+  <TitleCard user={user}/>
   </>);
 }
 
