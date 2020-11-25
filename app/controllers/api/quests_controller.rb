@@ -3,10 +3,13 @@ class Api::QuestsController < ApplicationController
     @quests = CharacterQuest.where(:characters_id => params[:id])
     
     puts @quests.inspect
-    # render :json => {
-    #   characters: @characters
-    # }
+    @array = @quests.map{|quest| 
+      Quest.find_by(id: quest.quests_id)
+    }
+    render :json => {
+      quests: @array
+    }
   end
-  
+  # character = Character.find_by(id: @characters)
 
 end

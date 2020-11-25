@@ -54,7 +54,7 @@ export default function QuestList() {
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
-  };
+  }; 
 
   React.useEffect(()=>{
     getQuests()
@@ -62,6 +62,17 @@ export default function QuestList() {
       setQuest(quests);
     });
   },[])
+
+  const list = quests.map((quest, index) => {
+    return (         
+      <>
+      <Typography paragraph>{quest.name}</Typography>
+          <Typography paragraph>
+            {quest.description}
+           <br /> ~~~~~~~~~~~~~~~~~~~~~~
+          </Typography>
+          </>) 
+  });
 
   return (
     <Card className={classes.root}>
@@ -88,21 +99,7 @@ export default function QuestList() {
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-          <Typography paragraph>Quest 1: The Trial</Typography>
-          <Typography paragraph>
-            Heat 1/2 cup of the broth in a pot until simmering, add saffron and set aside for 10
-            minutes.
-          </Typography>
-          <Typography paragraph>Quest 1: The Trial</Typography>
-          <Typography paragraph>
-            Heat 1/2 cup of the broth in a pot until simmering, add saffron and set aside for 10
-            minutes.
-          </Typography>
-          <Typography paragraph>Quest 1: The Trial</Typography>
-          <Typography paragraph>
-            Heat 1/2 cup of the broth in a pot until simmering, add saffron and set aside for 10
-            minutes.
-          </Typography>
+        {list}
         </CardContent>
       </Collapse>
     </Card>

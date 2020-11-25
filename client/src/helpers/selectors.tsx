@@ -47,6 +47,7 @@ export const getQuests = function(){
       .then((response) => {
         // handle success
         // console.log(response.data.characters); // The entire response from the Rails API
+        console.log(response.data)
         return response.data.quests
       }).catch((err)=>{
         console.log(err)
