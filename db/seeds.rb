@@ -513,3 +513,44 @@ quest_list = CharacterQuest.create!({
   characters_id: 5,
   quests_id: 3,
 })
+
+## Rule descriptions 
+puts "Re-creating Rules..."
+
+Rule.destroy_all
+
+rule = Rule.create! ({
+  name: "Attack",
+  description: "Attack - attack a monster adjacent to you or diagonal (check your weapon staff, long sword). Cast a Spell (Wizard Elf only)
+  Cast a spell at any enemy in their line of sight.",
+})
+
+rule = Rule.create! ({
+  name: "Search for Treasure",
+  description: "Search for Treasure - Only allowed if there are no monsters in the room. If no quest-specific treasure in the room take a treasure card follow instructions. Be warned not all the cards have treasure...",
+})
+
+rule = Rule.create! ({
+  name: "Search for Secret Doors",
+  description: "Only search for secret doors when no monsters are in line of sight or in the room you are in. Must be opened like any other door and the door can not be closed. Secret room are the same as a regular room...treasure and traps!",
+})
+
+rule = Rule.create! ({
+  name: "Search for Secret Doors",
+  description: "Only search for secret doors when no monsters are in line of sight or in the room you are in. Must be opened like any other door and the door can not be closed. Secret room are the same as a regular room...treasure and traps!",
+})
+
+rule = Rule.create! ({
+  name: "Search for Traps",
+  description: "Search for Traps - Can search only when no monsters are visible (line of sight). Must be in a room to search for traps in a that room.",
+})
+
+rule = Rule.create! ({
+  name: "Disarm Traps",
+  description: "Roll or use a tool kit. You must announce before you move you are attempting to disarm a trap. Roll one combat die. Skull - sprung trap and you suffer body damage. Black or white shield trap is disarmed...Dwarf has a better chance and never needs a tool kit. If the Dwarf rolls a Black shield the trap is sprung anything else the trap is diarmed",
+})
+
+rule = Rule.create! ({
+  name: "Jumping a Trap",
+  description: "You must have at least two remaining movement squares. Rolling anything but a skull to jump the trap. If you roll a skull then the trap is sprung and you suffer body damage.",
+})
