@@ -606,6 +606,29 @@ character_lobby = CharacterLobby.create!({
   lobbies_id: 1,
 })
 
+character_lobby = CharacterLobby.create!({
+  # characters_id: 0,
+  user_id: 1,
+  lobbies_id: 2,
+})
+
+character_lobby = CharacterLobby.create!({
+  # characters_id: 0,
+  user_id: 2,
+  lobbies_id: 2,
+})
+character_lobby = CharacterLobby.create!({
+  # characters_id: 0,
+  user_id: 3,
+  lobbies_id: 2,
+})
+
+character_lobby = CharacterLobby.create!({
+  # characters_id: 0,
+  user_id: 4,
+  lobbies_id: 2,
+})
+
 ## Monsters in the Lobby descriptions 
 puts "Re-creating Monsters in the Lobby..."
 
