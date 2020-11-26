@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 import axios from "axios";
+import {
+  BrowserRouter as Router,
+  useParams
+} from "react-router-dom";
 
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
@@ -15,22 +19,48 @@ import { SettingsOverscanOutlined } from '@material-ui/icons';
 import Grid from '@material-ui/core/Grid';
 import CharacterModal from './CharacterModal'
 import CharacterSelection from "./characterSelection"
+import { getUsersOfLobby } from "../../helpers/selectors"
 
 type LobbyProps = {
-
   user: any
 }
-export default function Lobby({ user }: LobbyProps) {
-  const [character, setCharacter] = React.useState('0');
+type LobbyParams = {
+  lobbyID: string
+}
+type User = {
+  id: number,
+  email: string
+}
 
+const emptyPlayer: User = {
+  id: 0,
+  email: 'No players found.'
+}
+export default function Lobby({ user }: LobbyProps) {
+  let { lobbyID } = useParams<LobbyParams>();
+  const [character, setCharacter] = React.useState('0');
+  const [id, setId] = React.useState(Number(lobbyID));
+  const [users, setUsers] = React.useState([]);
+
+  React.useEffect(() => {
+    getUsersOfLobby(id)
+    .then((newUsers)=>{
+      setUsers(newUsers);
+    })
+    
+  }, [])
+  
 
   return (
     <>
-  <Grid container spacing={3}>
-      <CharacterSelection />
-  </Grid>
- 
-      
+      <Typography gutterBottom variant="h1" component="h2">
+        Lobby: {id}
+      </Typography>
+      <Grid container spacing={3}>
+        <CharacterSelection users={users} />
+      </Grid>
+
+
       <CharacterModal user={user} setCharacter={setCharacter} />
     </>
   );

@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     get '/weapons' => 'weapons#index'
     get 'quests/:id' => 'quests#index'
     put 'character/:id' => 'characters#update'
+    get '/lobby/:id/users' => 'lobbies#users'
   end
 
   get '*path', to: "static_pages#fallback_index_html", constraints: ->(request) do

@@ -25,7 +25,7 @@ import Content from "./components/Content";
 
 import  {ThemeProvider}  from '@material-ui/styles';
 import QuestList from "./components/QuestList";
-import Lobby from "./components/Lobby/index";
+import Lobbies from "./components/Lobby/Lobbies";
 import Session from "./components/Session/index"
 
 interface IProps {
@@ -128,7 +128,7 @@ class App extends Component<IProps, IState> {
               <Grid item>
                 
                   <Grid item>
-                  <Lobby user={this.state.user}/>
+                  <Lobbies user={this.state.user}/>
                   </Grid>
                
               </Grid>

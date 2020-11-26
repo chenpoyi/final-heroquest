@@ -76,7 +76,7 @@ export default function TitleCard(user :any) {
               Armory
             </Button>
           </Link>
-          <Link className={classes.menuLink} to="/lobby">
+          <Link className={classes.menuLink} to="/lobby/1">
             <Button  variant="contained" size="small" color="primary">
               To lobby
             </Button>

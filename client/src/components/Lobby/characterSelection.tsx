@@ -26,7 +26,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import Divider from "@material-ui/core/Divider";
 import { getUserId } from "../../helpers/selectors";
 import Grid from '@material-ui/core/Grid';
-
+ import CharacterModal from './CharacterModal'
 
 
 const useStyles = makeStyles({
@@ -53,7 +53,7 @@ const useStyles = makeStyles({
 //maps through the users in the lobby and creates a card for each user => is a button for the modal
 
 // Fake Data for Card //
-const  userData :Users = [
+const  userData :User[] = [
   {id: 1, email: "scott@m.ca"},
   { id: 2, email: "paul@c.ca"},
   { id: 3, email: "jake@p.ca"},
@@ -62,21 +62,26 @@ const  userData :Users = [
 ];
 
 
-type Users = {
+type User = {
   id :number,
   email :string
-}[];
+};
+type charSelectionProps = {
+  users : User[]
+}
 
-export default function CharacterSelection() {
+
+export default function CharacterSelection({users}:charSelectionProps) {
   const classes = useStyles();
-  const [users, setUsers] = React.useState<Users>(userData);
+  const [usersState, setUsersState] = React.useState<User[]>(users);
+  const [character, setCharacter] = React.useState('0');
   React.useEffect(() => {
-    getUserId().then((users) => {
-      setUsers(users);
-    });
-  }, []);
+    setUsersState(users)
+  }, [users]);
 
- const playerCards = userData.map((user, index) => {
+
+
+ const playerCards = usersState.map((user, index) => {
    return (
      
 
@@ -99,6 +104,7 @@ export default function CharacterSelection() {
               </ListItem>
             </List>
           </Typography>
+          
         </CardContent>
       </Card>
 
@@ -110,7 +116,7 @@ export default function CharacterSelection() {
     <>
   <Grid container spacing={3}>
       {playerCards}
-
+      {/* <CharacterModal user={user} setCharacter={setCharacter} /> */}
   </Grid>
    
     </>

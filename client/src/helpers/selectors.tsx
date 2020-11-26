@@ -98,6 +98,46 @@ export const getUserId = function(){
   // return charactersData;
 }
 
+type User = {
+  id :number,
+  email :string
+}
+const  userData :User[] = [
+  {id: 1, email: "scott@m.ca"},
+  { id: 2, email: "paul@c.ca"},
+  { id: 3, email: "jake@p.ca"},
+  { id: 4, email: "john@m.ca"},
+  { id: 5, email: "howard@c.ca"}
+];
+export const getUsersOfLobby = function(id :number){
+  // return axios 
+  //     .get("/api/users") // You can simply make your requests to "/api/whatever you want"
+  //     .then((response) => {
+  //       // handle success
+  //       // console.log(response.data.characters); // The entire response from the Rails API
+  //       console.log(response.data)
+  //       return response.data.quests
+  //     }).catch((err)=>{
+  //       console.log(err)
+  //     });
+
+  return axios 
+      .get(`/api/lobby/${id}/users`) // You can simply make your requests to "/api/whatever you want"
+      .then((response) => {
+        // handle success
+        // console.log(response.data.characters); // The entire response from the Rails API
+        console.log(response.data.users)
+        // return response.data.users
+        return response.data.users
+      }).catch((err)=>{
+        console.log(err)
+      });
+
+  // return userData
+
+  // return charactersData;
+}
+
 
 
 
