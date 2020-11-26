@@ -21,10 +21,14 @@ const useStyles = makeStyles((theme: Theme) =>
     formControl: {
       margin: theme.spacing(3),
       minWidth: 120,
+     
     },
     selectEmpty: {
       marginTop: theme.spacing(2),
     },
+    dataGrid: {
+      background: "#555"
+    }
 
   }),
 );
@@ -153,7 +157,7 @@ export default function Armory({user}:ArmoryProps) {
       </FormControl>
 
       <div style={{ height: 650, width: '100%' }}>
-        <DataGrid rows={weapons} columns={columns} pageSize={20} checkboxSelection
+        <DataGrid className={classes.dataGrid} rows={weapons} columns={columns} pageSize={20} checkboxSelection
           onSelectionChange={(newSelection) => {
             handleSelectionChange(newSelection)
           }} />
