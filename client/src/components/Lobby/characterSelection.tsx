@@ -32,19 +32,16 @@ import Grid from '@material-ui/core/Grid';
 const useStyles = makeStyles({
   root: {
     maxWidth: 275,
-    maxHeight: 100
-  },
-  bullet: {
-    display: "inline-block",
-    margin: "0 2px",
-    transform: "scale(0.8)",
+    maxHeight: 100,
+    marginTop: 150,
+    margin: 10,
   },
   title: {
     fontSize: 14,
   },
   pos: {
     marginBottom: 12,
-  },
+  }
 });
 
 // List Functions //
@@ -82,7 +79,7 @@ export default function CharacterSelection() {
  const playerCards = userData.map((user, index) => {
    return (
      
-<Grid container spacing={0}>
+
 
     <Card className={classes.root}>
         <CardContent>
@@ -104,7 +101,7 @@ export default function CharacterSelection() {
           </Typography>
         </CardContent>
       </Card>
-</Grid>
+
    
    )
  })
