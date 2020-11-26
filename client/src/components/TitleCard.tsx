@@ -17,13 +17,16 @@ import {
   Redirect,
   useRouteMatch,
 } from "react-router-dom";
+import { AutoSizer } from "@material-ui/data-grid";
 
 const useStyles = makeStyles({
   root: {
     maxWidth: "100%",
   },
   media: {
-    height: "400px",
+    height: 500,
+    
+    
   },
   menuLink: {
     textDecoration: 'none',
@@ -36,7 +39,7 @@ export default function TitleCard(user :any) {
   return (
     <Grid container>
       <Card className={classes.root}>
-        <CardActionArea>
+        
           <CardMedia
             className={classes.media}
             image="https://i.imgur.com/tmhlFew.jpg"
@@ -55,7 +58,7 @@ export default function TitleCard(user :any) {
               same
             </Typography>
           </CardContent>
-        </CardActionArea>
+        
         <CardActions>
           <Link className={classes.menuLink} to="/login">
             <Button variant="contained" size="small" color="primary">

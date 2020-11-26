@@ -41,6 +41,8 @@ type NavBarProps = {
   user :any
 }
 
+
+
 export default function NavBar({drawerList, loggedInStatus, handleSuccessfulLogout, user}: NavBarProps) {
   const classes = useStyles();
   const [auth, setAuth] = React.useState(false);
@@ -87,9 +89,13 @@ export default function NavBar({drawerList, loggedInStatus, handleSuccessfulLogo
 
   }
 
+  
+
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+     
+
+      <AppBar >
         <Toolbar>
           <LeftDrawer drawerList={drawerList}/>
           <Typography variant="h6" className={classes.title}>
@@ -131,6 +137,7 @@ export default function NavBar({drawerList, loggedInStatus, handleSuccessfulLogo
           )}
         </Toolbar>
       </AppBar>
+     
     </div>
   );
 }
