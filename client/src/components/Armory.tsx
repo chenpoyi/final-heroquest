@@ -19,12 +19,13 @@ import { getCharacters, getWeapons } from "../helpers/selectors";
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     formControl: {
-      margin: theme.spacing(1),
+      margin: theme.spacing(3),
       minWidth: 120,
     },
     selectEmpty: {
       marginTop: theme.spacing(2),
     },
+
   }),
 );
 type Character = {

@@ -5,10 +5,11 @@ import green from '@material-ui/core/colors/green';
 export const theme = createMuiTheme({
   palette: {
     primary: {
-      main: blue[500],
+      main: "hsla(5, 51%, 46%, 1)",
+      
     },
     secondary: {
-      main: green[500],
+      main: "hsla(5, 51%, 46%, 1)",
     },
     type: "dark", 
   },

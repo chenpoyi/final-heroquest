@@ -16,6 +16,7 @@ import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { getQuests } from '../helpers/selectors';
+import Divider from "@material-ui/core/Divider";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -69,7 +70,7 @@ export default function QuestList() {
       <Typography paragraph>{quest.name}</Typography>
           <Typography paragraph>
             {quest.description}
-           <br /> ~~~~~~~~~~~~~~~~~~~~~~
+           <Divider /> 
           </Typography>
           </>) 
   });

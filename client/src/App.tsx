@@ -107,7 +107,7 @@ class App extends Component<IProps, IState> {
      
       <Router>
          <div style={styles.paperContainer} >
-        <Grid container direction="column">
+        <Grid container direction="column" spacing={4}>
           <Grid item className="App">
           <NavBar drawerList={this.drawerList} loggedInStatus={this.state.loggedInStatus} handleSuccessfulLogout={this.handleSuccessfulLogout} user={this.state.user}/>
           </Grid>
@@ -125,7 +125,13 @@ class App extends Component<IProps, IState> {
               <Armory user={this.state.user} />
             </Route>
             <Route path="/lobby" >
-              <Lobby user={this.state.user}/>
+              <Grid item>
+                
+                  <Grid item>
+                  <Lobby user={this.state.user}/>
+                  </Grid>
+               
+              </Grid>
             </Route>
             <Route path="/session" >
               <Session user={this.state.user}/>

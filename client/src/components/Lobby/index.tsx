@@ -12,8 +12,9 @@ import Select from '@material-ui/core/Select';
 import Typography from '@material-ui/core/Typography';
 import { DataGrid, RowId, ColDef, ValueGetterParams } from '@material-ui/data-grid';
 import { SettingsOverscanOutlined } from '@material-ui/icons';
-
+import Grid from '@material-ui/core/Grid';
 import CharacterModal from './CharacterModal'
+import CharacterSelection from "./characterSelection"
 
 type LobbyProps = {
 
@@ -25,7 +26,11 @@ export default function Lobby({ user }: LobbyProps) {
 
   return (
     <>
-      <h1>This is the lobby page</h1>
+  <Grid container spacing={3}>
+      <CharacterSelection />
+  </Grid>
+ 
+      
       <CharacterModal user={user} setCharacter={setCharacter} />
     </>
   );
