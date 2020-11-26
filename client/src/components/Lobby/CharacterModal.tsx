@@ -43,6 +43,7 @@ type CharacterModalProps = {
   setCharacter :any
 }
 type Character = {
+  id: number,
   name :string, 
   dateCreated :string, 
   lastUsed :string, 
