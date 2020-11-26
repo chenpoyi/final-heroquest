@@ -89,7 +89,7 @@ export default function CharacterSelection() {
     gutterBottom
   >
     {user.email}
-    {/* {playerCards} */}
+  
   </Typography>
           <Divider />
           <Typography variant="h6" component="h2">
@@ -108,7 +108,7 @@ export default function CharacterSelection() {
 
   return (
     <>
-  <Grid container spacing={3}>
+  <Grid container spacing={3} justify="center">
       {playerCards}
 
   </Grid>
