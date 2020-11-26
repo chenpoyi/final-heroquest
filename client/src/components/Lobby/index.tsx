@@ -12,7 +12,7 @@ import Select from '@material-ui/core/Select';
 import Typography from '@material-ui/core/Typography';
 import { DataGrid, RowId, ColDef, ValueGetterParams } from '@material-ui/data-grid';
 import { SettingsOverscanOutlined } from '@material-ui/icons';
-
+import CharacterSelection from "./characterSelection"
 
 
 
@@ -22,6 +22,7 @@ export default function Lobby() {
   return (
     <>
       <h1>This is the lobby page</h1>
+      <CharacterSelection />
     </>
   );
 }

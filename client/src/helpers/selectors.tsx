@@ -56,6 +56,24 @@ export const getQuests = function(){
   // return charactersData;
 }
 
+export const getUserId = function(){
+  return axios 
+      .get("/api/users") // You can simply make your requests to "/api/whatever you want"
+      .then((response) => {
+        // handle success
+        // console.log(response.data.characters); // The entire response from the Rails API
+        console.log(response.data)
+        return response.data.quests
+      }).catch((err)=>{
+        console.log(err)
+      });
+
+  // return charactersData;
+}
+
+
+
+
 const charactersData = [
   { name: 'Character 1', gold: 60 },
   { name: 'Character 2', gold: 90 },
