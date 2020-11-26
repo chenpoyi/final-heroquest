@@ -7,6 +7,22 @@ class Api::CharactersController < ApplicationController
     }
   end
   
+  def show
+    @character = Character.find_by(:id => params[:id])
+    render :json =>{
+       character: @character
+    }
+  end
+
+  def update
+    
+    @character = Character.find_by(:id => params[:id])
+    @character.gold = params[:gold]
+    @character.body = params[:body]
+    @character.mind = params[:mind]
+    @character.save
+  end
+
 
 end
 

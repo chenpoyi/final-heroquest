@@ -15,7 +15,7 @@ export const getCharacters = function(user : any){
   }
 
   return axios 
-      .get(`/api/characters/${id}`) // You can simply make your requests to "/api/whatever you want"
+      .get(`/api/users/${id}/characters`) // You can simply make your requests to "/api/whatever you want"
       .then((response) => {
         // handle success
         // console.log(response.data.characters); // The entire response from the Rails API
@@ -26,6 +26,19 @@ export const getCharacters = function(user : any){
       });
 
   // return charactersData;
+}
+
+export const getOneCharacter = function(characterID : number){
+  return axios 
+      .get(`/api/characters/${characterID}`) // You can simply make your requests to "/api/whatever you want"
+      .then((response) => {
+        // handle success
+        // console.log(response.data.characters); // The entire response from the Rails API
+        console.log(response.data.character)
+        return response.data.character
+      }).catch((err)=>{
+        console.log(err)
+      });
 }
 
 export const getWeapons = function(){
@@ -56,7 +69,20 @@ export const getQuests = function(){
 
   // return charactersData;
 }
+export const updateCharacterPoints = function(id :number, body :number, mind :number, gold :number){
+  return axios 
+      .put(`/api/character/${id}`,{id, body, mind, gold}) // You can simply make your requests to "/api/whatever you want"
+      .then((response) => {
+        // handle success
+        // console.log(response.data.characters); // The entire response from the Rails API
+        console.log(response.data)
+      
+      }).catch((err)=>{
+        console.log(err)
+      });
 
+  // return charactersData;
+} 
 const charactersData = [
   { name: 'Character 1', gold: 60 },
   { name: 'Character 2', gold: 90 },

@@ -7,10 +7,10 @@ import Paper from '@material-ui/core/Paper';
 import NavBar from "./components/NavBar";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
-import CharacterCard from "./components/CharacterCard"
+import MyCharacterCard from "./components/Session/MyCharacterCard"
 import Armory from "./components/Armory"
 
-import { getDrawerList } from "./helpers/selectors";
+import { getDrawerList, getOneCharacter } from "./helpers/selectors";
 import {
   BrowserRouter as Router,
   Switch,
@@ -26,6 +26,7 @@ import Content from "./components/Content";
 import  {ThemeProvider}  from '@material-ui/styles';
 import QuestList from "./components/QuestList";
 import Lobby from "./components/Lobby/index";
+import Session from "./components/Session/index"
 
 interface IProps {
   // history: string[];
@@ -126,6 +127,9 @@ class App extends Component<IProps, IState> {
             <Route path="/lobby" >
               <Lobby user={this.state.user}/>
             </Route>
+            <Route path="/session" >
+              <Session user={this.state.user}/>
+            </Route>
             <Route path="/">
               <Home user={this.state.user}/>
             </Route>
@@ -153,12 +157,14 @@ const characterInfo = {
   attack: 5,
   defense: 6,
   movement: 7,
+  gold: 120
 }
+
+
 
 function Home(user :any) {
   return (
   <>
-  {/* <CharacterCard {...characterInfo}/> */}
   <TitleCard user={user}/>
   </>);
 }
