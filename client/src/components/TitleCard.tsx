@@ -25,6 +25,9 @@ const useStyles = makeStyles({
   media: {
     height: "400px",
   },
+  menuLink: {
+    textDecoration: 'none',
+},
 });
 
 export default function TitleCard(user :any) {
@@ -54,23 +57,23 @@ export default function TitleCard(user :any) {
           </CardContent>
         </CardActionArea>
         <CardActions>
-          <Link to="/login">
+          <Link className={classes.menuLink} to="/login">
             <Button variant="contained" size="small" color="primary">
               Login
             </Button>
           </Link>
-          <Link to="/signup">
+          <Link className={classes.menuLink} to="/signup">
             <Button variant="contained" size="small" color="primary">
               Sign Up
             </Button>
           </Link>
-          <Link to="/armory">
+          <Link className={classes.menuLink} to="/armory">
             <Button variant="contained" size="small" color="primary">
               Armory
             </Button>
           </Link>
-          <Link to="/lobby">
-            <Button variant="contained" size="small" color="primary">
+          <Link className={classes.menuLink} to="/lobby">
+            <Button  variant="contained" size="small" color="primary">
               To lobby
             </Button>
           </Link>

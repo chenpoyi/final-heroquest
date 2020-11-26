@@ -25,12 +25,14 @@ import ListItem, { ListItemProps } from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import Divider from "@material-ui/core/Divider";
 import { getUserId } from "../../helpers/selectors";
+import Grid from '@material-ui/core/Grid';
 
 
 
 const useStyles = makeStyles({
   root: {
     maxWidth: 275,
+    maxHeight: 100
   },
   bullet: {
     display: "inline-block",
@@ -62,8 +64,6 @@ const  userData :Users = [
   { id: 5, email: "howard@c.ca"}
 ];
 
-// const characters = [{ user_id: 1 }, { hero_id: 1 }];
-// const hero = [{ id: 1, name: "Elf" }];
 
 type Users = {
   id :number,
@@ -81,6 +81,9 @@ export default function CharacterSelection() {
 
  const playerCards = userData.map((user, index) => {
    return (
+     
+<Grid container spacing={0}>
+
     <Card className={classes.root}>
         <CardContent>
         <Typography
@@ -101,12 +104,18 @@ export default function CharacterSelection() {
           </Typography>
         </CardContent>
       </Card>
+</Grid>
+   
    )
  })
 
   return (
     <>
+  <Grid container spacing={3}>
       {playerCards}
+
+  </Grid>
+   
     </>
   );
 }
