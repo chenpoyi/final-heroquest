@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_25_183132) do
+ActiveRecord::Schema.define(version: 2020_11_26_192534) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -123,9 +123,25 @@ ActiveRecord::Schema.define(version: 2020_11_25_183132) do
   create_table "lobbies", force: :cascade do |t|
     t.string "name"
     t.string "url"
-    t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "status"
+  end
+
+  create_table "lobby_monsters", force: :cascade do |t|
+    t.string "name"
+    t.integer "attack"
+    t.integer "defend"
+    t.integer "body"
+    t.integer "mind"
+    t.integer "movement"
+    t.string "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "lobbies_id"
+    t.bigint "monsters_id"
+    t.index ["lobbies_id"], name: "index_lobby_monsters_on_lobbies_id"
+    t.index ["monsters_id"], name: "index_lobby_monsters_on_monsters_id"
   end
 
   create_table "monsters", force: :cascade do |t|
@@ -205,4 +221,6 @@ ActiveRecord::Schema.define(version: 2020_11_25_183132) do
   add_foreign_key "character_weapons", "weapons", column: "weapons_id"
   add_foreign_key "characters", "heros", column: "heros_id"
   add_foreign_key "characters", "users", column: "users_id"
+  add_foreign_key "lobby_monsters", "lobbies", column: "lobbies_id"
+  add_foreign_key "lobby_monsters", "monsters", column: "monsters_id"
 end

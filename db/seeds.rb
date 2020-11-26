@@ -563,7 +563,19 @@ Lobby.destroy_all
 lobby = Lobby.create! ({
   name: "Lobby 1",
   url: "abcd",
-  status: "prep",
+  status: 1,
+})
+
+lobby = Lobby.create! ({
+  name: "Lobby 2",
+  url: "abcd",
+  status: 1,
+})
+
+lobby = Lobby.create! ({
+  name: "Lobby 3",
+  url: "abcd",
+  status: 2,
 })
 
 ## Quest descriptions 
@@ -594,7 +606,81 @@ character_lobby = CharacterLobby.create!({
   lobbies_id: 1,
 })
 
-# ## Quest descriptions 
-# puts "Re-creating QuestMonsters..."
+## Monsters in the Lobby descriptions 
+puts "Re-creating Monsters in the Lobby..."
 
-# quest_monster = 
+LobbyMonster.destroy_all
+
+    lobby_monster = LobbyMonster.create! ({
+      name:"Orc",
+      attack: 13,
+      defend: 12,
+      body: 11, 
+      mind: 12,
+      movement: 110,
+      image: "https://i.imgur.com/MrwYk8c.jpg",
+      lobbies_id: 1,
+      monsters_id: 1 #there must be a way to pull this in
+    
+    })
+    
+    lobby_monster = LobbyMonster.create! ({
+      name:"Chaos Warrior",
+      attack: 24,
+      defend: 24,
+      body: 23, 
+      mind: 23,
+      movement: 27,
+      image: "https://i.imgur.com/QPPVnmi.jpg",
+      lobbies_id: 1,
+      monsters_id: 2 #there must be a way to pull this in
+    })
+    
+    lobby_monster = LobbyMonster.create! ({
+      name:"Verag",
+      attack: 34,
+      defend: 34,
+      body: 33, 
+      mind: 33,
+      movement: 37,
+      image: "https://i.imgur.com/QPPVnmi.jpg",
+      lobbies_id: 1,
+      monsters_id: 3 #there must be a way to pull this in
+    })
+
+    lobby_monster = LobbyMonster.create! ({
+      name:"Orc",
+      attack: 13,
+      defend: 12,
+      body: 11, 
+      mind: 12,
+      movement: 110,
+      image: "https://i.imgur.com/MrwYk8c.jpg",
+      lobbies_id: 2,
+      monsters_id: 1 #there must be a way to pull this in
+    
+    })
+    
+    lobby_monster = LobbyMonster.create! ({
+      name:"Chaos Warrior",
+      attack: 24,
+      defend: 24,
+      body: 23, 
+      mind: 23,
+      movement: 27,
+      image: "https://i.imgur.com/QPPVnmi.jpg",
+      lobbies_id: 2,
+      monsters_id: 2 #there must be a way to pull this in
+    })
+    
+    lobby_monster = LobbyMonster.create! ({
+      name:"Verag",
+      attack: 34,
+      defend: 34,
+      body: 33, 
+      mind: 33,
+      movement: 37,
+      image: "https://i.imgur.com/QPPVnmi.jpg",
+      lobbies_id: 2,
+      monsters_id: 3 #there must be a way to pull this in
+    })
