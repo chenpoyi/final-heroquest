@@ -64,4 +64,4 @@ export default function Lobby({ user }: LobbyProps) {
       <CharacterModal user={user} setCharacter={setCharacter} />
     </>
   );
-}
+} 
