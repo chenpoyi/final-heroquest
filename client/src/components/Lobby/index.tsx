@@ -14,6 +14,7 @@ import { DataGrid, RowId, ColDef, ValueGetterParams } from '@material-ui/data-gr
 import { SettingsOverscanOutlined } from '@material-ui/icons';
 
 import CharacterModal from './CharacterModal'
+import CharacterSelection from "./characterSelection"
 
 type LobbyProps = {
 
@@ -27,6 +28,7 @@ export default function Lobby({ user }: LobbyProps) {
     <>
       <h1>This is the lobby page</h1>
       <CharacterModal user={user} setCharacter={setCharacter} />
+      <CharacterSelection />
     </>
   );
 }
