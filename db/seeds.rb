@@ -593,11 +593,8 @@ character_lobby = CharacterLobby.create!({
   user_id: 4,
   lobbies_id: 1,
 })
-# create_table "character_lobbies", force: :cascade do |t|
-#   t.datetime "created_at", null: false
-#   t.datetime "updated_at", null: false
-#   t.bigint "characters_id"
-#   t.bigint "lobbies_id"
-#   t.index ["characters_id"], name: "index_character_lobbies_on_characters_id"
-#   t.index ["lobbies_id"], name: "index_character_lobbies_on_lobbies_id"
-# end
+
+# ## Quest descriptions 
+# puts "Re-creating QuestMonsters..."
+
+# quest_monster = 
