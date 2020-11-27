@@ -15,5 +15,28 @@ class Api::LobbiesController < ApplicationController
       users: @array
     }
   end
-  
+
+  def characters 
+    
+
+    @players = CharacterLobby.where(:lobbies_id => params[:id])
+    
+    puts @players.inspect
+    @array = @players.map{|player| 
+      @characters_id = player.characters_id
+      puts @characters_id
+      Character.find_by(id: @characters_id)
+    }
+    puts '-------'
+    puts @array.inspect
+    render :json => {
+      characters: @array
+    }
+  end
+  def add_characters
+    @character = CharacterLobby.find_by(user_id: params[:user_id], lobbies_id: params[:lobby_id])
+    @character.characters_id = params[:character_id]
+    @character.save
+    puts @character
+  end
 end

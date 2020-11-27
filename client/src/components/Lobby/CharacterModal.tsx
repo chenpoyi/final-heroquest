@@ -2,7 +2,7 @@ import React from 'react';
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 
-import {getCharacters} from "../../helpers/selectors";
+import {getCharacters, selectCharacterOfLobby} from "../../helpers/selectors";
 import CharacterCard from "../CharacterCard"
 import Button from '@material-ui/core/Button';
 
@@ -40,7 +40,10 @@ const useStyles = makeStyles((theme: Theme) =>
 type CharacterModalProps = {
 
   user :any,
-  setCharacter :any
+  setCharacter :any,
+  index :number,
+  charState: Character[],
+  lobby_id: number
 }
 type Character = {
   id: number,
@@ -57,7 +60,7 @@ type Character = {
   movement :number,
 }
 
-export default function CharacterModal({user, setCharacter}:CharacterModalProps) {
+export default function CharacterModal({user, setCharacter, index, charState, lobby_id}:CharacterModalProps) {
   const classes = useStyles();
   // getModalStyle is not a pure function, we roll the style only on the first render
   const [modalStyle] = React.useState(getModalStyle);
@@ -66,20 +69,26 @@ export default function CharacterModal({user, setCharacter}:CharacterModalProps)
   const handleOpen = () => {
     setOpen(true);
   };
-
+  let newArray;
   const handleClose = () => {
     setOpen(false);
   };
-  const handleSelect = () => {
+  const handleSelect = (character : Character) => {
     handleClose();
-    setCharacter('1')
+    newArray = {...charState};
+    newArray[index] = character;
+    // setCharacter([1,2,3,4,5])
+    console.log(newArray)
+    console.log(charState)
+    setCharacter(newArray)
+    selectCharacterOfLobby(user.id, character.id, lobby_id)
   }
 
   const list = characters.map((character, index) => {
     return (
     <>
-    <CharacterCard {...character}/>
-    <Button variant="contained" size="small" color="primary" onClick={handleSelect}> 
+    <CharacterCard character={character}/>
+    <Button variant="contained" size="small" color="primary" onClick={()=>{handleSelect(character)}}> 
         Select
       </Button>
     </>  )

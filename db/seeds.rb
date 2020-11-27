@@ -563,7 +563,7 @@ Lobby.destroy_all
 lobby = Lobby.create! ({
   name: "Lobby 1",
   url: "abcd",
-  status: 1,
+  status: 0,
 })
 
 lobby = Lobby.create! ({

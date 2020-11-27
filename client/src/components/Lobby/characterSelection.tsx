@@ -26,8 +26,8 @@ import ListItemText from "@material-ui/core/ListItemText";
 import Divider from "@material-ui/core/Divider";
 import { getUserId } from "../../helpers/selectors";
 import Grid from '@material-ui/core/Grid';
- import CharacterModal from './CharacterModal'
-
+import CharacterModal from './CharacterModal';
+import CharacterCard from '../CharacterCard';
 
 const useStyles = makeStyles({
   root: {
@@ -43,7 +43,20 @@ const useStyles = makeStyles({
     marginBottom: 12,
   }
 });
-
+type Character = {
+  id: number,
+  name :string, 
+  dateCreated :string, 
+  lastUsed :string, 
+  race :string, 
+  questsCompleted :number, 
+  imgSrc :string,
+  body :number,
+  mind :number,
+  attack :number,
+  defense :number,
+  movement :number,
+}
 // List Functions //
 
 // function ListItemLink(props: ListItemProps<"a", { button?: true }>) {
@@ -67,26 +80,36 @@ type User = {
   email :string
 };
 type charSelectionProps = {
-  users : User[]
-}
+  users : User[],
+  characters : Character[],
+  lobby_id :number
+};
+// type Char = {
+//   id :number,
+//   email :string
+//   character: number
+
+// };
 
 
-export default function CharacterSelection({users}:charSelectionProps) {
+export default function CharacterSelection({users, characters, lobby_id}:charSelectionProps) {
   const classes = useStyles();
   const [usersState, setUsersState] = React.useState<User[]>(users);
-  const [character, setCharacter] = React.useState('0');
+  const [charState, setCharState] = React.useState<Character[]>(characters);
+  // const [character, setCharacter] = React.useState('0');
   React.useEffect(() => {
     setUsersState(users)
-  }, [users]);
+    setCharState(characters)
+  }, [users, characters]);
 
-
+ 
 
  const playerCards = usersState.map((user, index) => {
    return (
      
-
-
-    <Card className={classes.root}>
+<>
+    { charState[index] && (<CharacterCard character={charState[index]}/> )}
+    {!charState[index] && (<Card className={classes.root}>
         <CardContent>
         <Typography
     className={classes.title}
@@ -99,16 +122,16 @@ export default function CharacterSelection({users}:charSelectionProps) {
           <Divider />
           <Typography variant="h6" component="h2">
             <List component="nav" aria-label="Pick a Character">
-              <ListItem button>
-                <ListItemText primary="Pick a Character" />
-              </ListItem>
+              {/* <ListItem button> */}
+                {/* <ListItemText primary="Pick a Character" /> */}
+                <CharacterModal user={user} setCharacter={(characters: Character[])=>{setCharState(characters)}} index={index} charState={charState} lobby_id ={lobby_id} />
+              {/* </ListItem> */}
             </List>
           </Typography>
-          
         </CardContent>
-      </Card>
+      </Card>)}
 
-   
+   </>
    )
  })
 

@@ -22,6 +22,10 @@ const useStyles = makeStyles({
  } );
 
 type CharacterCardProps = {
+ character : Character
+}
+type Character = {
+  id: number,
   name :string, 
   dateCreated :string, 
   lastUsed :string, 
@@ -35,7 +39,7 @@ type CharacterCardProps = {
   movement :number,
 }
 
-export default function CharacterCard({name, dateCreated , lastUsed, race , questsCompleted , imgSrc, body, mind, attack, defense, movement } :CharacterCardProps){
+export default function CharacterCard({character }:CharacterCardProps){
 
   const classes = useStyles();
   // const bull = <span className={classes.bullet}>•</span>;
@@ -43,41 +47,41 @@ export default function CharacterCard({name, dateCreated , lastUsed, race , ques
   return (
     <Card className={classes.root}>
       <CardHeader 
-        title={name}
-        subheader={race}
+        title={character.name}
+        subheader={character.race}
       >
       
       </CardHeader>
       
-      <CardMedia className={classes.media} image={imgSrc} />
+      <CardMedia className={classes.media} image={character.imgSrc} />
       <CardContent>
        
         <Typography variant="body2" component="p">
        <ul style={{listStyleType:"none"}}> 
          
           <li>
-            Quest Completed: {questsCompleted}/14
+            Quest Completed: {character.questsCompleted}/14
           </li>
           <li>
-            Date Created: {dateCreated}
+            Date Created: {character.dateCreated}
           </li>
           <li>
-            Last Used: {lastUsed}
+            Last Used: {character.lastUsed}
           </li>
           <li>
-            Body Points: {body}
+            Body Points: {character.body}
           </li>
           <li>
-            Mind Points: {mind}
+            Mind Points: {character.mind}
           </li>
           <li>
-            Attack Dice: {attack}
+            Attack Dice: {character.attack}
           </li>
           <li>
-           Defense Dice: {defense}
+           Defense Dice: {character.defense}
           </li>
           <li>
-            Movement: {movement}
+            Movement: {character.movement}
           </li>
         </ul> 
       

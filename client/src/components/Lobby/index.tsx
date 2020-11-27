@@ -19,7 +19,7 @@ import { SettingsOverscanOutlined } from '@material-ui/icons';
 import Grid from '@material-ui/core/Grid';
 import CharacterModal from './CharacterModal'
 import CharacterSelection from "./characterSelection"
-import { getUsersOfLobby } from "../../helpers/selectors"
+import { getUsersOfLobby, getCharactersOfLobby } from "../../helpers/selectors"
 
 type LobbyProps = {
   user: any
@@ -38,7 +38,8 @@ const emptyPlayer: User = {
 }
 export default function Lobby({ user }: LobbyProps) {
   let { lobbyID } = useParams<LobbyParams>();
-  const [character, setCharacter] = React.useState('0');
+  // const [character, setCharacter] = React.useState('0');
+  const [characters, setCharacters] = React.useState([]);
   const [id, setId] = React.useState(Number(lobbyID));
   const [users, setUsers] = React.useState([]);
 
@@ -46,6 +47,10 @@ export default function Lobby({ user }: LobbyProps) {
     getUsersOfLobby(id)
     .then((newUsers)=>{
       setUsers(newUsers);
+      getCharactersOfLobby(id)
+      .then((newCharacters)=>{
+        setCharacters(newCharacters)
+      })
     })
     
   }, [])
@@ -57,11 +62,11 @@ export default function Lobby({ user }: LobbyProps) {
         Lobby: {id}
       </Typography>
       <Grid container spacing={3}>
-        <CharacterSelection users={users} />
+        <CharacterSelection users={users} characters={characters} lobby_id={id} />
       </Grid>
 
 
-      <CharacterModal user={user} setCharacter={setCharacter} />
+      {/* <CharacterModal user={user} setCharacter={setCharacter} /> */}
     </>
   );
 } 
