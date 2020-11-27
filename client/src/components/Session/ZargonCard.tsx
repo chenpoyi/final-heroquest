@@ -1,21 +1,26 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
-
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import CardHeader from "@material-ui/core/CardHeader";
-
 import CardMedia from "@material-ui/core/CardMedia";
-
 import FormControl from "@material-ui/core/FormControl";
+import FormHelperText from '@material-ui/core/FormHelperText';
+import Select from '@material-ui/core/Select';
 import TextField from "@material-ui/core/TextField";
-
 import Divider from "@material-ui/core/Divider";
-
-import { updateCharacterPoints } from "../../helpers/selectors";
-
+import { updateMonsterPoints, getMonsters } from "../../helpers/selectors";
+import MenuItem from '@material-ui/core/MenuItem';
+import InputLabel from '@material-ui/core/InputLabel';
+import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import InboxIcon from '@material-ui/icons/Inbox';
+import DraftsIcon from '@material-ui/icons/Drafts';
+import MonsterCard from './MonsterCard'
 const useStyles = makeStyles({
   root: {
     maxWidth: 300,
@@ -25,145 +30,174 @@ const useStyles = makeStyles({
   },
 });
 
-type CharacterCardProps = {
+type Monster = {
   id: number;
   name: string;
-  dateCreated: string;
-  lastUsed: string;
-  race: string;
-  questsCompleted: number;
-  imgSrc: string;
+  // image: string;
   body: number;
   mind: number;
-  attack: number;
-  defend: number;
-  movement: number;
-  gold: number;
-  user: any;
+  // attack: number;
+  // defend: number;
+  // movement: number;
+  // user: any;
+  lobbies_id: number
 };
 
-export default function MyCharacterCard({
-  id,
-  name,
-  dateCreated,
-  lastUsed,
-  race,
-  questsCompleted,
-  imgSrc,
-  body,
-  mind,
-  attack,
-  defend,
-  movement,
-  gold,
-  user,
-}: CharacterCardProps) {
+export default function ZargonCard({lobbyMonsters}) {
   const classes = useStyles();
-  const [goldState, setGold] = React.useState<number>(gold);
-  const [bodyState, setBody] = React.useState<number>(body);
-  const [mindState, setMind] = React.useState<number>(mind);
+  const [monstersState, setMonstersState] = React.useState<any>([]);
+  const [selectedMonsterId, setSelectedMonsterId] = React.useState<any>([]);
+  const [currentlySelectedMonsters, setcurrentlySelectedMonsters] = React.useState<any>([]);
+  const [selectedActiveMonster, setSelectedActiveMonster] = React.useState<any>(currentlySelectedMonsters[0]);
 
-  const handleGoldChange = (
-    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  const [selectedIndex, setSelectedIndex] = React.useState(1); //For list highlighting
+  // const [bodyState, setBody] = React.useState<number>(body);
+  // const [mindState, setMind] = React.useState<number>(mind);
+  // const [monster, setMonster] = React.useState<any>();
+    // alert(lobbyMonsters)
+  const monsterList = monstersState.map((monster, index) => {
+    return (<MenuItem key={monster.id} value={index}>{monster.name}</MenuItem>)
+  });
+
+
+  // const activeMonsterList = currentlySelectedMonsters.map((monster) => {
+  //   return (<MenuItem key={monster.id} value={monster.id}>{monster}</MenuItem>)
+  // });
+
+  const handleListItemClick = (
+    event: React.MouseEvent<HTMLDivElement, MouseEvent>,
+    index: number,
   ) => {
-    const goldNumber = Number(event.target.value);
-    setGold(goldNumber);
+    setSelectedIndex(index);
   };
 
-  const handleBodyChange = (
-    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const bodyNumber = Number(event.target.value);
-    setBody(bodyNumber);
-  };
+  const activeMonsterList = currentlySelectedMonsters.map((monster, index) => {
+    return (
+    
+      
+    <ListItem
+      button
+      selected={selectedIndex === index}
+      onClick={(event) => handleListItemClick(event, index)}
+    >
+      
+      <ListItemText primary={monster.name} />
+    </ListItem>)
+    
+  });
 
-  const handleMindChange = (
-    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const mindNumber = Number(event.target.value);
-    setMind(mindNumber);
-  };
+  
+  
+  // React.useEffect(()=>{ 
+  //   activeMonsterList = currentlySelectedMonsters.map((monster) => {
+  //     return (<MenuItem key={monster.id} value={monster.id}>{monster.id}</MenuItem>)
+  //   });
+  // }
+  //   , [currentlySelectedMonsters])
 
-  const handleCharacterSave = () => {
-    //sending data to db to be saved
+  
+  
+  
+  
+  // const activeMonsterList2 = 
+  //   [
+  //   <MenuItem value={10}>Ten</MenuItem>,
+  //   <MenuItem value={20}>Twenty</MenuItem>,
+  //   <MenuItem value={30}>Thirty</MenuItem>
+  //   ];
+  // const handleBodyChange = (
+  //   event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  // ) => {
+  //   const bodyNumber = Number(event.target.value);
+  //   setBody(bodyNumber);
+  // };
+
+  // const handleMindChange = (
+  //   event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  // ) => {
+  //   const mindNumber = Number(event.target.value);
+  //   setMind(mindNumber);
+  // };
+
+  const handleMonsterSave = () => {
+    setcurrentlySelectedMonsters( (prev) => {
+     
+      const newArr = [...prev, monstersState[selectedMonsterId]] 
+      console.log(newArr)
+      return newArr
+    })
+
+    //sending data to db to be saved => not to monster table to LobbyMonster table
     // alert(`${id}, ${bodyState}, ${mindState}, ${goldState}`);
-    updateCharacterPoints(id, bodyState, mindState, goldState);
+    //updateMonsterPoints(id, bodyState, mindState, lobby_id); // make this function in helpers
   };
 
-  React.useEffect(() => {
-    setGold(gold);
-    setBody(body);
-    setMind(mind);
-  }, [gold, body, mind]);
+  // React.useEffect(() => {
+  //   setBody(body);
+  //   setMind(mind);
+  // }, [body, mind]);
+
+  // React.useEffect(() => {
+  //   setMonster(getMonsters(""))
+  // }, []);
+
+  React.useEffect(()=>{
+    setMonstersState(getMonsters())
+  },[])
 
   return (
+    <>
+    <MonsterCard monster={currentlySelectedMonsters[selectedIndex]}/>
     <Card className={classes.root}>
-      <CardHeader title={user.email} subheader={`${name}`}></CardHeader>
+      <CardHeader title={"Test"} subheader={"monster"}></CardHeader>
 
-      <CardMedia className={classes.media} image={imgSrc} />
+      <CardMedia className={classes.media} image={"imgSrc"} />
       <CardContent>
-        <Typography variant="body2" component="p">
-          <ul style={{ listStyleType: "none" }}>
-            <li>Attack Dice: {attack}</li>
-            <li>Defense Dice: {defend}</li>
-            <li>Movement: {movement}</li>
-          </ul>
-        </Typography>
+        
+        
+      <List component="nav" aria-label="main mailbox folders">
+      {activeMonsterList}
+      </List>
+        <FormControl >
+        <InputLabel id="demo-simple-select-helper-label">Character</InputLabel>
+        <Select
+          labelId="demo-simple-select-helper-label"
+          id="demo-simple-select-helper"
+          value={selectedMonsterId}
+          onChange={(event) => setSelectedMonsterId(event.target.value)}
+        >
+          {monsterList}
+        </Select>
+        <Button onClick={handleMonsterSave}>
+          ADD MONSTER
+        </Button>
+        {/* <FormHelperText></FormHelperText> */}
+      </FormControl>
 
-        <FormControl variant="outlined">
-          <TextField
-            id="outlined-number"
-            label="Body"
-            type="number"
-            defaultValue={bodyState}
-            value={bodyState}
-            onChange={(e) => {
-              handleBodyChange(e);
-            }}
-            InputLabelProps={{
-              shrink: true,
-            }}
-            variant="outlined"
-          />
-        </FormControl>
-
-        <FormControl variant="outlined">
-          <TextField
-            id="outlined-number"
-            label="Mind"
-            type="number"
-            defaultValue={mindState}
-            value={mindState}
-            onChange={(e) => {
-              handleMindChange(e);
-            }}
-            InputLabelProps={{
-              shrink: true,
-            }}
-            variant="outlined"
-          />
-        </FormControl>
-
-        <FormControl variant="outlined">
-          <TextField
-            id="outlined-number"
-            label="Gold"
-            type="number"
-            defaultValue={goldState}
-            value={goldState}
-            onChange={(e) => {
-              handleGoldChange(e);
-            }}
-            InputLabelProps={{
-              shrink: true,
-            }}
-            variant="outlined"
-          />
-        </FormControl>
+      
       </CardContent>
-      <Button onClick={handleCharacterSave} size="small">
-        Save
-      </Button>
+
+
+    
     </Card>
+    </>
   );
 }
+
+
+
+{/* <FormControl >
+        <InputLabel id="demo-simple-select-helper-label">Character</InputLabel>
+        <Select
+          labelId="demo-simple-select-helper-label"
+          id="demo-simple-select-helper"
+          value={selectedActiveMonster}
+          onChange={(event) => setSelectedActiveMonster(event.target.value)}
+        >
+        
+        </Select>
+        <Button onClick={handleMonsterSave}>
+          Destroy Monster
+        </Button>
+        <FormHelperText>Select a character</FormHelperText>
+      </FormControl> */}

@@ -82,6 +82,19 @@ export const updateCharacterPoints = function(id :number, body :number, mind :nu
       });
     }
 
+export const getMonsters = function () {
+  return monsterData
+};
+
+export const getLobbyMonsters = function () {
+  return lobbyMonsters
+};
+
+export const updateMonsterPoints = function
+(id :number, body :number, mind :number, lobby_id :number) {
+  return lobbyMonsters
+};
+
     
 export const getUserId = function(){
   return axios 
@@ -156,3 +169,69 @@ const weaponsData = [
   { id: 4, name: 'Weapon 4', description: "this is weapon 4", cost: 40 },
   { id: 5, name: 'Weapon 5', description: "this is weapon 5", cost: 50 },
 ];
+
+
+const monsterData = [
+
+{
+  id: 1,  
+  name:"Orc",
+  attack: 3,
+  defend: 2,
+  body: 1, 
+  mind: 2,
+  movement: 10,
+  image: "https://i.imgur.com/MrwYk8c.jpg",
+  user: 1
+},
+
+{
+  id: 2,
+  name:"Chaos Warrior",
+  attack: 4,
+  defend: 4,
+  body: 3, 
+  mind: 3,
+  movement: 7,
+  image: "https://i.imgur.com/QPPVnmi.jpg",
+  user: 1
+},
+
+{
+  id: 3,
+  name:"Verag",
+  attack: 4,
+  defend: 4,
+  body: 3, 
+  mind: 3,
+  movement: 7,
+  image: "https://i.imgur.com/QPPVnmi.jpg",
+  user: 1
+}
+];
+
+// monsters in the lobby
+
+const lobbyMonsters = [
+{
+  id: 1,
+  body: 11, 
+  mind: 12,
+  lobbies_id: 1, 
+},
+
+{
+  id: 2,
+  body: 23, 
+  mind: 23,
+  lobbies_id: 1,
+},
+
+{
+  id: 3,
+  body: 33, 
+  mind: 33,
+  lobbies_id: 1 
+}
+];
+
