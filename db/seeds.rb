@@ -17,7 +17,7 @@ unless Rails.env.development?
   exit 0
 end
 
-## Hero
+## Hero 
 
 puts "Re-creating Heros ..."
 
@@ -149,7 +149,7 @@ user_character = Character.create! ({
   heros_id: 3,
   movement: "2D6",
   weapon: "Short Sword",
-  image: 'https://imgur.com/a/j5ow8li'
+  image: 'https://i.imgur.com/51xJXTf.gif'
 })
 
 user_character = Character.create! ({

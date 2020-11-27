@@ -13,10 +13,13 @@ import CardMedia from '@material-ui/core/CardMedia';
 
 const useStyles = makeStyles({
   root:{
-    maxWidth: 300
+    maxWidth: 350,
+    margin: 5,
+    padding: 5,
   },
   media: {
     height: 150,
+    backgroundSize: "contain",
   }
   
  } );
@@ -31,14 +34,15 @@ type Character = {
   lastUsed :string, 
   race :string, 
   questsCompleted :number, 
-  imgSrc :string,
+  image :string,
   body :number,
   mind :number,
   attack :number,
   defense :number,
   movement :number,
-}
 
+}
+ 
 export default function CharacterCard({character }:CharacterCardProps){
 
   const classes = useStyles();
@@ -53,7 +57,7 @@ export default function CharacterCard({character }:CharacterCardProps){
       
       </CardHeader>
       
-      <CardMedia className={classes.media} image={character.imgSrc} />
+      <CardMedia className={classes.media} image={character.image} />
       <CardContent>
        
         <Typography variant="body2" component="p">

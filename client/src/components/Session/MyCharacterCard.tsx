@@ -35,7 +35,7 @@ type CharacterCardProps = {
   lastUsed :string, 
   race :string, 
   questsCompleted :number, 
-  imgSrc :string,
+  image :string,
   body :number,
   mind :number,
   attack :number,
@@ -45,7 +45,7 @@ type CharacterCardProps = {
   user :any
 }
 
-export default function MyCharacterCard({id, name, dateCreated , lastUsed, race , questsCompleted , imgSrc, body, mind, attack, defend, movement, gold, user } :CharacterCardProps){
+export default function MyCharacterCard({id, name, dateCreated , lastUsed, race , questsCompleted , image, body, mind, attack, defend, movement, gold, user } :CharacterCardProps){
 
   const classes = useStyles();
   const [goldState, setGold] = React.useState<number>(gold)
@@ -91,7 +91,7 @@ export default function MyCharacterCard({id, name, dateCreated , lastUsed, race 
       
       </CardHeader>
       
-      <CardMedia className={classes.media} image={imgSrc} />
+      <CardMedia className={classes.media} image={image} />
       <CardContent>
        
         <Typography variant="body2" component="p">

@@ -2,8 +2,8 @@
 import axios from "axios";
 
 export function getDrawerList(): string[] {
-  //... returns an array of the items on the left drawer
-  return ['Game', 'Statistics', 'Resources', 'Settings'];
+  //... returns an array of the items in the left drawer
+  return ['Armory', 'Character'];
 }
 
 export const getCharacters = function (user: any) {
