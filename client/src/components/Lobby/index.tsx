@@ -20,6 +20,7 @@ import Grid from '@material-ui/core/Grid';
 import CharacterModal from './CharacterModal'
 import CharacterSelection from "./characterSelection"
 import { getUsersOfLobby, getCharactersOfLobby } from "../../helpers/selectors"
+import useInterval from '@use-it/interval';
 
 type LobbyProps = {
   user: any
@@ -42,6 +43,7 @@ export default function Lobby({ user }: LobbyProps) {
   const [characters, setCharacters] = React.useState([]);
   const [id, setId] = React.useState(Number(lobbyID));
   const [users, setUsers] = React.useState([]);
+  const [count, setCount] = useState(0);
 
   React.useEffect(() => {
     getUsersOfLobby(id)
@@ -55,6 +57,18 @@ export default function Lobby({ user }: LobbyProps) {
     
   }, [])
   
+  //FOR POLLING
+  // useInterval(() => {
+  //   setCount((currentCount) => currentCount + 1);
+  //   getUsersOfLobby(id)
+  //   .then((newUsers)=>{
+  //     setUsers(newUsers);
+  //     getCharactersOfLobby(id)
+  //     .then((newCharacters)=>{
+  //       setCharacters(newCharacters)
+  //     })
+  //   })
+  // }, 10000);
 
   return (
     <>
