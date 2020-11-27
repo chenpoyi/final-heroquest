@@ -23,46 +23,43 @@ import DraftsIcon from '@material-ui/icons/Drafts';
 import MonsterCard from './MonsterCard'
 const useStyles = makeStyles({
   root: {
-    maxWidth: 300,
+    maxWidth: "100%",
+    margin: 50,
   },
   media: {
     height: 150,
   },
+  title: {
+    fontSize: 10,
+  },
 });
 
-type Monster = {
-  id: number;
-  name: string;
-  // image: string;
-  body: number;
-  mind: number;
-  // attack: number;
-  // defend: number;
-  // movement: number;
-  // user: any;
-  lobbies_id: number
-};
+// card is the view that the Zargon player sees
+// the player can pick a monster to play
+// monster is added to the list of current monster
+// monster card is rendered when the monster is selected from the list of current monsters
+
 
 export default function ZargonCard({lobbyMonsters}) {
   const classes = useStyles();
+  // These states are used to set the the monsters in the two lists 
+  // List one data from the monsters - Selecting a monster
+  // List two data from List one is passed to list two and is then used by the MonsterCard to render the selected monster card
   const [monstersState, setMonstersState] = React.useState<any>([]);
   const [selectedMonsterId, setSelectedMonsterId] = React.useState<any>([]);
   const [currentlySelectedMonsters, setcurrentlySelectedMonsters] = React.useState<any>([]);
   const [selectedActiveMonster, setSelectedActiveMonster] = React.useState<any>(currentlySelectedMonsters[0]);
 
-  const [selectedIndex, setSelectedIndex] = React.useState(1); //For list highlighting
-  // const [bodyState, setBody] = React.useState<number>(body);
-  // const [mindState, setMind] = React.useState<number>(mind);
-  // const [monster, setMonster] = React.useState<any>();
-    // alert(lobbyMonsters)
+  // this useEffect pulls the monster data for List one
+    React.useEffect(()=>{
+      setMonstersState(getMonsters())
+    },[])
+
+  // This state is used For list highlighting
+  const [selectedIndex, setSelectedIndex] = React.useState(1); 
   const monsterList = monstersState.map((monster, index) => {
     return (<MenuItem key={monster.id} value={index}>{monster.name}</MenuItem>)
   });
-
-
-  // const activeMonsterList = currentlySelectedMonsters.map((monster) => {
-  //   return (<MenuItem key={monster.id} value={monster.id}>{monster}</MenuItem>)
-  // });
 
   const handleListItemClick = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>,
@@ -72,94 +69,40 @@ export default function ZargonCard({lobbyMonsters}) {
   };
 
   const activeMonsterList = currentlySelectedMonsters.map((monster, index) => {
-    return (
-    
-      
+    return (  
     <ListItem
       button
       selected={selectedIndex === index}
       onClick={(event) => handleListItemClick(event, index)}
     >
-      
       <ListItemText primary={monster.name} />
     </ListItem>)
     
   });
 
-  
-  
-  // React.useEffect(()=>{ 
-  //   activeMonsterList = currentlySelectedMonsters.map((monster) => {
-  //     return (<MenuItem key={monster.id} value={monster.id}>{monster.id}</MenuItem>)
-  //   });
-  // }
-  //   , [currentlySelectedMonsters])
-
-  
-  
-  
-  
-  // const activeMonsterList2 = 
-  //   [
-  //   <MenuItem value={10}>Ten</MenuItem>,
-  //   <MenuItem value={20}>Twenty</MenuItem>,
-  //   <MenuItem value={30}>Thirty</MenuItem>
-  //   ];
-  // const handleBodyChange = (
-  //   event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  // ) => {
-  //   const bodyNumber = Number(event.target.value);
-  //   setBody(bodyNumber);
-  // };
-
-  // const handleMindChange = (
-  //   event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  // ) => {
-  //   const mindNumber = Number(event.target.value);
-  //   setMind(mindNumber);
-  // };
-
   const handleMonsterSave = () => {
     setcurrentlySelectedMonsters( (prev) => {
-     
       const newArr = [...prev, monstersState[selectedMonsterId]] 
       console.log(newArr)
       return newArr
     })
-
-    //sending data to db to be saved => not to monster table to LobbyMonster table
-    // alert(`${id}, ${bodyState}, ${mindState}, ${goldState}`);
-    //updateMonsterPoints(id, bodyState, mindState, lobby_id); // make this function in helpers
   };
 
-  // React.useEffect(() => {
-  //   setBody(body);
-  //   setMind(mind);
-  // }, [body, mind]);
-
-  // React.useEffect(() => {
-  //   setMonster(getMonsters(""))
-  // }, []);
-
-  React.useEffect(()=>{
-    setMonstersState(getMonsters())
-  },[])
 
   return (
     <>
-    <MonsterCard monster={currentlySelectedMonsters[selectedIndex]}/>
     <Card className={classes.root}>
-      <CardHeader title={"Test"} subheader={"monster"}></CardHeader>
+      <CardHeader title={`Welcome ${"Zargon - Need character name"}`} subheader={"monster"}>
 
+      </CardHeader>
       <CardMedia className={classes.media} image={"imgSrc"} />
       <CardContent>
-        
-        
+    <MonsterCard monster={currentlySelectedMonsters[selectedIndex]}/>
       <List component="nav" aria-label="main mailbox folders">
       {activeMonsterList}
       </List>
         <FormControl >
-        <InputLabel id="demo-simple-select-helper-label">Character</InputLabel>
+        <InputLabel id="demo-simple-select-helper-label">Monster</InputLabel>
         <Select
           labelId="demo-simple-select-helper-label"
           id="demo-simple-select-helper"
@@ -171,33 +114,12 @@ export default function ZargonCard({lobbyMonsters}) {
         <Button onClick={handleMonsterSave}>
           ADD MONSTER
         </Button>
-        {/* <FormHelperText></FormHelperText> */}
+        
       </FormControl>
-
-      
       </CardContent>
-
-
-    
     </Card>
     </>
   );
 }
 
 
-
-{/* <FormControl >
-        <InputLabel id="demo-simple-select-helper-label">Character</InputLabel>
-        <Select
-          labelId="demo-simple-select-helper-label"
-          id="demo-simple-select-helper"
-          value={selectedActiveMonster}
-          onChange={(event) => setSelectedActiveMonster(event.target.value)}
-        >
-        
-        </Select>
-        <Button onClick={handleMonsterSave}>
-          Destroy Monster
-        </Button>
-        <FormHelperText>Select a character</FormHelperText>
-      </FormControl> */}
