@@ -120,22 +120,8 @@ user_character = Character.create! ({
   users_id: 3,
   heros_id: 1,
   movement: "2D6",
-  weapon: "Broadsword"
-
-})
-
-user_character = Character.create! ({
-  name:"Zargon",
-  attack: "1D6",
-  defend: "2D6",
-  body: 4, 
-  mind: 6,
-  gold: 0,
-  users_id: 2,
-  heros_id: 5,
-  movement: "Check Monsters",
-  weapon: "Spells and Monsters"
-
+  weapon: "Broadsword",
+  image: 'https://i.imgur.com/h0nbSUe.gif'
 })
 
 user_character = Character.create! ({
@@ -148,8 +134,8 @@ user_character = Character.create! ({
   users_id: 4,
   heros_id: 2,
   movement: "2D6",
-  weapon: "Short Sword"
-
+  weapon: "Short Sword",
+  image:'https://i.imgur.com/jHZRMeu.gif'
 })
 
 user_character = Character.create! ({
@@ -162,8 +148,8 @@ user_character = Character.create! ({
   users_id: 1,
   heros_id: 3,
   movement: "2D6",
-  weapon: "Short Sword"
-
+  weapon: "Short Sword",
+  image: 'https://imgur.com/a/j5ow8li'
 })
 
 user_character = Character.create! ({
@@ -176,12 +162,11 @@ user_character = Character.create! ({
   users_id: 5,
   heros_id: 4,
   movement: "2D6",
-  weapon: "Dagger"
-
+  weapon: "Dagger",
+  image:'https://i.imgur.com/PEM18xf.gif'
 })
 
 ## extra characters for user 1
-
 
 user_character = Character.create! ({
   name:"Detrix",
@@ -193,8 +178,8 @@ user_character = Character.create! ({
   users_id: 1,
   heros_id: 1,
   movement: "2D6",
-  weapon: "Broadsword"
-
+  weapon: "Broadsword",
+  image: 'https://i.imgur.com/h0nbSUe.gif'
 })
 
 user_character = Character.create! ({
@@ -207,8 +192,8 @@ user_character = Character.create! ({
   users_id: 1,
   heros_id: 2,
   movement: "2D6",
-  weapon: "Short Sword"
-
+  weapon: "Short Sword",
+  image:'https://i.imgur.com/jHZRMeu.gif'
 })
 
 user_character = Character.create! ({
@@ -221,10 +206,83 @@ user_character = Character.create! ({
   users_id: 1,
   heros_id: 4,
   movement: "2D6",
-  weapon: "Dagger"
+  weapon: "Dagger",
+  image:'https://i.imgur.com/PEM18xf.gif'
+})
+# Zargon for everyone
 
+user_character = Character.create! ({
+  name:"Zargon",
+  attack: "Monster Attack",
+  defend: "Monster Defend",
+  body: 0, 
+  mind: 0,
+  gold: 0,
+  users_id: 1,
+  heros_id: 5,
+  movement: "Check Monsters",
+  weapon: "Spells and Monsters",
+  image:'https://i.imgur.com/PEM18xf.gif'
 })
 
+
+user_character = Character.create! ({
+  name:"Zargon",
+  attack: "Monster Attack",
+  defend: "Monster Defend",
+  body: 0, 
+  mind: 0,
+  gold: 0,
+  users_id: 2,
+  heros_id: 5,
+  movement: "Check Monsters",
+  weapon: "Spells and Monsters",
+  image:'https://i.imgur.com/PEM18xf.gif'
+})
+
+
+user_character = Character.create! ({
+  name:"Zargon",
+  attack: "Monster Attack",
+  defend: "Monster Defend",
+  body: 0, 
+  mind: 0,
+  gold: 0,
+  users_id: 3,
+  heros_id: 5,
+  movement: "Check Monsters",
+  weapon: "Spells and Monsters",
+  image:'https://i.imgur.com/PEM18xf.gif'
+})
+
+
+user_character = Character.create! ({
+  name:"Zargon",
+  attack: "Monster Attack",
+  defend: "Monster Defend",
+  body: 0, 
+  mind: 0,
+  gold: 0,
+  users_id: 4,
+  heros_id: 5,
+  movement: "Check Monsters",
+  weapon: "Spells and Monsters",
+  image:'https://i.imgur.com/PEM18xf.gif'
+})
+
+user_character = Character.create! ({
+  name:"Zargon",
+  attack: "Monster Attack",
+  defend: "Monster Defend",
+  body: 0, 
+  mind: 0,
+  gold: 0,
+  users_id: 5,
+  heros_id: 5,
+  movement: "Check Monsters",
+  weapon: "Spells and Monsters",
+  image:'https://i.imgur.com/PEM18xf.gif'
+})
   ## Weapons for Armory
 
   puts "Re-creating Weapons for Armory..."

@@ -4,6 +4,7 @@ class Character < ApplicationRecord
   has_many  :armors
   has_one   :lobby
   has_one   :user
+  
 
 end
 
