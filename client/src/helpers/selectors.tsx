@@ -202,7 +202,7 @@ const monsterData = [
   defend: 2,
   body: 1, 
   mind: 2,
-  movement: 10,
+  movement: 8,
   image: "https://i.imgur.com/MrwYk8c.jpg",
   user: 1
 },
@@ -221,15 +221,92 @@ const monsterData = [
 
 {
   id: 3,
-  name:"Verag",
+  name:"Verag - Gargoyle",
   attack: 4,
-  defend: 4,
+  defend: 5,
   body: 3, 
-  mind: 3,
-  movement: 7,
-  image: "https://i.imgur.com/QPPVnmi.jpg",
+  mind: 4,
+  movement: 6,
+  image: "https://i.imgur.com/ocatT4L.jpeg",
   user: 1
-}
+},
+
+{
+  id: 4,
+  name:"Goblin",
+  attack: 2,
+  defend: 2,
+  body: 1, 
+  mind: 1,
+  movement: 10,
+  image: "https://i.imgur.com/ECPDq44.jpeg",
+  user: 1
+},
+
+{
+  id: 5,
+  name:"Fimir",
+  attack: 3,
+  defend: 3,
+  body: 2, 
+  mind: 3,
+  movement: 6,
+  image: "https://i.imgur.com/CcRZrt9.jpeg",
+  user: 1
+},
+
+{
+  id: 6,
+  name:"Skeleton",
+  attack: 2,
+  defend: 2,
+  body: 1, 
+  mind: 0,
+  movement: 6,
+  image: "https://i.imgur.com/iDavOB7.jpeg",
+  user: 1
+},
+
+{
+  id: 7,
+  name:"Zombie",
+  attack: 2,
+  defend: 3,
+  body: 1, 
+  mind: 0,
+  movement: 5,
+  image: "https://i.imgur.com/VyLtOcn.jpeg",
+  user: 1
+},
+
+{
+  id: 8,
+  name:"Mummy",
+  attack: 3,
+  defend: 4,
+  body: 2, 
+  mind: 0,
+  movement: 4,
+  image: "https://i.imgur.com/ql4BBWp.jpeg",
+  user: 1
+},
+
+{
+  id: 9,
+  name:"Gargoyle",
+  attack: 4,
+  defend: 5,
+  body: 3, 
+  mind: 4,
+  movement: 6,
+  image: "https://i.imgur.com/ocatT4L.jpeg",
+  user: 1
+},
+
+
+
+
+
 ];
 
 // monsters in the lobby
