@@ -3,16 +3,31 @@ import axios from "axios";
 
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 
-import {getOneCharacter} from '../../helpers/selectors'
+import {getOneCharacter, getLobbyMonsters } from '../../helpers/selectors'
 import MyCharacterCard from './MyCharacterCard'
+import ZargonCard from './ZargonCard';
 
 type SessionProps = {
 
   user: any
 }
+
+type Monster = {
+  id: number;
+  body: number;
+  mind: number;
+  lobbies_id: number
+  // name?: string;
+  // imgSrc?: string;
+  // attack?: number;
+  // defend?: number;
+  // movement?: number;
+  // user?: any;
+};
+
 export default function Session({ user }: SessionProps) {
   const [character, setCharacter] = React.useState(null);
-
+  const [lobbyMonsters, setLobbyMonsters] = React.useState<Monster[]>([])
   // const newCharacter = getOneCharacter(1);
 
   const getCharacter = () =>
@@ -27,11 +42,19 @@ export default function Session({ user }: SessionProps) {
 
   React.useEffect(getCharacter
   , [])
-  return (
-    <>
-      <h1>This is the session page</h1>
-      <MyCharacterCard {...character} user = {user}/>
 
-    </>
+  React.useEffect(() => {
+    setLobbyMonsters(getLobbyMonsters())
+  }
+    , [])
+
+  
+  return (
+    <div>
+      <h1>This is the session page</h1>
+      {/* <MyCharacterCard {...character} user = {user}/> */}
+      <ZargonCard lobbyMonsters={lobbyMonsters}/>
+
+    </div>
   );
 }

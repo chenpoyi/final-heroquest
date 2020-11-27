@@ -66,10 +66,6 @@ export default function Armory({user}:ArmoryProps) {
     return (<MenuItem key={index} value={index}>{character.name}</MenuItem>)
   });
 
-  
- 
-
-
   const columns: ColDef[] = [
     { field: 'name', headerName: 'Name', width: 150 },
     { field: 'description', headerName: 'Description', width: 150 },
