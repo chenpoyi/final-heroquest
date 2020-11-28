@@ -29,6 +29,7 @@ heroes = Hero.create({
   defend: 2, 
   body: 8 , 
   mind: 2, 
+  default_weapon: 2,
   image: 'https://i.imgur.com/h0nbSUe.gif'
   })
 
@@ -38,6 +39,7 @@ heroes = Hero.create({
   defend: 2, 
   body: 7, 
   mind: 3, 
+  default_weapon: 7,
   image:'https://i.imgur.com/jHZRMeu.gif'
   })
 
@@ -47,6 +49,7 @@ heroes = Hero.create({
   defend: 2, 
   body: 6, 
   mind: 4, 
+  default_weapon: 7,
   image: 'https://imgur.com/a/j5ow8li'
   })
   
@@ -56,6 +59,7 @@ heroes = Hero.create({
   defend: 2, 
   body: 4, 
   mind: 6, 
+  default_weapon: 4,
   image:'https://i.imgur.com/PEM18xf.gif'
   })
 
@@ -65,6 +69,7 @@ heroes = Hero.create({
   defend: 0, 
   body: 0, 
   mind: 0, 
+  default_weapon: 4, ## don't show this 
   image:'https://i.imgur.com/PEM18xf.gif'
   })
 
@@ -120,7 +125,6 @@ user_character = Character.create! ({
   users_id: 3,
   heros_id: 1,
   movement: 2,
-  weapon: "Broadsword",
   image: 'https://i.imgur.com/h0nbSUe.gif'
 })
 
@@ -134,7 +138,6 @@ user_character = Character.create! ({
   users_id: 4,
   heros_id: 2,
   movement: 2,
-  weapon: "Short Sword",
   image:'https://i.imgur.com/jHZRMeu.gif'
 })
 
@@ -148,7 +151,6 @@ user_character = Character.create! ({
   users_id: 1,
   heros_id: 3,
   movement: 2,
-  weapon: "Short Sword",
   image: 'https://i.imgur.com/51xJXTf.gif'
 })
 
@@ -162,7 +164,6 @@ user_character = Character.create! ({
   users_id: 5,
   heros_id: 4,
   movement: 2,
-  weapon: "Dagger",
   image:'https://i.imgur.com/PEM18xf.gif'
 })
 
@@ -178,7 +179,6 @@ user_character = Character.create! ({
   users_id: 1,
   heros_id: 1,
   movement: 2,
-  weapon: "Broadsword",
   image: 'https://i.imgur.com/h0nbSUe.gif'
 })
 
@@ -192,7 +192,6 @@ user_character = Character.create! ({
   users_id: 1,
   heros_id: 2,
   movement: 2,
-  weapon: "Short Sword",
   image:'https://i.imgur.com/jHZRMeu.gif'
 })
 
@@ -206,7 +205,6 @@ user_character = Character.create! ({
   users_id: 1,
   heros_id: 4,
   movement: 2,
-  weapon: "Dagger",
   image:'https://i.imgur.com/PEM18xf.gif'
 })
 # Zargon for everyone
@@ -221,7 +219,6 @@ user_character = Character.create! ({
   users_id: 1,
   heros_id: 5,
   movement: 0,
-  weapon: "Spells and Monsters",
   image:'https://i.imgur.com/PEM18xf.gif'
 })
 
@@ -236,7 +233,6 @@ user_character = Character.create! ({
   users_id: 2,
   heros_id: 5,
   movement: 0,
-  weapon: "Spells and Monsters",
   image:'https://i.imgur.com/PEM18xf.gif'
 })
 
@@ -251,7 +247,6 @@ user_character = Character.create! ({
   users_id: 3,
   heros_id: 5,
   movement: 0,
-  weapon: "Spells and Monsters",
   image:'https://i.imgur.com/PEM18xf.gif'
 })
 
@@ -265,8 +260,7 @@ user_character = Character.create! ({
   gold: 0,
   users_id: 4,
   heros_id: 5,
-  movement: "Check Monsters",
-  weapon: "Spells and Monsters",
+  movement: 0,
   image:'https://i.imgur.com/PEM18xf.gif'
 })
 
@@ -280,7 +274,6 @@ user_character = Character.create! ({
   users_id: 5,
   heros_id: 5,
   movement: 0,
-  weapon: "Spells and Monsters",
   image:'https://i.imgur.com/PEM18xf.gif'
 })
   ## Weapons for Armory

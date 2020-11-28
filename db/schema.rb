@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_28_195204) do
+ActiveRecord::Schema.define(version: 2020_11_28_211242) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -101,7 +101,6 @@ ActiveRecord::Schema.define(version: 2020_11_28_195204) do
     t.datetime "updated_at", null: false
     t.bigint "users_id"
     t.bigint "heros_id"
-    t.string "weapon"
     t.string "image"
     t.integer "attack"
     t.integer "defend"
@@ -117,8 +116,8 @@ ActiveRecord::Schema.define(version: 2020_11_28_195204) do
     t.integer "body"
     t.integer "mind"
     t.string "image"
-    t.string "weapon"
     t.string "movement"
+    t.integer "default_weapon"
   end
 
   create_table "lobbies", force: :cascade do |t|
