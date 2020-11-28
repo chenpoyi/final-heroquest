@@ -78,7 +78,7 @@ export default function LeftDrawer( {drawerList} :drawerList) {
             <ListItemText primary={"Armory"}  />
           </ListItem>
         </Link>
-        <Link className={classes.menuLink} to="/">
+        <Link className={classes.menuLink} to="/user">
           <ListItem button key={"Characters"}>
             <ListItemText primary={"Characters"} />
           </ListItem>
