@@ -70,7 +70,7 @@ class App extends Component<IProps, IState> {
     return (
       <Router>
         <div>
-          <Grid container direction="column" spacing={4}>
+          <Grid container spacing={4}>
             <Grid item className="App">
               <NavBar
                 loggedInStatus={this.state.loggedInStatus}
