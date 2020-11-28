@@ -35,8 +35,9 @@ type Character = {
   body :number,
   mind :number,
   attack :number,
-  defense :number,
+  defend :number,
   movement :number,
+  gold :number
 }
 
 export default function CharacterCard({character }:CharacterCardProps){
@@ -45,7 +46,8 @@ export default function CharacterCard({character }:CharacterCardProps){
   // const bull = <span className={classes.bullet}>•</span>;
   
   return (
-    <Card className={classes.root}>
+    <>{
+    character && (<Card className={classes.root}>
       <CardHeader 
         title={character.name}
         subheader={character.race}
@@ -78,17 +80,21 @@ export default function CharacterCard({character }:CharacterCardProps){
             Attack Dice: {character.attack}
           </li>
           <li>
-           Defense Dice: {character.defense}
+           Defense Dice: {character.defend}
           </li>
           <li>
             Movement: {character.movement}
+          </li>
+          <li>
+            Gold: {character.gold}
           </li>
         </ul> 
       
         </Typography>
       </CardContent>
       
-    </Card>
+    </Card>)}
+    </>
   );
 }
 

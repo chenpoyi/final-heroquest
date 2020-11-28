@@ -9,6 +9,7 @@ import Signup from "./components/Signup";
 import Login from "./components/Login";
 import MyCharacterCard from "./components/Session/MyCharacterCard"
 import Armory from "./components/Armory"
+import User from "./components/User"
 
 import { getDrawerList, getOneCharacter } from "./helpers/selectors";
 import {
@@ -84,6 +85,7 @@ class App extends Component<IProps, IState> {
     })
   }
 
+  
   fetchData = () => {
     axios
       .get("/api/data") // You can simply make your requests to "/api/whatever you want"
@@ -136,6 +138,9 @@ class App extends Component<IProps, IState> {
             <Route path="/session" >
               <Session user={this.state.user}/>
             </Route>
+            <Route path="/user">
+              <User user={this.state.user}/>
+            </Route>
             <Route path="/">
               <Home user={this.state.user}/>
             </Route>
@@ -171,7 +176,7 @@ const characterInfo = {
 function Home(user :any) {
   return (
   <>
-  <TitleCard user={user}/>
+  <TitleCard {...user}/>
   </>);
 }
 

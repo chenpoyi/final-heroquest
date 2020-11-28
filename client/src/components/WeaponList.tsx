@@ -12,10 +12,9 @@ import CardHeader from "@material-ui/core/CardHeader";
 import CardMedia from "@material-ui/core/CardMedia";
 
 
-import { getCharacters } from "../helpers/selectors";
+import { getCharacters, getWeapons, getCharacterWeapons } from "../helpers/selectors";
 
 import CharacterCard from "./CharacterCard"
-import WeaponList from './WeaponList';
 const useStyles = makeStyles({
   root:{
     maxWidth: 300
@@ -46,7 +45,7 @@ type Character = {
   lastUsed :string, 
   race :string, 
   questsCompleted :number, 
-  imgSrc :string,
+  image :string,
   body :number,
   mind :number,
   attack :number,
@@ -54,58 +53,78 @@ type Character = {
   movement :number,
   gold :number
 }
+type Weapon = {
+  name:string
+}
 
-
-export default function CharacterList({user} :any){
-  const [characters, setCharacters] = React.useState<Character[]>([]);
+export default function WeaponList({character} :any){
+  const [characterState, setCharacter] = React.useState<Character>(character);
+  const [weaponsState, setWeapons] = React.useState<Weapon[]>([]);
 
   const classes = useStyles();
   // const bull = <span className={classes.bullet}>•</span>;
-  const [selectedIndex, setSelectedIndex] = React.useState(0);
+  // const [selectedIndex, setSelectedIndex] = React.useState(1);
   
-  const handleListItemClick = (
-    event: React.MouseEvent<HTMLDivElement, MouseEvent>,
-    index: number,
-  ) => {
-    setSelectedIndex(index);
-  };
+  // const handleListItemClick = (
+  //   event: React.MouseEvent<HTMLDivElement, MouseEvent>,
+  //   index: number,
+  // ) => {
+  //   setSelectedIndex(index);
+  // };
 
-  const characterList = characters.map((character, index) => {
-    return (  
-      <ListItem
-        button
-        selected={selectedIndex === index}
-        onClick={(event) => handleListItemClick(event, index)}
-      >
-        <ListItemText primary={character.name} />
-      </ListItem>)
-  });
+  // const characterList = characters.map((character, index) => {
+  //   return (  
+  //     <ListItem
+        
+  //       selected={selectedIndex === index}
+  //     >
+  //       <ListItemText primary={character.name} />
+  //     </ListItem>)
+  // });
 
-  React.useEffect(()=>{
-    getCharacters(user)
-    .then((characters)=>{
-      setCharacters(characters);
-    });
+  // React.useEffect(()=>{
+
+  //   if(character){
+  //     getCharacterWeapons(character.id).then(
+  //     (weapons)=>{
+  //       setWeapons(weapons);
+  //     }
+  //   )}
     
-  },[])
+  // },[])
+  const weaponsList = weaponsState.map((weapon)=>{
+    return(<ListItem
+        // button
+        // selected={selectedIndex === index}
+        // onClick={(event) => handleListItemClick(event, index)}
+      >
+        <ListItemText primary={weapon.name} />
+      </ListItem>)
+  })
+  React.useEffect(()=>{
+    setCharacter(character);
+    if(character)
+    {getCharacterWeapons(character.id).then(
+      (weapons)=>{
+        setWeapons(weapons);
+      }
+    )}
+  },[character])
 
   return (
     <>
     
     <Card className={classes.root}>
-      <CardHeader title={`My Characters`} >
+      <CardHeader title={`Weapons`} >
 
       </CardHeader>
       <CardContent>
-        <CharacterCard character={characters[selectedIndex]}/>
     <List component="nav" aria-label="main mailbox folders">
-      {characterList}
+      {weaponsList}
     </List>
       
       </CardContent>
     </Card>
-
- <WeaponList character={characters[selectedIndex]}/>
     </>
   );
 }

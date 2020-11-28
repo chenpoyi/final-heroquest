@@ -37,7 +37,7 @@ const useStyles = makeStyles({
 },
 });
 
-export default function TitleCard(user :any) {
+export default function TitleCard({user} :any) {
   const classes = useStyles();
 
   return (
@@ -62,9 +62,9 @@ export default function TitleCard(user :any) {
               same
             </Typography>
           </CardContent>
-        
+          {/* { charState[index] && (<CharacterCard character={charState[index]}/> )} */}
         <CardActions>
-          <Link className={classes.menuLink} to="/login">
+          {!user && (<><Link className={classes.menuLink} to="/login">
             <Button variant="contained" size="small" color="primary">
               Login
             </Button>
@@ -73,8 +73,8 @@ export default function TitleCard(user :any) {
             <Button variant="contained" size="small" color="primary">
               Sign Up
             </Button>
-          </Link>
-          <Link className={classes.menuLink} to="/armory">
+          </Link></>)}
+          {user && (<><Link className={classes.menuLink} to="/armory">
             <Button variant="contained" size="small" color="primary">
               Armory
             </Button>
@@ -83,7 +83,7 @@ export default function TitleCard(user :any) {
             <Button  variant="contained" size="small" color="primary">
               To lobby
             </Button>
-          </Link>
+          </Link></>)}
         </CardActions>
       </Card>
     </Grid>

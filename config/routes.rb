@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     get '/lobby/:id/users' => 'lobbies#users'
     get '/lobby/:id/characters' => 'lobbies#characters'
     post 'lobby/characters' => 'lobbies#add_characters'
+    get '/character/weapons/:id' => 'characters#weapons'
   end
 
   get '*path', to: "static_pages#fallback_index_html", constraints: ->(request) do

@@ -54,8 +54,9 @@ type Character = {
   body :number,
   mind :number,
   attack :number,
-  defense :number,
+  defend :number,
   movement :number,
+  gold :number
 }
 // List Functions //
 

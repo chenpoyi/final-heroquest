@@ -23,7 +23,17 @@ class Api::CharactersController < ApplicationController
     @character.save
   end
 
-
+  def weapons 
+    @weapons_character = CharacterWeapon.where(:characters_id => params[:id])
+    @weapons = @weapons_character.map{|weapon_character|
+      Weapon.find_by(:id => weapon_character.weapons_id)
+    }
+    puts '-----------------'
+    puts @weapons.inspect
+    render :json => {
+      weapons: @weapons
+    }
+  end
 end
 
 

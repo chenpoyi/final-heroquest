@@ -23,7 +23,7 @@ const useStyles = makeStyles({
     backgroundSize: "contain",
   },
 });
-
+ 
 type MonsterCardProps = {
   monster: Monster;
 };

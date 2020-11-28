@@ -99,7 +99,7 @@ export default function NavBar({drawerList, loggedInStatus, handleSuccessfulLogo
         <Toolbar>
           <LeftDrawer drawerList={drawerList}/>
           <Typography variant="h6" className={classes.title}>
-            HeroQuest {loggedInStatus.toString()}
+            HeroQuest
           </Typography>
 
           {loggedInStatus && user && (

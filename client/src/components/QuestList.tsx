@@ -67,12 +67,13 @@ export default function QuestList() {
   const list = quests.map((quest, index) => {
     return (         
       <>
+      {quests && (<>
       <Typography paragraph>{quest.name}</Typography>
           <Typography paragraph>
             {quest.description}
            <Divider /> 
-          </Typography>
-          </>) 
+          </Typography></>) }
+          </>)
   });
 
   return (

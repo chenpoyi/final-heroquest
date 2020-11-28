@@ -56,8 +56,9 @@ type Character = {
   body :number,
   mind :number,
   attack :number,
-  defense :number,
+  defend :number,
   movement :number,
+  gold :number
 }
 
 export default function CharacterModal({user, setCharacter, index, charState, lobby_id}:CharacterModalProps) {

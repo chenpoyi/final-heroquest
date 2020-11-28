@@ -55,6 +55,20 @@ export const getWeapons = function () {
     });
 }
 
+export const getCharacterWeapons = function (id) {
+
+  return axios
+    .get(`/api/character/weapons/${id}`) // You can simply make your requests to "/api/whatever you want"
+    .then((response) => {
+      // handle success
+      // console.log(response.data.characters); // The entire response from the Rails API
+      console.log('here: ', response.data)
+      return response.data.weapons
+    }).catch((err) => {
+      console.log(err)
+    });
+}
+
 export const getQuests = function () {
   return axios
     .get("/api/quests/1") // You can simply make your requests to "/api/whatever you want"
