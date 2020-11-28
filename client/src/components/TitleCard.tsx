@@ -82,7 +82,13 @@ export default function TitleCard({user} :any) {
             <Button  variant="contained" size="small" color="primary">
               To lobby
             </Button>
-          </Link></>)}
+          </Link>
+          <Link className={classes.menuLink} to="/session/3">
+            <Button  variant="contained" size="small" color="primary">
+              To session
+            </Button>
+          </Link></>
+          )}
         </CardActions>
       </Card>
     </Grid>

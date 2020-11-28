@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 2020_11_27_221005) do
     t.bigint "characters_id"
     t.bigint "lobbies_id"
     t.bigint "users_id"
-    t.integer "user_id"
+    # t.integer "user_id"
     t.index ["characters_id"], name: "index_character_lobbies_on_characters_id"
     t.index ["lobbies_id"], name: "index_character_lobbies_on_lobbies_id"
     t.index ["users_id"], name: "index_character_lobbies_on_users_id"

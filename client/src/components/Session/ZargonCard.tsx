@@ -54,6 +54,12 @@ export default function ZargonCard({lobbyMonsters}) {
     React.useEffect(()=>{
       setMonstersState(getMonsters())
     },[])
+    React.useEffect(()=>{
+      const lobbyMonstersInfo = lobbyMonsters.map((lobbyMonster)=>{
+        return monstersState.find(element => element.id == lobbyMonster.id)
+      })
+      setcurrentlySelectedMonsters(lobbyMonstersInfo)
+    },[lobbyMonsters])
 
   // This state is used For list highlighting
   const [selectedIndex, setSelectedIndex] = React.useState(1); 

@@ -18,7 +18,7 @@ export default function Lobbies({user} : SessionsProps) {
 
   return (
       <Switch>
-        <Route path={`${match.path}/:SessionID`}>
+        <Route path={`${match.path}/:sessionID`}>
           <Session user={user}/>
         </Route>
         <Route path={match.path}>
