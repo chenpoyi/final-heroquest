@@ -715,6 +715,12 @@ character_lobby = CharacterLobby.create!({
   lobbies_id: 3,
 })
 
+character_lobby = CharacterLobby.create!({
+  characters_id: 9,
+  users_id: 2,
+  lobbies_id: 3,
+})
+
 ## Monsters in the Lobby descriptions 
 puts "Re-creating Monsters in the Lobby..."
 

@@ -18,6 +18,7 @@ type SessionProps = {
 
 type Monster = {
   id: number;
+  name: string;
   body: number;
   mind: number;
   lobbies_id: number;
@@ -57,10 +58,31 @@ export default function Session({ user }: SessionProps) {
 
   // const [character, setCharacter] = React.useState(null);
   const [characters, setCharacters] = React.useState<Character[]>([]);
-  const [lobbyMonsters, setLobbyMonsters] = React.useState<Monster[]>([]);
+  const [lobbyMonsters, setLobbyMonsters] = React.useState<Monster[]>();
   
   // const newCharacter = getOneCharacter(1);
 
+
+
+
+  // const getCharacter = () => {
+  //   getOneCharacter(4).then((char) => {
+  //     setCharacter(char);
+  //   });
+  // };
+
+  const list = characters.sort(function(x,y){ return x.users_id == user.id ? -1 : y.users_id == user.id ? 1 : 0; })
+  .map((character, index)=>{
+    return(
+    <>
+    {character && lobbyMonsters && (character.users_id == user.id && character.name =='Zargon')&&(<ZargonCard lobbyMonsters={lobbyMonsters}/>)}
+    {character &&!(character.users_id == user.id && character.name =='Zargon')&&(<MyCharacterCard {...character} user = {user} users ={users}/>)}
+    {/* {character && (character.users_id!=user.id)&&(<CharacterCard {...characters[index]} user = {users[index]}/>)} */}
+    </>
+    )
+  })
+
+  // React.useEffect(getCharacter, []);
 
   // FOR POLLING
   useInterval(() => {
@@ -74,25 +96,6 @@ export default function Session({ user }: SessionProps) {
       })
     })
   }, 10000);
-
-
-  // const getCharacter = () => {
-  //   getOneCharacter(4).then((char) => {
-  //     setCharacter(char);
-  //   });
-  // };
-
-  const list = characters.sort(function(x,y){ return x.users_id == user.id ? -1 : y.users_id == user.id ? 1 : 0; })
-  .map((character, index)=>{
-    return(
-    <>
-    {character &&(<MyCharacterCard {...character} user = {user} users ={users}/>)}
-    {/* {character && (character.users_id!=user.id)&&(<CharacterCard {...characters[index]} user = {users[index]}/>)} */}
-    </>
-    )
-  })
-
-  // React.useEffect(getCharacter, []);
 
   React.useEffect(() => {
     getUsersOfLobby(id)
@@ -113,8 +116,10 @@ export default function Session({ user }: SessionProps) {
   return (
     <div>
       {/* <MyCharacterCard {...character} user = {user}/> */}
-      {list}
-      <ZargonCard lobbyMonsters={lobbyMonsters} />
+{/* {    <ZargonCard lobbyMonsters={lobbyMonsters}/> } */}
+{/* {characters && lobbyMonsters && (characters.find((element)=>{element.users_id == user.id}).name =='Zargon')&&(<ZargonCard lobbyMonsters={lobbyMonsters}/>)} */}
+   {list}
+       
     </div>
   );
 }
