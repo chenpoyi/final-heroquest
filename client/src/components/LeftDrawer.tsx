@@ -85,9 +85,6 @@ export default function LeftDrawer( {drawerList} :drawerList) {
         </Link>
       </List>
 
-
-     
-      
     </div>
   );
   // className={classes.menuButton}
