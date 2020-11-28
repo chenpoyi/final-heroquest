@@ -40,7 +40,7 @@ const useStyles = makeStyles({
 // monster card is rendered when the monster is selected from the list of current monsters
 
 
-export default function ZargonCard({lobbyMonsters}) {
+export default function ZargonCard({lobbyMonsters, user}) {
   const classes = useStyles();
   // These states are used to set the the monsters in the two lists 
   // List one data from the monsters - Selecting a monster
@@ -99,7 +99,7 @@ export default function ZargonCard({lobbyMonsters}) {
   return (
     <>
     <Card className={classes.root}>
-      <CardHeader title={`Welcome ${"Zargon - Need character name"}`} subheader={"monster"}>
+      <CardHeader title={`Zargon`} subheader={`${user.email}`}>
 
       </CardHeader>
       <CardMedia className={classes.media} image={"imgSrc"} />

@@ -87,8 +87,9 @@ export default function MyCharacterCard({id, name, image, body, mind, attack, de
   return (
     <Card className={classes.root}>
       <CardHeader 
-        title={users.find(element => element.id == users_id).email}
-        subheader={`${name}`}
+        title={`${name}`}
+        subheader={users.find(element => element.id == users_id).email}
+        
       >
       
       </CardHeader>

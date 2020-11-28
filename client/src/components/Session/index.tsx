@@ -75,7 +75,7 @@ export default function Session({ user }: SessionProps) {
   .map((character, index)=>{
     return(
     <>
-    {character && lobbyMonsters && (character.users_id == user.id && character.name =='Zargon')&&(<ZargonCard lobbyMonsters={lobbyMonsters}/>)}
+    {character && lobbyMonsters && (character.users_id == user.id && character.name =='Zargon')&&(<ZargonCard lobbyMonsters={lobbyMonsters} user={user}/>)}
     {character &&!(character.users_id == user.id && character.name =='Zargon')&&(<MyCharacterCard {...character} user = {user} users ={users}/>)}
     {/* {character && (character.users_id!=user.id)&&(<CharacterCard {...characters[index]} user = {users[index]}/>)} */}
     </>
