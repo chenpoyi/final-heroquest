@@ -35,7 +35,6 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 type NavBarProps = {
-  drawerList: string[],
   loggedInStatus: boolean;
   handleSuccessfulLogout :any
   user :any
@@ -43,7 +42,7 @@ type NavBarProps = {
 
 
 
-export default function NavBar({drawerList, loggedInStatus, handleSuccessfulLogout, user}: NavBarProps) {
+export default function NavBar({loggedInStatus, handleSuccessfulLogout, user}: NavBarProps) {
   const classes = useStyles();
   const [auth, setAuth] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -97,7 +96,7 @@ export default function NavBar({drawerList, loggedInStatus, handleSuccessfulLogo
 
       <AppBar >
         <Toolbar>
-          <LeftDrawer drawerList={drawerList}/>
+          <LeftDrawer />
           <Typography variant="h6" className={classes.title}>
             HeroQuest
           </Typography>

@@ -19,7 +19,8 @@
     "jsx": "preserve",
     "noEmit": true,
     "outDir": "./build",
-    "noImplicitAny": false
+    "noImplicitAny": false,
+  
   },
   "include": [
     "src"
