@@ -1,10 +1,15 @@
 class Api::CharactersController < ApplicationController
   def index 
+
     @characters = Character.where(:users_id => params[:id])
-    puts @characters.inspect
+    # puts @characters.inspect
+    # @characters.map{|character| 
+    #   puts character.heros.race
+    # }
     render :json => {
       characters: @characters
     }
+
   end
   
   def show

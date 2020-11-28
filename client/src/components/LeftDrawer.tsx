@@ -12,6 +12,7 @@ import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles({
   list: {
@@ -19,6 +20,10 @@ const useStyles = makeStyles({
   },
   fullList: {
     width: 'auto',
+  },
+  menuLink: {
+    textDecoration: 'none',
+    color: "#FFFFFF"
   },
 });
 
@@ -60,15 +65,26 @@ export default function LeftDrawer( {drawerList} :drawerList) {
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
-      <List>
-        {drawerList.map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
       
+
+      <List>
+      <Link className={classes.menuLink} to="/">
+          <ListItem button key={"Home"}>
+            <ListItemText primary={"Home"} />
+          </ListItem>
+        </Link>
+        <Link className={classes.menuLink} to="/armory">
+          <ListItem button key={"Armory"}>
+            <ListItemText primary={"Armory"}  />
+          </ListItem>
+        </Link>
+        <Link className={classes.menuLink} to="/">
+          <ListItem button key={"Characters"}>
+            <ListItemText primary={"Characters"} />
+          </ListItem>
+        </Link>
+      </List>
+
     </div>
   );
   // className={classes.menuButton}
@@ -84,3 +100,8 @@ export default function LeftDrawer( {drawerList} :drawerList) {
     </div>
   );
 }
+{/* <Link className={classes.menuLink} to="/login">
+            <Button variant="contained" size="small" color="primary">
+              Login
+            </Button>
+          </Link> */}

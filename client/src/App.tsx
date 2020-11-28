@@ -156,20 +156,20 @@ class App extends Component<IProps, IState> {
   }
 }
 
-const characterInfo = {
-  name: "Ragnor", 
-  dateCreated: "Nov 19, 2020", 
-  lastUsed: "Nov 21, 2020", 
-  race: "Barbarian", 
-  questsCompleted: 3, 
-  imgSrc: "https://i.imgur.com/h0nbSUe.gif",
-  body: 3,
-  mind: 4,
-  attack: 5,
-  defense: 6,
-  movement: 7,
-  gold: 120
-}
+// const characterInfo = {
+//   name: "Ragnor", 
+//   dateCreated: "Nov 19, 2020", 
+//   lastUsed: "Nov 21, 2020", 
+//   race: "Barbarian", 
+//   questsCompleted: 3, 
+//   image: "https://i.imgur.com/h0nbSUe.gif",
+//   body: 3,
+//   mind: 4,
+//   attack: 5,
+//   defense: 6,
+//   movement: 7,
+//   gold: 120
+// }
 
 
 

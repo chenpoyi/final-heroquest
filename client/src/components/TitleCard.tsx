@@ -29,8 +29,7 @@ const useStyles = makeStyles({
     height: 400,
     margin: 50,
     backgroundSize: "contain"
-    
-    
+   
   },
   menuLink: {
     textDecoration: 'none',

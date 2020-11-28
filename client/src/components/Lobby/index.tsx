@@ -20,7 +20,7 @@ import Grid from '@material-ui/core/Grid';
 import CharacterModal from './CharacterModal'
 import CharacterSelection from "./characterSelection"
 import { getUsersOfLobby, getCharactersOfLobby } from "../../helpers/selectors"
-import useInterval from '@use-it/interval';
+
 
 type LobbyProps = {
   user: any

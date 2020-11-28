@@ -46,7 +46,7 @@ type Character = {
   lastUsed :string, 
   race :string, 
   questsCompleted :number, 
-  imgSrc :string,
+  image :string,
   body :number,
   mind :number,
   attack :number,
