@@ -1,11 +1,6 @@
 
 import axios from "axios";
 
-export function getDrawerList(): string[] {
-  //... returns an array of the items in the left drawer
-  return ['Armory', 'Character'];
-}
-
 export const getCharacters = function (user: any) {
   let id: number;
   if (user) {

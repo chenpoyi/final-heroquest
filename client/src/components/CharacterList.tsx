@@ -18,12 +18,18 @@ import CharacterCard from "./CharacterCard"
 import WeaponList from './WeaponList';
 const useStyles = makeStyles({
   root:{
-    maxWidth: 300
+    maxWidth: "100%",
+    marginTop: 25,
+   
   },
   media: {
     height: 150,
-  }
-  
+  },
+  list: {
+    maxWidth: 125,
+    fontSize: 15,
+  },
+
  } );
 
 // type CharacterCardProps = {
@@ -91,18 +97,23 @@ export default function CharacterList({user} :any){
 
   return (
     <>
-    
     <Card className={classes.root}>
+      
       <CardHeader title={`My Characters`} >
 
       </CardHeader>
       <CardContent>
+      
         <CharacterCard character={characters[selectedIndex]}/>
+<Typography className={classes.list}>
     <List component="nav" aria-label="main mailbox folders">
       {characterList}
     </List>
+</Typography>
+   
       
       </CardContent>
+     
     </Card>
 
  <WeaponList character={characters[selectedIndex]}/>

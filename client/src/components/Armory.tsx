@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import axios from "axios";
 
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+import Grid from "@material-ui/core/Grid";
+
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -10,26 +12,30 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import Typography from '@material-ui/core/Typography';
-import { DataGrid, RowId, ColDef, ValueGetterParams } from '@material-ui/data-grid';
+import { DataGrid, RowId, ColDef, ValueGetterParams, RowParams, STATE_CHANGE } from '@material-ui/data-grid';
 import { SettingsOverscanOutlined } from '@material-ui/icons';
-
+import Tooltip from '@material-ui/core/Tooltip';
 import CheckoutCard from './CheckoutCard'
 import { getCharacters, getWeapons } from "../helpers/selectors";
-
+import { wrap } from 'module';
+import WeaponCard from "./WeaponCard"
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     formControl: {
       margin: theme.spacing(3),
       minWidth: 120,
-     
     },
     selectEmpty: {
       marginTop: theme.spacing(2),
     },
     dataGrid: {
-      background: "#555"
+      background: "#555",
+      wrap: "wrap",
+      backgroundSize: "contain"
+    },
+    checkout: {
+      width: "50%",
     }
-
   }),
 );
 type Character = {
@@ -54,7 +60,7 @@ export default function Armory({user}:ArmoryProps) {
   const [total, setTotal] = React.useState<number>(0);
   const [characters, setCharacters] = React.useState<Character[]>([]);
   const [weapons, setWeapons] = React.useState<Weapon[]>([]);
-
+  const [weaponHover, setWeaponHover] = React.useState<any>(weapons[0]);
   const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
     setcurrentChar(event.target.value as number);
   };
@@ -68,7 +74,7 @@ export default function Armory({user}:ArmoryProps) {
 
   const columns: ColDef[] = [
     { field: 'name', headerName: 'Name', width: 150 },
-    { field: 'description', headerName: 'Description', width: 150 },
+    { field: 'description', headerName: 'Description', width: 0.001, hide:true},
     { field: 'price', headerName: 'Cost', width: 100 },
   ];
 
@@ -134,8 +140,27 @@ export default function Armory({user}:ArmoryProps) {
     return 0;
   }
 
+  const weaponText = "This light metal armor gives you 1 extra combat die in defense. May be combined with the Helmet and/or Shield."
+  
+  // const weaponToolTip = () => {
+  //   // alert("onHover")
+  //   return (
+
+  //     <>
+  //       <Tooltip disableFocusListener title={} >
+  //         <Button> Test for tool tip</Button>
+  //       </Tooltip>
+     
+  //     </> 
+  //   )
+  // }
+
+
   return (
     <>
+
+
+ 
       <Typography variant="body2" component="p">
         This character has: {gold()} gold.
       </Typography>
@@ -149,17 +174,27 @@ export default function Armory({user}:ArmoryProps) {
         >
           {list}
         </Select>
+        
         <FormHelperText>Select a character</FormHelperText>
       </FormControl>
 
-      <div style={{ height: 650, width: '100%' }}>
-        <DataGrid className={classes.dataGrid} rows={weapons} columns={columns} pageSize={20} checkboxSelection
+      <div style={{ height: 300, width: '10%' }}>
+     
+        <DataGrid className={classes.dataGrid} onRowHover={(RowParams) => {setWeaponHover (RowParams.data)}} rows={weapons} columns={columns} pageSize={20} checkboxSelection
           onSelectionChange={(newSelection) => {
             handleSelectionChange(newSelection)
           }} />
-
+     
       </div>
+      <div style={{width: '10%' }}>
       <CheckoutCard weapons={weapons} selections={selections} total={total} handleBuy={handleBuy} />
+      </div>
+  
+    <div style={{width: '100%' }}>
+      <WeaponCard weapon={weaponHover}/>
+    </div>
+
+
     </>
   );
 }

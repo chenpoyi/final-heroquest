@@ -33,7 +33,7 @@ type drawerList = {
   drawerList: string[]
 }
 
-export default function LeftDrawer( {drawerList} :drawerList) {
+export default function LeftDrawer( ) {
   const classes = useStyles();
   const [state, setState] = React.useState({
     top: false,
