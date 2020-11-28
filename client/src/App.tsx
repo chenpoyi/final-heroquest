@@ -20,6 +20,7 @@ import Grid from "@material-ui/core/Grid";
 import Lobbies from "./components/Lobby/Lobbies";
 import Session from "./components/Session/index";
 import Home from "./components/Home";
+import NewCharacter from "./components/MakeNewCharacter/MakeNewCharacterPage";
 
 interface IProps {
   // history: string[];
@@ -103,6 +104,15 @@ class App extends Component<IProps, IState> {
                   </Route>
                   <Route path="/session">
                     <Session user={this.state.user} />
+                  </Route>
+
+                  <Route path="/newcharacter">
+                    <Grid item>
+                      <Grid item>
+                        <NewCharacter />
+                      </Grid>
+                    </Grid>
+
                   </Route>
                   <Route path="/user">
                     <User user={this.state.user} />

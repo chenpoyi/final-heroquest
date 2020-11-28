@@ -61,10 +61,10 @@ heroes = Hero.create({
 
 heroes = Hero.create({
   race: 'zargon', 
-  attack: 1, 
-  defend: 2, 
-  body: 4, 
-  mind: 6, 
+  attack: 0, 
+  defend: 0, 
+  body: 0, 
+  mind: 0, 
   image:'https://i.imgur.com/PEM18xf.gif'
   })
 
@@ -112,56 +112,56 @@ users = User.create({
 
 user_character = Character.create! ({
   name:"Ragnor",
-  attack: "3D6",
-  defend: "2D6",
+  attack: 3,
+  defend: 2,
   body: 8, 
   mind: 2,
   gold: 400,
   users_id: 3,
   heros_id: 1,
-  movement: "2D6",
+  movement: 2,
   weapon: "Broadsword",
   image: 'https://i.imgur.com/h0nbSUe.gif'
 })
 
 user_character = Character.create! ({
   name:"Saurlith",
-  attack: "2D6",
-  defend: "2D6",
+  attack: 2,
+  defend: 2,
   body: 7, 
   mind: 3,
   gold: 450,
   users_id: 4,
   heros_id: 2,
-  movement: "2D6",
+  movement: 2,
   weapon: "Short Sword",
   image:'https://i.imgur.com/jHZRMeu.gif'
 })
 
 user_character = Character.create! ({
   name:"Maursin",
-  attack: "2D6",
-  defend: "2D6",
+  attack: 2,
+  defend: 2,
   body: 6, 
   mind: 4,
   gold: 600,
   users_id: 1,
   heros_id: 3,
-  movement: "2D6",
+  movement: 2,
   weapon: "Short Sword",
   image: 'https://i.imgur.com/51xJXTf.gif'
 })
 
 user_character = Character.create! ({
   name:"Elsin",
-  attack: "1D6",
-  defend: "2D6",
+  attack: 1,
+  defend: 2,
   body: 4, 
   mind: 6,
   gold: 300,
   users_id: 5,
   heros_id: 4,
-  movement: "2D6",
+  movement: 2,
   weapon: "Dagger",
   image:'https://i.imgur.com/PEM18xf.gif'
 })
@@ -170,42 +170,42 @@ user_character = Character.create! ({
 
 user_character = Character.create! ({
   name:"Detrix",
-  attack: "3D6",
-  defend: "2D6",
+  attack: 3,
+  defend: 2,
   body: 8, 
   mind: 2,
   gold: 400,
   users_id: 1,
   heros_id: 1,
-  movement: "2D6",
+  movement: 2,
   weapon: "Broadsword",
   image: 'https://i.imgur.com/h0nbSUe.gif'
 })
 
 user_character = Character.create! ({
   name:"Axios",
-  attack: "2D6",
-  defend: "2D6",
+  attack: 2,
+  defend: 2,
   body: 6, 
   mind: 4,
   gold: 600,
   users_id: 1,
   heros_id: 2,
-  movement: "2D6",
+  movement: 2,
   weapon: "Short Sword",
   image:'https://i.imgur.com/jHZRMeu.gif'
 })
 
 user_character = Character.create! ({
   name:"Doloman the Wise",
-  attack: "1D6",
+  attack: 1,
   defend: "2D6",
   body: 4, 
   mind: 6,
   gold: 300,
   users_id: 1,
   heros_id: 4,
-  movement: "2D6",
+  movement: 2,
   weapon: "Dagger",
   image:'https://i.imgur.com/PEM18xf.gif'
 })
@@ -213,14 +213,14 @@ user_character = Character.create! ({
 
 user_character = Character.create! ({
   name:"Zargon",
-  attack: "Monster Attack",
-  defend: "Monster Defend",
+  attack: 0,
+  defend: 0,
   body: 0, 
   mind: 0,
   gold: 0,
   users_id: 1,
   heros_id: 5,
-  movement: "Check Monsters",
+  movement: 0,
   weapon: "Spells and Monsters",
   image:'https://i.imgur.com/PEM18xf.gif'
 })
@@ -228,14 +228,14 @@ user_character = Character.create! ({
 
 user_character = Character.create! ({
   name:"Zargon",
-  attack: "Monster Attack",
-  defend: "Monster Defend",
+  attack: 0,
+  defend: 0,
   body: 0, 
   mind: 0,
   gold: 0,
   users_id: 2,
   heros_id: 5,
-  movement: "Check Monsters",
+  movement: 0,
   weapon: "Spells and Monsters",
   image:'https://i.imgur.com/PEM18xf.gif'
 })
@@ -243,14 +243,14 @@ user_character = Character.create! ({
 
 user_character = Character.create! ({
   name:"Zargon",
-  attack: "Monster Attack",
-  defend: "Monster Defend",
+  attack: 0,
+  defend: 0,
   body: 0, 
   mind: 0,
   gold: 0,
   users_id: 3,
   heros_id: 5,
-  movement: "Check Monsters",
+  movement: 0,
   weapon: "Spells and Monsters",
   image:'https://i.imgur.com/PEM18xf.gif'
 })
@@ -258,8 +258,8 @@ user_character = Character.create! ({
 
 user_character = Character.create! ({
   name:"Zargon",
-  attack: "Monster Attack",
-  defend: "Monster Defend",
+  attack: 0,
+  defend: 0,
   body: 0, 
   mind: 0,
   gold: 0,
@@ -272,14 +272,14 @@ user_character = Character.create! ({
 
 user_character = Character.create! ({
   name:"Zargon",
-  attack: "Monster Attack",
-  defend: "Monster Defend",
+  attack: 0,
+  defend: 0,
   body: 0, 
   mind: 0,
   gold: 0,
   users_id: 5,
   heros_id: 5,
-  movement: "Check Monsters",
+  movement: 0,
   weapon: "Spells and Monsters",
   image:'https://i.imgur.com/PEM18xf.gif'
 })
@@ -765,3 +765,61 @@ LobbyMonster.destroy_all
       lobbies_id: 2,
       monsters_id: 3 #there must be a way to pull this in
     })
+
+    ## Character weapons 
+puts "Re-creating CharacterWeapons"
+
+CharacterWeapon.destroy_all
+
+character_weapon = CharacterWeapon.create! ({
+  characters_id: 1,
+  weapons_id: 2,
+
+})
+
+character_weapon = CharacterWeapon.create! ({
+  characters_id: 1,
+  weapons_id: 6,
+
+})
+
+character_weapon = CharacterWeapon.create! ({
+  characters_id: 2,
+  weapons_id: 7,
+
+})
+
+character_weapon = CharacterWeapon.create! ({
+  characters_id: 3,
+  weapons_id: 7,
+
+})
+
+character_weapon = CharacterWeapon.create! ({
+  characters_id: 4,
+  weapons_id: 4,
+
+})
+
+## extra characters for user 1
+
+character_weapon = CharacterWeapon.create! ({
+  characters_id: 5,
+  weapons_id: 2,
+
+})
+
+character_weapon = CharacterWeapon.create! ({
+  characters_id: 6,
+  weapons_id: 7,
+
+})
+
+character_weapon = CharacterWeapon.create! ({
+  characters_id: 7,
+  weapons_id: 4,
+
+})
+
+
+   

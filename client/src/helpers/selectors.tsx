@@ -90,6 +90,9 @@ export const updateCharacterPoints = function(id :number, body :number, mind :nu
         console.log(err)
       });
     }
+export const getNewHero = function () {
+  return newHero
+}
 
 export const getMonsters = function () {
   return monsterData
@@ -343,3 +346,57 @@ const lobbyMonsters = [
 }
 ];
 
+// make a new character
+
+const newHero = [
+  
+  {
+  id: 1,  
+  race: 'barbarian', 
+  attack: 3, 
+  defend: 2, 
+  body: 8 , 
+  mind: 2, 
+  image: 'https://i.imgur.com/h0nbSUe.gif'
+  },
+
+  {
+  id: 2,
+  race: 'dwarf', 
+  attack: 2, 
+  defend: 2, 
+  body: 7, 
+  mind: 3, 
+  image:'https://i.imgur.com/jHZRMeu.gif'
+  },
+
+{
+  id: 3,
+  race: 'elf', 
+  attack: 2, 
+  defend: 2, 
+  body: 6, 
+  mind: 4, 
+  image: 'https://imgur.com/a/j5ow8li'
+  },
+  
+{
+  id: 4,
+  race: 'wizard', 
+  attack: 1, 
+  defend: 2, 
+  body: 4, 
+  mind: 6, 
+  image:'https://i.imgur.com/PEM18xf.gif'
+  },
+
+{
+  id: 5,
+  race: 'zargon', 
+  attack: 0, 
+  defend: 0, 
+  body: 0, 
+  mind: 0, 
+  image:'https://i.imgur.com/PEM18xf.gif'
+  }
+];
