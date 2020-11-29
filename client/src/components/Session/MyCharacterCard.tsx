@@ -35,16 +35,16 @@ type CharacterCardProps = {
   // lastUsed :string, 
   // race :string, 
   // questsCompleted :number, 
-  image: string,
-  body: number,
-  mind: number,
-  attack: number,
-  defend: number,
-  movement: number,
-  gold: number,
-  users_id: number,
-  user: any,
-  users: any
+  image :string,
+  body :number,
+  mind :number,
+  attack :number,
+  defend :number,
+  movement :number,
+  gold :number,
+  users_id :number,
+  user :any,
+  users :any
 }
 
 export default function MyCharacterCard({ id, name, image, body, mind, attack, defend, movement, gold, users_id, user, users }: CharacterCardProps) {

@@ -13,7 +13,7 @@ import CardMedia from "@material-ui/core/CardMedia";
 
 import { getNewHero } from "../../helpers/selectors";
 import CharacterCard from "./MakeNewCharacterCard";
-
+ 
 const useStyles = makeStyles({
   root: {
     maxWidth: "100%",
@@ -41,38 +41,38 @@ type Hero = {
 };
 
 export default function MakeNewCharacterList({ user }: any) {
-  const [heroes, setHeroes] = React.useState<Hero[]>([]);
+  // const [heroes, setHeroes] = React.useState<Hero[]>([]);
 
-  const classes = useStyles();
-  const [selectedIndex, setSelectedIndex] = React.useState(0);
+  // const classes = useStyles();
+  // const [selectedIndex, setSelectedIndex] = React.useState(0);
 
-  const handleListItemClick = (
-    event: React.MouseEvent<HTMLDivElement, MouseEvent>,
-    index: number
-  ) => {
-    setSelectedIndex(index);
-  };
+  // const handleListItemClick = (
+  //   event: React.MouseEvent<HTMLDivElement, MouseEvent>,
+  //   index: number
+  // ) => {
+  //   setSelectedIndex(index);
+  // };
 
-  // needs to be changed to heroes
-  const characterList = heroes.map((hero, index) => {
-    return (
-      <ListItem
-        button
-        selected={selectedIndex === index}
-        onClick={(event) => handleListItemClick(event, index)}
-      >
-        <ListItemText primary={hero.race} />
-      </ListItem>
-    );
-  });
+  // // needs to be changed to heroes
+  // const characterList = heroes.map((hero, index) => {
+  //   return (
+  //     <ListItem
+  //       button
+  //       selected={selectedIndex === index}
+  //       onClick={(event) => handleListItemClick(event, index)}
+  //     >
+  //       <ListItemText primary={hero.race} />
+  //     </ListItem>
+  //   );
+  // });
 
-  //need help with this call
+  // //need help with this call
   // React.useEffect(() => {
   //   getNewHero().then((heroes) => {
   //     setHeroes(heroes);
   //   });
   // }, [heroes]);
-
+ 
   return (
     <>
       {/* <Card className={classes.root}>
@@ -88,4 +88,8 @@ export default function MakeNewCharacterList({ user }: any) {
       </Card> */}
     </>
   );
-}
+} 
+
+
+
+   

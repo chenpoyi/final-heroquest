@@ -42,9 +42,9 @@ gold:number,
 created_at:string,
 updated_at:string,
 users_id:number,
-heros_id:number,
-movement:string,
-weapon:number,
+heros_id: number,
+movement: number,
+weapon: number,
 image: string
 }
 
