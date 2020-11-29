@@ -6,15 +6,15 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 export const theme = createMuiTheme({
   palette: {
     primary: {
-      main: "#E7B42E",
+      main: "#735D58",
       
     },
     secondary: {
-      main: "hsla(5, 51%, 46%, 1)",
+      main: "#212626",
     },
     type: "dark", 
     background:{
-      default: "#222"
+      default: "#010D00"
     },
   },
   // overrides: {

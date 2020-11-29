@@ -22,6 +22,7 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       maxWidth: 345,
+   
     },
     media: {
       height: 0,
@@ -46,9 +47,13 @@ const useStyles = makeStyles((theme: Theme) =>
 type Quest = {
   name :string,
   description :string
+} 
+
+type QuestListProps = {
+  user :any
 }
 
-export default function QuestList() {
+export default function QuestList({user}:QuestListProps) {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
   const [quests, setQuest] = React.useState<Quest[]>([]);
@@ -80,7 +85,7 @@ export default function QuestList() {
     <Card className={classes.root}>
       <CardHeader
         title="Completed Quests"
-        subheader="NAME OF USER"
+        subheader={user.email}
       />
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">

@@ -6,6 +6,7 @@ import Signup from "./components/Signup";
 import Login from "./components/Login";
 import Armory from "./components/Armory";
 import User from "./components/User";
+import MakeNewCharacterList from "./components/MakeNewCharacter/MakeNewCharacterList";
 
 import {
   BrowserRouter as Router,
@@ -18,9 +19,9 @@ import {
 
 import Grid from "@material-ui/core/Grid";
 import Lobbies from "./components/Lobby/Lobbies";
-import Sessions from "./components/Session/Sessions";
+import Session from "./components/Session/index";
 import Home from "./components/Home";
-import MakeNewCharacterList from "./components/MakeNewCharacter/MakeNewCharacterList"
+
 interface IProps {
   // history: string[];
 }
@@ -102,18 +103,13 @@ class App extends Component<IProps, IState> {
                     </Grid>
                   </Route>
                   <Route path="/session">
-                  <Grid item>
-                      <Grid item>
-                        <Sessions user={this.state.user} />
-                      </Grid>
-                    </Grid>
-                    
+                    <Session user={this.state.user} />
                   </Route>
 
                   <Route path="/newcharacter">
                     <Grid item>
                       <Grid item>
-                       <MakeNewCharacterList user={this.state.user}/>
+                        <MakeNewCharacterList user={this.state.user}/>
                       </Grid>
                     </Grid>
 

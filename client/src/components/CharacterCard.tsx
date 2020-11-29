@@ -19,8 +19,8 @@ const useStyles = makeStyles({
     display: "flex",
   },
   media: {
-    minHeight: 125,
-    minWidth: 125,
+    minHeight: 160,
+    minWidth: 160,
 
     backgroundSize: "contain",
   },
@@ -73,7 +73,7 @@ export default function CharacterCard({ character }: CharacterCardProps) {
               variant="body2"
               component="p"
             >
-              <ul style={{ listStyleType: "none", padding: 0, fontSize: 10}}>
+              <ul style={{ listStyleType: "none", padding: 0, fontSize: 14}}>
                 <li>Quest Completed: {character.questsCompleted}/14</li>
                 <li>Date Created: {character.dateCreated}</li>
                 <li>Last Used: {character.lastUsed}</li>

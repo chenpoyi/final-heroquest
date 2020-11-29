@@ -27,8 +27,8 @@ import WeaponList from "./WeaponList";
 import { Grid } from "@material-ui/core";
 const useStyles = makeStyles({
   root: {
-    maxWidth: "50%",
-    marginTop: 25,
+    maxWidth: "100%", 
+
   },
   media: {
     height: 150,
@@ -103,11 +103,12 @@ export default function CharacterList({ user }: any) {
     });
   }, []);
 
-  return (
+  return ( 
     <>
-     <Grid container>
+     <Grid container spacing={2} className={classes.root}>
         <Grid item xs={6}>
           <CharacterCard character={characters[selectedIndex]} />
+          
         </Grid>
 
         <Grid item xs={3}>
@@ -116,16 +117,18 @@ export default function CharacterList({ user }: any) {
               {characterList}
             </List>
           </Typography>
+          <Link className={classes.menuLink} to="/newcharacter">
+              <Button  variant="contained" size="small" color="primary">
+                New Character
+              </Button>
+          </Link>
+        </Grid>
+    
+      <Grid item xs={3}>
+      <WeaponList character={characters[selectedIndex]} />
+      
         </Grid>
       </Grid>
-    
-
-      <WeaponList character={characters[selectedIndex]} />
-      <Link className={classes.menuLink} to="/newcharacter">
-            <Button  variant="contained" size="small" color="primary">
-              New Character
-            </Button>
-          </Link>
     </>
   );
 }
