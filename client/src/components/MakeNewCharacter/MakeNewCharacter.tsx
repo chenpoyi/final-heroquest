@@ -67,15 +67,15 @@ export default function MakeNewCharacterList({ user }: any) {
   });
 
   //need help with this call
-  React.useEffect(() => {
-    getNewHero().then((heroes) => {
-      setHeroes(heroes);
-    });
-  }, [heroes]);
+  // React.useEffect(() => {
+  //   getNewHero().then((heroes) => {
+  //     setHeroes(heroes);
+  //   });
+  // }, [heroes]);
 
   return (
     <>
-      <Card className={classes.root}>
+      {/* <Card className={classes.root}>
         <CardHeader title={`Select a Hero`}></CardHeader>
         <CardContent>
           <CharacterCard hero={heroes[selectedIndex]} />
@@ -85,7 +85,7 @@ export default function MakeNewCharacterList({ user }: any) {
             </List>
           </Typography>
         </CardContent>
-      </Card>
+      </Card> */}
     </>
   );
 }
