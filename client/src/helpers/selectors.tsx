@@ -370,7 +370,7 @@ const newHero = [
   
   {
     id: 1,
-    race: 'barbarian', 
+    race: 'Barbarian', 
     attack: 3, 
     defend: 2, 
     body: 8 , 
@@ -382,7 +382,7 @@ const newHero = [
   
   {
     id: 2,
-    race: 'dwarf', 
+    race: 'Dwarf', 
     attack: 2, 
     defend: 2, 
     body: 7, 
@@ -394,19 +394,19 @@ const newHero = [
   
   {
     id: 3,
-    race: 'elf', 
+    race: 'Elf', 
     attack: 2, 
     defend: 2, 
     body: 6, 
     mind: 4, 
     movement: 2,
     default_weapon: 7,
-    image: 'https://imgur.com/a/j5ow8li'
+    image: 'https://i.imgur.com/51xJXTf.gif'
     },
     
  {
     id: 4,
-    race: 'wizard', 
+    race: 'Wizard', 
     attack: 1, 
     defend: 2, 
     body: 4, 
@@ -418,7 +418,7 @@ const newHero = [
   
   {
     id:5,
-    race: 'zargon', 
+    race: 'Zargon', 
     attack: 0, 
     defend: 0, 
     body: 0, 
