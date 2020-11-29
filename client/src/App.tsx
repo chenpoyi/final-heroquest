@@ -109,6 +109,15 @@ class App extends Component<IProps, IState> {
                     </Grid>
                     
                   </Route>
+
+                  <Route path="/newcharacter">
+                    <Grid item>
+                      <Grid item>
+                       
+                      </Grid>
+                    </Grid>
+
+                  </Route>
                   <Route path="/user">
                     <User user={this.state.user} />
                   </Route>

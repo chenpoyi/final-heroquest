@@ -6,6 +6,7 @@ import axios from "axios";
 import CharacterList from './CharacterList';
 import QuestList from './QuestList'
 import WeaponList from './WeaponList';
+import { Grid } from "@material-ui/core";
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
@@ -34,9 +35,20 @@ export default function User({user}: UserProps) {
   
   return (
     <>
-      <CharacterList user={user}/>
-      <QuestList />
-    
+      <Grid container spacing={2}>
+        <Grid item xs={12} sm={12}>
+          <CharacterList user={user}/>
+        </Grid>
+        {/* <Grid  item xs={12} sm={3}>
+          <h5>Character Stats PlaceHolder</h5>
+        </Grid> */}
+      
+      
+
+        <Grid item xs={12} sm={6}>
+          <QuestList />
+        </Grid>
+      </Grid>
     </>
   );
 }

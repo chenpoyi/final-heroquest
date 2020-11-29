@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
@@ -11,14 +11,12 @@ import Typography from "@material-ui/core/Typography";
 import CardHeader from "@material-ui/core/CardHeader";
 import CardMedia from "@material-ui/core/CardMedia";
 
-import { getCharacters } from "../helpers/selectors";
+import { getNewHero } from "../../helpers/selectors";
+import CharacterCard from "./MakeNewCharacterCard";
 
-import CharacterCard from "./CharacterCard";
-import WeaponList from "./WeaponList";
-import { Grid } from "@material-ui/core";
 const useStyles = makeStyles({
   root: {
-    maxWidth: "50%",
+    maxWidth: "100%",
     marginTop: 25,
   },
   media: {
@@ -30,40 +28,22 @@ const useStyles = makeStyles({
   },
 });
 
-// type CharacterCardProps = {
-//   charName :string,
-//   dateCreated :string,
-//   lastUsed :string,
-//   race :string,
-//   questsCompleted :number,
-//   imgSrc :string,
-//   body :number,
-//   mind :number,
-//   attack :number,
-//   defense :number,
-//   movement :number,
-// }
-type Character = {
+type Hero = {
   id: number;
   name: string;
-  dateCreated: string;
-  lastUsed: string;
   race: string;
-  questsCompleted: number;
   image: string;
   body: number;
   mind: number;
   attack: number;
   defend: number;
   movement: number;
-  gold: number;
 };
 
-export default function CharacterList({ user }: any) {
-  const [characters, setCharacters] = React.useState<Character[]>([]);
+export default function MakeNewCharacterList({ user }: any) {
+  const [heroes, setHeroes] = React.useState<Hero[]>([]);
 
   const classes = useStyles();
-  // const bull = <span className={classes.bullet}>•</span>;
   const [selectedIndex, setSelectedIndex] = React.useState(0);
 
   const handleListItemClick = (
@@ -73,42 +53,39 @@ export default function CharacterList({ user }: any) {
     setSelectedIndex(index);
   };
 
-  const characterList = characters.map((character, index) => {
+  // needs to be changed to heroes
+  const characterList = heroes.map((hero, index) => {
     return (
       <ListItem
         button
         selected={selectedIndex === index}
         onClick={(event) => handleListItemClick(event, index)}
       >
-        <ListItemText primary={character.name} />
+        <ListItemText primary={hero.race} />
       </ListItem>
     );
   });
 
+  //need help with this call
   React.useEffect(() => {
-    getCharacters(user).then((characters) => {
-      setCharacters(characters);
+    getNewHero().then((heroes) => {
+      setHeroes(heroes);
     });
-  }, []);
+  }, [heroes]);
 
   return (
     <>
-     <Grid container>
-        <Grid item xs={6}>
-          <CharacterCard character={characters[selectedIndex]} />
-        </Grid>
-
-        <Grid item xs={3}>
+      <Card className={classes.root}>
+        <CardHeader title={`Select a Hero`}></CardHeader>
+        <CardContent>
+          <CharacterCard hero={heroes[selectedIndex]} />
           <Typography className={classes.list}>
             <List component="nav" aria-label="main mailbox folders">
               {characterList}
             </List>
           </Typography>
-        </Grid>
-      </Grid>
-    
-
-      <WeaponList character={characters[selectedIndex]} />
+        </CardContent>
+      </Card>
     </>
   );
 }

@@ -140,22 +140,6 @@ export default function Armory({user}:ArmoryProps) {
     return 0;
   }
 
-  const weaponText = "This light metal armor gives you 1 extra combat die in defense. May be combined with the Helmet and/or Shield."
-  
-  // const weaponToolTip = () => {
-  //   // alert("onHover")
-  //   return (
-
-  //     <>
-  //       <Tooltip disableFocusListener title={} >
-  //         <Button> Test for tool tip</Button>
-  //       </Tooltip>
-     
-  //     </> 
-  //   )
-  // }
-
-
   return (
     <>
 
