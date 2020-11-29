@@ -12,6 +12,16 @@ class Api::CharactersController < ApplicationController
 
   end
   
+  def create
+    @hero = Hero.find_by(:id => params[:hero_id])
+    @new_character = Character.create(name: params[:name], body: @hero.body, mind: @hero.mind, gold: 0, image: @hero.image, attack: @hero.attack, defend: @hero.defend, movement: @hero.movement, users_id: params[:user_id])
+    @new_weapon = CharacterWeapon.create(characters_id: @new_character.id, weapons_id: @hero.default_weapon )
+    # CharacterWeapon.create(characters_id: @characters, weapons_id: weapon)
+    render :json => {
+      message: "character created"
+    }
+  end
+
   def show
     @character = Character.find_by(:id => params[:id])
     render :json =>{

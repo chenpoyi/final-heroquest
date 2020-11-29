@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_28_211242) do
+ActiveRecord::Schema.define(version: 2020_11_29_020305) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,7 +58,6 @@ ActiveRecord::Schema.define(version: 2020_11_28_211242) do
     t.bigint "characters_id"
     t.bigint "lobbies_id"
     t.bigint "users_id"
-    # t.integer "user_id"
     t.index ["characters_id"], name: "index_character_lobbies_on_characters_id"
     t.index ["lobbies_id"], name: "index_character_lobbies_on_lobbies_id"
     t.index ["users_id"], name: "index_character_lobbies_on_users_id"
@@ -116,8 +115,8 @@ ActiveRecord::Schema.define(version: 2020_11_28_211242) do
     t.integer "body"
     t.integer "mind"
     t.string "image"
-    t.string "movement"
     t.integer "default_weapon"
+    t.integer "movement"
   end
 
   create_table "lobbies", force: :cascade do |t|

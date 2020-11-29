@@ -33,12 +33,12 @@ const useStyles = makeStyles({
   },
 });
 
-type CharacterCardProps = {
+type MakeNewCharacterCardProps = {
   hero: Hero;
 };
 type Hero = {
   id: number;
-  name: string;
+  // name: string;
   race: string;
   image: string;
   body: number;
@@ -46,9 +46,10 @@ type Hero = {
   attack: number;
   defend: number;
   movement: number;
+  default_weapon: number;
 };
 
-export default function CharacterCard({ hero }: CharacterCardProps) {
+export default function MakeNewCharacterCard({ hero }: MakeNewCharacterCardProps) {
   const classes = useStyles();
   // const bull = <span className={classes.bullet}>•</span>;
 

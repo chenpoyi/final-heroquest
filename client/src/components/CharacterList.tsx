@@ -11,6 +11,15 @@ import Typography from "@material-ui/core/Typography";
 import CardHeader from "@material-ui/core/CardHeader";
 import CardMedia from "@material-ui/core/CardMedia";
 
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  Redirect,
+  useRouteMatch,
+} from "react-router-dom";
+
 import { getCharacters } from "../helpers/selectors";
 
 import CharacterCard from "./CharacterCard";
@@ -28,6 +37,9 @@ const useStyles = makeStyles({
     maxWidth: 125,
     fontSize: 15,
   },
+  menuLink: {
+    textDecoration: 'none',
+},
 });
 
 // type CharacterCardProps = {
@@ -109,6 +121,11 @@ export default function CharacterList({ user }: any) {
     
 
       <WeaponList character={characters[selectedIndex]} />
+      <Link className={classes.menuLink} to="/newcharacter">
+            <Button  variant="contained" size="small" color="primary">
+              New Character
+            </Button>
+          </Link>
     </>
   );
 }

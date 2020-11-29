@@ -20,7 +20,7 @@ import Grid from "@material-ui/core/Grid";
 import Lobbies from "./components/Lobby/Lobbies";
 import Sessions from "./components/Session/Sessions";
 import Home from "./components/Home";
-
+import MakeNewCharacterList from "./components/MakeNewCharacter/MakeNewCharacterList"
 interface IProps {
   // history: string[];
 }
@@ -113,7 +113,7 @@ class App extends Component<IProps, IState> {
                   <Route path="/newcharacter">
                     <Grid item>
                       <Grid item>
-                       
+                       <MakeNewCharacterList user={this.state.user}/>
                       </Grid>
                     </Grid>
 

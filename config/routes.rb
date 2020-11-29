@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
     # resources :dogs
     # get '/', action: :index, controller: 'test'
+    post '/characters/create' => 'characters#create'
     get 'users/:id/characters' => 'characters#index'
     get 'characters/:id' => 'characters#show'
     post '/weapons/purchase' => 'weapons#purchase'
@@ -23,6 +24,7 @@ Rails.application.routes.draw do
     get '/lobby/:id/characters' => 'lobbies#characters'
     post 'lobby/characters' => 'lobbies#add_characters'
     get '/character/weapons/:id' => 'characters#weapons'
+    
   end
 
   get '*path', to: "static_pages#fallback_index_html", constraints: ->(request) do

@@ -187,7 +187,19 @@ export const selectCharacterOfLobby = function (user_id: number, character_id: n
     });
 }
 
+export const addCharacter = function(name: string, hero_id: number, user_id: number){
 
+  return axios
+    .post(`/api/characters/create`, { name, hero_id, user_id}) // You can simply make your requests to "/api/whatever you want"
+    .then((response) => {
+      // handle success
+      // console.log(response.data.characters); // The entire response from the Rails API
+      console.log(response.data)
+
+    }).catch((err) => {
+      console.log(err)
+    });
+};
 const charactersData = [
   { name: 'Character 1', gold: 60 },
   { name: 'Character 2', gold: 90 },
@@ -363,6 +375,7 @@ const newHero = [
     defend: 2, 
     body: 8 , 
     mind: 2, 
+    movement: 2,
     default_weapon: 2,
     image: 'https://i.imgur.com/h0nbSUe.gif'
     },
@@ -374,6 +387,7 @@ const newHero = [
     defend: 2, 
     body: 7, 
     mind: 3, 
+    movement: 2,
     default_weapon: 7,
     image:'https://i.imgur.com/jHZRMeu.gif'
     },
@@ -385,6 +399,7 @@ const newHero = [
     defend: 2, 
     body: 6, 
     mind: 4, 
+    movement: 2,
     default_weapon: 7,
     image: 'https://imgur.com/a/j5ow8li'
     },
@@ -396,6 +411,7 @@ const newHero = [
     defend: 2, 
     body: 4, 
     mind: 6, 
+    movement: 2,
     default_weapon: 4,
     image:'https://i.imgur.com/PEM18xf.gif'
     },
@@ -407,6 +423,7 @@ const newHero = [
     defend: 0, 
     body: 0, 
     mind: 0, 
+    movement: 0,
     default_weapon: 4, 
     image:'https://i.imgur.com/PEM18xf.gif'
     }
