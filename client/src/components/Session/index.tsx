@@ -34,17 +34,17 @@ type Character ={
   
 id:number,
 name:string,
-attack:string,
-defend:string,
+attack:number,
+defend:number,
 body:number,
 mind:number,
 gold:number,
 created_at:string,
 updated_at:string,
 users_id:number,
-heros_id:number,
-movement:string,
-weapon:string,
+heros_id: number,
+movement: number,
+weapon: number,
 image: string
 }
 
