@@ -2,15 +2,10 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import CardHeader from "@material-ui/core/CardHeader";
-import CardMedia from "@material-ui/core/CardMedia";
-
+import Paper from '@material-ui/core/Paper';
 import {
   BrowserRouter as Router,
   Switch,
@@ -40,6 +35,11 @@ const useStyles = makeStyles({
   menuLink: {
     textDecoration: 'none',
 },
+charpaper:{
+  width: "100%",
+  height: "100%",
+  background: "#212626"
+}
 });
 
 // type CharacterCardProps = {
@@ -105,6 +105,10 @@ export default function CharacterList({ user }: any) {
 
   return ( 
     <>
+<Paper className={classes.charpaper}elevation={10}>
+
+
+
      <Grid container spacing={2} className={classes.root}>
         <Grid item xs={6}>
           <CharacterCard character={characters[selectedIndex]} />
@@ -129,6 +133,7 @@ export default function CharacterList({ user }: any) {
       
         </Grid>
       </Grid>
+      </Paper>
     </>
   );
 }

@@ -10,15 +10,18 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import CardHeader from "@material-ui/core/CardHeader";
 import CardMedia from "@material-ui/core/CardMedia";
-import FormControl from '@material-ui/core/FormControl';
-import TextField from '@material-ui/core/TextField';
+import FormControl from "@material-ui/core/FormControl";
+import TextField from "@material-ui/core/TextField";
 import { getNewHero, addCharacter } from "../../helpers/selectors";
 import MakeNewCharacterCard from "./MakeNewCharacterCard";
- 
+import { Grid } from "@material-ui/core";
+import Paper from '@material-ui/core/Paper';
 const useStyles = makeStyles({
   root: {
     maxWidth: "100%",
-    marginTop: 25,
+    marginTop: 50,
+    alignItems: "center"
+    
   },
   media: {
     height: 150,
@@ -26,7 +29,19 @@ const useStyles = makeStyles({
   list: {
     maxWidth: 125,
     fontSize: 15,
+    
   },
+  charpaper:{
+    width: "100%",
+    height: "100%",
+    background: "#212626"
+  }
+
+
+ 
+
+
+ 
 });
 
 type Hero = {
@@ -43,11 +58,11 @@ type Hero = {
 };
 
 // id: 1,
-//     race: 'barbarian', 
-//     attack: 3, 
-//     defend: 2, 
-//     body: 8 , 
-//     mind: 2, 
+//     race: 'barbarian',
+//     attack: 3,
+//     defend: 2,
+//     body: 8 ,
+//     mind: 2,
 //     default_weapon: 2,
 //     image: 'https://i.imgur.com/h0nbSUe.gif'
 
@@ -56,7 +71,7 @@ export default function MakeNewCharacterList({ user }: any) {
 
   const classes = useStyles();
   const [selectedIndex, setSelectedIndex] = React.useState(0);
-  const [nameState, setNameState] = React.useState('');
+  const [nameState, setNameState] = React.useState("");
 
   const handleListItemClick = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>,
@@ -83,7 +98,7 @@ export default function MakeNewCharacterList({ user }: any) {
     setHeroes(getNewHero());
     // getNewHero().then((heroes) => {
     //   setHeroes(heroes);
-    // }); 
+    // });
   }, [heroes]);
 
   const handleCharacterSave = () => {
@@ -93,18 +108,26 @@ export default function MakeNewCharacterList({ user }: any) {
     alert(heroes[selectedIndex].race);
     addCharacter(nameState, heroes[selectedIndex].id, user.id);
   };
- 
-  return ( 
+
+  return (
     <>
-      <Card className={classes.root}>
-        <CardHeader title={`Select a Hero`}></CardHeader>
-        <CardContent>
+      <Paper className={classes.charpaper}elevation={10}>
+      <Grid container className={classes.root} spacing={6} alignItems="center" justify="center">
+        <Grid item xs={9} >
+          <Typography variant="h3">Select a Hero</Typography>
+        </Grid>
+        <Grid item xs={6}>
           <MakeNewCharacterCard hero={heroes[selectedIndex]} />
+        </Grid>
+
+        <Grid item xs={3}>
           <Typography className={classes.list}>
             <List component="nav" aria-label="main mailbox folders">
               {heroList}
             </List>
           </Typography>
+        </Grid>
+        <Grid item>
           <FormControl variant="outlined">
             <TextField
               id="outlined-number"
@@ -112,22 +135,26 @@ export default function MakeNewCharacterList({ user }: any) {
               // type="number"
               defaultValue={nameState}
               value={nameState}
-              onChange={(e) => { setNameState(e.target.value) }}
+              onChange={(e) => {
+                setNameState(e.target.value);
+              }}
               InputLabelProps={{
                 shrink: true,
               }}
               variant="outlined"
             />
-            <Button onClick={handleCharacterSave} variant="contained" size="small" color="primary">
+            <Button
+              onClick={handleCharacterSave}
+              variant="contained"
+              size="small"
+              color="primary"
+            >
               Save Character
             </Button>
           </FormControl>
-        </CardContent>
-      </Card>
+        </Grid>
+      </Grid>
+      </Paper>
     </>
   );
-} 
-
-
-
-   
+}

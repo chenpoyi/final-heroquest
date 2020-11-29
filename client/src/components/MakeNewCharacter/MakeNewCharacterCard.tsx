@@ -17,10 +17,11 @@ const useStyles = makeStyles({
     margin: 5,
     padding: 5,
     display: "flex",
+    background: "#735D58",
   },
   media: {
-    minHeight: 125,
-    minWidth: 125,
+    minHeight: 200,
+    minWidth: 200,
 
     backgroundSize: "contain",
   },
@@ -69,7 +70,7 @@ export default function MakeNewCharacterCard({ hero }: MakeNewCharacterCardProps
               variant="body2"
               component="p"
             >
-              <ul style={{ listStyleType: "none", padding: 0, fontSize: 10}}>
+              <ul style={{ listStyleType: "none", padding: 0, fontSize: 14}}>
                 <li>Body Points: {hero.body}</li>
                 <li>Mind Points: {hero.mind}</li>
                 <li>Attack Dice: {hero.attack}</li>

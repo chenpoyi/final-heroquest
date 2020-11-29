@@ -22,7 +22,7 @@ import { AutoSizer } from "@material-ui/data-grid";
 const useStyles = makeStyles({
   root: {
     maxWidth: "100%",
-    background: "#555",
+    background: "#735D58",
     padding: 40,
   },
   media: {
