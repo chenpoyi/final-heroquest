@@ -34,38 +34,33 @@ const useStyles = makeStyles({
 });
 
 type CharacterCardProps = {
-  character: Character;
+  hero: Hero;
 };
-type Character = {
+type Hero = {
   id: number;
   name: string;
-  dateCreated: string;
-  lastUsed: string;
   race: string;
-  questsCompleted: number;
   image: string;
   body: number;
   mind: number;
   attack: number;
   defend: number;
   movement: number;
-  gold: number;
 };
 
-export default function CharacterCard({ character }: CharacterCardProps) {
+export default function CharacterCard({ hero }: CharacterCardProps) {
   const classes = useStyles();
   // const bull = <span className={classes.bullet}>•</span>;
 
   return (
     <>
-      {character && (
+      {hero && (
         <Card className={classes.root}>
         <div>
             <Typography className={classes.header}>
-            {character.name}
-            {character.race}
+            {hero.race}
             </Typography>
-          <CardMedia className={classes.media} image={character.image} />
+          <CardMedia className={classes.media} image={hero.image} />
         </div>
           <CardContent>
             <Typography
@@ -74,15 +69,11 @@ export default function CharacterCard({ character }: CharacterCardProps) {
               component="p"
             >
               <ul style={{ listStyleType: "none", padding: 0, fontSize: 10}}>
-                <li>Quest Completed: {character.questsCompleted}/14</li>
-                <li>Date Created: {character.dateCreated}</li>
-                <li>Last Used: {character.lastUsed}</li>
-                <li>Body Points: {character.body}</li>
-                <li>Mind Points: {character.mind}</li>
-                <li>Attack Dice: {character.attack}</li>
-                <li>Defense Dice: {character.defend}</li>
-                <li>Movement: {character.movement}</li>
-                <li>Gold: {character.gold}</li>
+                <li>Body Points: {hero.body}</li>
+                <li>Mind Points: {hero.mind}</li>
+                <li>Attack Dice: {hero.attack}</li>
+                <li>Defense Dice: {hero.defend}</li>
+                <li>Movement: {hero.movement}</li>
               </ul>
             </Typography>
           </CardContent>
