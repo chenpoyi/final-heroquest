@@ -326,23 +326,29 @@ const monsterData = [
 const lobbyMonsters = [
 {
   id: 1,
+  name:"Orc",
   body: 11, 
   mind: 12,
-  lobbies_id: 1, 
+  lobbies_id: 3, 
+  image: "https://i.imgur.com/MrwYk8c.jpg",
 },
 
 {
   id: 2,
+  name:"Chaos Warrior",
   body: 23, 
   mind: 23,
-  lobbies_id: 1,
+  lobbies_id: 3,
+  image: "https://i.imgur.com/QPPVnmi.jpg",
 },
 
 {
   id: 3,
+  name:"Gargoyle",
   body: 33, 
   mind: 33,
-  lobbies_id: 1 
+  lobbies_id: 3,
+  image: "https://i.imgur.com/ocatT4L.jpeg",
 }
 ];
 

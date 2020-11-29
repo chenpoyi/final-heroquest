@@ -31,21 +31,23 @@ const useStyles = makeStyles({
 type CharacterCardProps = {
   id :number,
   name :string, 
-  dateCreated :string, 
-  lastUsed :string, 
-  race :string, 
-  questsCompleted :number, 
+  // dateCreated :string, 
+  // lastUsed :string, 
+  // race :string, 
+  // questsCompleted :number, 
   image :string,
   body :number,
   mind :number,
-  attack :number,
-  defend :number,
-  movement :number,
+  attack :string,
+  defend :string,
+  movement :string,
   gold :number,
-  user :any
+  users_id :number,
+  user :any,
+  users :any
 }
 
-export default function MyCharacterCard({id, name, dateCreated , lastUsed, race , questsCompleted , image, body, mind, attack, defend, movement, gold, user } :CharacterCardProps){
+export default function MyCharacterCard({id, name, image, body, mind, attack, defend, movement, gold, users_id, user, users } :CharacterCardProps){
 
   const classes = useStyles();
   const [goldState, setGold] = React.useState<number>(gold)
@@ -85,8 +87,9 @@ export default function MyCharacterCard({id, name, dateCreated , lastUsed, race 
   return (
     <Card className={classes.root}>
       <CardHeader 
-        title={user.email}
-        subheader={`${name}`}
+        title={`${name}`}
+        subheader={users.find(element => element.id == users_id).email}
+        
       >
       
       </CardHeader>
@@ -94,7 +97,7 @@ export default function MyCharacterCard({id, name, dateCreated , lastUsed, race 
       <CardMedia className={classes.media} image={image} />
       <CardContent>
        
-        <Typography variant="body2" component="p">
+      <Typography variant="body2" component="p">
        <ul style={{listStyleType:"none"}}> 
           <li>
             Attack Dice: {attack}
@@ -109,7 +112,7 @@ export default function MyCharacterCard({id, name, dateCreated , lastUsed, race 
         </ul> 
       
         </Typography>
-
+        <> {(users_id == user.id) && (<>
         <FormControl variant="outlined">
           <TextField
           id="outlined-number"
@@ -154,9 +157,9 @@ export default function MyCharacterCard({id, name, dateCreated , lastUsed, race 
           }}
           variant="outlined"
         />
-        </FormControl>
+        </FormControl></>)}</>
       </CardContent>
-      <Button onClick={handleCharacterSave} size="small">Save</Button>
+      {(users_id == user.id) && (<Button onClick={handleCharacterSave} size="small">Save</Button>)}
     </Card>
   );
 }

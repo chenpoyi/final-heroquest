@@ -620,11 +620,16 @@ lobby = Lobby.create! ({
 lobby = Lobby.create! ({
   name: "Lobby 2",
   url: "abcd",
-  status: 1,
+  status: 0,
 })
 
 lobby = Lobby.create! ({
   name: "Lobby 3",
+  url: "abcd",
+  status: 1,
+})
+lobby = Lobby.create! ({
+  name: "Lobby 4",
   url: "abcd",
   status: 2,
 })
@@ -635,49 +640,78 @@ puts "Re-creating CharacterLobby..."
 CharacterLobby.destroy_all
 
 character_lobby = CharacterLobby.create!({
-  characters_id: 4,
-  user_id: 1,
+  characters_id: 3,
+  users_id: 1,
+  lobbies_id: 1,
+})
+
+character_lobby = CharacterLobby.create!({
+  characters_id: 9,
+  users_id: 2,
+  lobbies_id: 1,
+})
+character_lobby = CharacterLobby.create!({
+  characters_id: 1,
+  users_id: 3,
   lobbies_id: 1,
 })
 
 character_lobby = CharacterLobby.create!({
   characters_id: 2,
-  user_id: 2,
+  users_id: 4,
   lobbies_id: 1,
+})
+
+character_lobby = CharacterLobby.create!({
+  # characters_id: 0,
+  users_id: 1,
+  lobbies_id: 2,
+})
+
+character_lobby = CharacterLobby.create!({
+  # characters_id: 0,
+  users_id: 2,
+  lobbies_id: 2,
+})
+character_lobby = CharacterLobby.create!({
+  # characters_id: 0,
+  users_id: 3,
+  lobbies_id: 2,
+})
+
+character_lobby = CharacterLobby.create!({
+  # characters_id: 0,
+  users_id: 4,
+  lobbies_id: 2,
+})
+# SEEDS OF LOBBY IN PROGRESS
+character_lobby = CharacterLobby.create!({
+  characters_id: 4,
+  users_id: 5,
+  lobbies_id: 3,
+})
+
+character_lobby = CharacterLobby.create!({
+  characters_id: 2,
+  users_id: 4,
+  lobbies_id: 3,
 })
 character_lobby = CharacterLobby.create!({
   characters_id: 1,
-  user_id: 3,
-  lobbies_id: 1,
+  users_id: 3,
+  lobbies_id: 3,
 })
 
 character_lobby = CharacterLobby.create!({
-  characters_id: 3,
-  user_id: 4,
-  lobbies_id: 1,
+  characters_id: 7,
+  users_id: 1,
+  lobbies_id: 3,
 })
 
 character_lobby = CharacterLobby.create!({
-  # characters_id: 0,
-  user_id: 1,
-  lobbies_id: 2,
-})
-
-character_lobby = CharacterLobby.create!({
-  # characters_id: 0,
-  user_id: 2,
-  lobbies_id: 2,
-})
-character_lobby = CharacterLobby.create!({
-  # characters_id: 0,
-  user_id: 3,
-  lobbies_id: 2,
-})
-
-character_lobby = CharacterLobby.create!({
-  # characters_id: 0,
-  user_id: 4,
-  lobbies_id: 2,
+  characters_id: 9,
+  users_id: 2,
+  lobbies_id: 3,
 })
 
 ## Monsters in the Lobby descriptions 

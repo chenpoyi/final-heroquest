@@ -4,6 +4,9 @@ import {
   BrowserRouter as Router,
   useParams
 } from "react-router-dom";
+import { Link } from 'react-router-dom';
+
+import useInterval from '@use-it/interval';
 
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
@@ -32,7 +35,12 @@ type User = {
   id: number,
   email: string
 }
-
+const useStyles = makeStyles({
+ 
+  menuLink: {
+    textDecoration: 'none',
+  },
+});
 const emptyPlayer: User = {
   id: 0,
   email: 'No players found.'
@@ -44,6 +52,7 @@ export default function Lobby({ user }: LobbyProps) {
   const [id, setId] = React.useState(Number(lobbyID));
   const [users, setUsers] = React.useState([]);
   const [count, setCount] = useState(0);
+  const classes = useStyles();
 
   React.useEffect(() => {
     getUsersOfLobby(id)
@@ -77,6 +86,11 @@ export default function Lobby({ user }: LobbyProps) {
       </Typography>
       <Grid container spacing={3}>
         <CharacterSelection users={users} characters={characters} lobby_id={id} />
+        <Link className={classes.menuLink} to={`/session/${lobbyID}`} >
+        <Button variant="contained" size="small" color="primary">
+          Start Game
+            </Button>
+      </Link>
       </Grid>
 
 

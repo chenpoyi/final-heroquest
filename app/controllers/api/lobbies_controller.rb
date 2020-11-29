@@ -6,7 +6,7 @@ class Api::LobbiesController < ApplicationController
     
     puts @players.inspect
     @array = @players.map{|player| 
-      @user_id = player.user_id
+      @user_id = player.users_id
       puts @user_id
       User.find_by(id: @user_id)
     }
@@ -34,7 +34,7 @@ class Api::LobbiesController < ApplicationController
     }
   end
   def add_characters
-    @character = CharacterLobby.find_by(user_id: params[:user_id], lobbies_id: params[:lobby_id])
+    @character = CharacterLobby.find_by(users_id: params[:user_id], lobbies_id: params[:lobby_id])
     @character.characters_id = params[:character_id]
     @character.save
     puts @character

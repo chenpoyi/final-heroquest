@@ -40,7 +40,7 @@ const useStyles = makeStyles({
 // monster card is rendered when the monster is selected from the list of current monsters
 
 
-export default function ZargonCard({lobbyMonsters}) {
+export default function ZargonCard({lobbyMonsters, user}) {
   const classes = useStyles();
   // These states are used to set the the monsters in the two lists 
   // List one data from the monsters - Selecting a monster
@@ -48,12 +48,19 @@ export default function ZargonCard({lobbyMonsters}) {
   const [monstersState, setMonstersState] = React.useState<any>([]);
   const [selectedMonsterId, setSelectedMonsterId] = React.useState<any>([]);
   const [currentlySelectedMonsters, setcurrentlySelectedMonsters] = React.useState<any>([]);
-  const [selectedActiveMonster, setSelectedActiveMonster] = React.useState<any>(currentlySelectedMonsters[0]);
+  // const [selectedActiveMonster, setSelectedActiveMonster] = React.useState<any>(currentlySelectedMonsters[0]);
 
   // this useEffect pulls the monster data for List one
     React.useEffect(()=>{
       setMonstersState(getMonsters())
     },[])
+    React.useEffect(()=>{
+      // if(lobbyMonsters){
+      // const lobbyMonstersInfo = lobbyMonsters.map((lobbyMonster)=>{
+      //   return monstersState.find(element => element.id == lobbyMonster.id)
+      // })
+      setcurrentlySelectedMonsters(lobbyMonsters)
+    },[lobbyMonsters])
 
   // This state is used For list highlighting
   const [selectedIndex, setSelectedIndex] = React.useState(1); 
@@ -92,14 +99,14 @@ export default function ZargonCard({lobbyMonsters}) {
   return (
     <>
     <Card className={classes.root}>
-      <CardHeader title={`Welcome ${"Zargon - Need character name"}`} subheader={"monster"}>
+      <CardHeader title={`Zargon`} subheader={`${user.email}`}>
 
       </CardHeader>
       <CardMedia className={classes.media} image={"imgSrc"} />
       <CardContent>
     <MonsterCard monster={currentlySelectedMonsters[selectedIndex]}/>
       <List component="nav" aria-label="main mailbox folders">
-      {activeMonsterList}
+      <>{currentlySelectedMonsters && (<>{activeMonsterList}</>)}</>
       </List>
         <FormControl >
         <InputLabel id="demo-simple-select-helper-label">Monster</InputLabel>
