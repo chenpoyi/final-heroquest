@@ -15,22 +15,22 @@ import TextField from '@material-ui/core/TextField';
 
 import Divider from '@material-ui/core/Divider'
 
-import {updateCharacterPoints} from '../../helpers/selectors'
+import { updateCharacterPoints } from '../../helpers/selectors'
 
 const useStyles = makeStyles({
-  root:{
+  root: {
     maxWidth: 300
   },
   media: {
     height: 150,
   },
- 
-  
- } );
+
+
+});
 
 type CharacterCardProps = {
-  id :number,
-  name :string, 
+  id: number,
+  name: string,
   // dateCreated :string, 
   // lastUsed :string, 
   // race :string, 
@@ -47,26 +47,26 @@ type CharacterCardProps = {
   users :any
 }
 
-export default function MyCharacterCard({id, name, image, body, mind, attack, defend, movement, gold, users_id, user, users } :CharacterCardProps){
+export default function MyCharacterCard({ id, name, image, body, mind, attack, defend, movement, gold, users_id, user, users }: CharacterCardProps) {
 
   const classes = useStyles();
   const [goldState, setGold] = React.useState<number>(gold)
   const [bodyState, setBody] = React.useState<number>(body)
   const [mindState, setMind] = React.useState<number>(mind)
-  
 
 
-  const handleGoldChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement >) => {
+
+  const handleGoldChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const goldNumber = Number(event.target.value)
     setGold(goldNumber);
   };
 
-  const handleBodyChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement >) => {
+  const handleBodyChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const bodyNumber = Number(event.target.value)
     setBody(bodyNumber);
   };
 
-  const handleMindChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement >) => {
+  const handleMindChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const mindNumber = Number(event.target.value)
     setMind(mindNumber);
   };
@@ -77,8 +77,8 @@ export default function MyCharacterCard({id, name, image, body, mind, attack, de
     updateCharacterPoints(id, bodyState, mindState, goldState)
   };
 
-  
-  React.useEffect( () => {
+
+  React.useEffect(() => {
     setGold(gold);
     setBody(body);
     setMind(mind);
@@ -86,78 +86,92 @@ export default function MyCharacterCard({id, name, image, body, mind, attack, de
 
   return (
     <Card className={classes.root}>
-      <CardHeader 
+      <CardHeader
         title={`${name}`}
         subheader={users.find(element => element.id == users_id).email}
-        
+
       >
-      
+
       </CardHeader>
-      
+
       <CardMedia className={classes.media} image={image} />
       <CardContent>
-       
-      <Typography variant="body2" component="p">
-       <ul style={{listStyleType:"none"}}> 
-          <li>
-            Attack Dice: {attack}
-          </li>
-          <li>
-           Defense Dice: {defend}
-          </li>
-          <li>
-            Movement: {movement}
-          </li>
-        
-        </ul> 
-      
+
+        <Typography variant="body2" component="p">
+          <ul style={{ listStyleType: "none" }}>
+            <li>
+              Attack Dice: {attack}
+            </li>
+            <li>
+              Defense Dice: {defend}
+            </li>
+            <li>
+              Movement: {movement}
+            </li>
+            <> {!(users_id == user.id) && (name != 'Zargon') && (<>
+              <li>
+                Body: {body}
+              </li>
+              <li>
+                Mind: {mind}
+              </li>
+              <li>
+                Gold: {gold}
+              </li>
+
+            </>)}</>
+          </ul>
+
         </Typography>
         <> {(users_id == user.id) && (<>
-        <FormControl variant="outlined">
-          <TextField
-          id="outlined-number"
-          label="Body"
-          type="number"
-          defaultValue={bodyState}
-          value={bodyState}
-          onChange={(e)=>{handleBodyChange(e)}}
-          InputLabelProps={{
-            shrink: true,
-          }}
-          variant="outlined"
-        />
-        </FormControl>
-        
-       
-        <FormControl variant="outlined"> 
-          <TextField
-          id="outlined-number"
-          label="Mind"
-          type="number"
-          defaultValue={mindState}
-          value={mindState}
-          onChange={(e)=>{handleMindChange(e)}}
-          InputLabelProps={{
-            shrink: true,
-          }}
-          variant="outlined"
-        />
-        </FormControl>
-       
-        <FormControl variant="outlined">
-          <TextField
-          id="outlined-number"
-          label="Gold"
-          type="number"
-          defaultValue={goldState}
-          value={goldState}
-          onChange={(e)=>{handleGoldChange(e)}}
-          InputLabelProps={{
-            shrink: true,
-          }}
-          variant="outlined"
-        />
-        </FormControl></>)}</>
+          <FormControl variant="outlined">
+            <TextField
+              id="outlined-number"
+              label="Body"
+              type="number"
+              defaultValue={bodyState}
+              value={bodyState}
+              onChange={(e) => { handleBodyChange(e) }}
+              InputLabelProps={{
+                shrink: true,
+              }}
+              variant="outlined"
+            />
+          </FormControl>
+
+
+          <FormControl variant="outlined">
+            <TextField
+              id="outlined-number"
+              label="Mind"
+              type="number"
+              defaultValue={mindState}
+              value={mindState}
+              onChange={(e) => { handleMindChange(e) }}
+              InputLabelProps={{
+                shrink: true,
+              }}
+              variant="outlined"
+            />
+          </FormControl>
+
+          <FormControl variant="outlined">
+            <TextField
+              id="outlined-number"
+              label="Gold"
+              type="number"
+              defaultValue={goldState}
+              value={goldState}
+              onChange={(e) => { handleGoldChange(e) }}
+              InputLabelProps={{
+                shrink: true,
+              }}
+              variant="outlined"
+            />
+          </FormControl></>)}</>
+
+
+
       </CardContent>
       {(users_id == user.id) && (<Button onClick={handleCharacterSave} size="small">Save</Button>)}
     </Card>
