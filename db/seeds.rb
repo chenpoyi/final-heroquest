@@ -50,7 +50,7 @@ heroes = Hero.create({
   body: 6, 
   mind: 4, 
   default_weapon: 7,
-  image: 'https://imgur.com/a/j5ow8li'
+  image: 'https://i.imgur.com/51xJXTf.gif'
   })
   
 heroes = Hero.create({
