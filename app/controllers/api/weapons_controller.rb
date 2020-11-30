@@ -13,7 +13,7 @@ class Api::WeaponsController < ApplicationController
     @total = params[:total]
     puts @total
     @weapons.each{|weapon| 
-      CharacterWeapon.create(characters_id: @characters, weapons_id: weapon)
+      CharacterWeapon.create(character_id: @characters, weapon_id: weapon)
     }
     character = Character.find_by(id: @characters)
     puts character.gold

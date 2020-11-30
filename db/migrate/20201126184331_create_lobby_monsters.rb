@@ -10,7 +10,7 @@ class CreateLobbyMonsters < ActiveRecord::Migration[5.2]
       t.string :image
       t.timestamps
     end
-    add_reference :lobby_monsters, :lobbies, index: true, foreign_key: true
-    add_reference :lobby_monsters, :monsters, index: true, foreign_key: true
+    add_reference :lobby_monsters, :lobby, index: true, foreign_key: true
+    add_reference :lobby_monsters, :monster, index: true, foreign_key: true
   end
 end

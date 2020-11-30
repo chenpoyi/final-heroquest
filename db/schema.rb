@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_29_020305) do
+ActiveRecord::Schema.define(version: 2020_11_30_042455) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,58 +37,58 @@ ActiveRecord::Schema.define(version: 2020_11_29_020305) do
   create_table "character_armors", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "characters_id"
-    t.bigint "armors_id"
-    t.index ["armors_id"], name: "index_character_armors_on_armors_id"
-    t.index ["characters_id"], name: "index_character_armors_on_characters_id"
+    t.bigint "character_id"
+    t.bigint "armor_id"
+    t.index ["armor_id"], name: "index_character_armors_on_armor_id"
+    t.index ["character_id"], name: "index_character_armors_on_character_id"
   end
 
   create_table "character_artifacts", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "characters_id"
-    t.bigint "artifacts_id"
-    t.index ["artifacts_id"], name: "index_character_artifacts_on_artifacts_id"
-    t.index ["characters_id"], name: "index_character_artifacts_on_characters_id"
+    t.bigint "character_id"
+    t.bigint "artifact_id"
+    t.index ["artifact_id"], name: "index_character_artifacts_on_artifact_id"
+    t.index ["character_id"], name: "index_character_artifacts_on_character_id"
   end
 
   create_table "character_lobbies", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "characters_id"
-    t.bigint "lobbies_id"
-    t.bigint "users_id"
-    t.index ["characters_id"], name: "index_character_lobbies_on_characters_id"
-    t.index ["lobbies_id"], name: "index_character_lobbies_on_lobbies_id"
-    t.index ["users_id"], name: "index_character_lobbies_on_users_id"
+    t.bigint "character_id"
+    t.bigint "lobby_id"
+    t.bigint "user_id"
+    t.index ["character_id"], name: "index_character_lobbies_on_character_id"
+    t.index ["lobby_id"], name: "index_character_lobbies_on_lobby_id"
+    t.index ["user_id"], name: "index_character_lobbies_on_user_id"
   end
 
   create_table "character_potions", force: :cascade do |t|
     t.integer "quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "characters_id"
-    t.bigint "weapons_id"
-    t.index ["characters_id"], name: "index_character_potions_on_characters_id"
-    t.index ["weapons_id"], name: "index_character_potions_on_weapons_id"
+    t.bigint "character_id"
+    t.bigint "weapon_id"
+    t.index ["character_id"], name: "index_character_potions_on_character_id"
+    t.index ["weapon_id"], name: "index_character_potions_on_weapon_id"
   end
 
   create_table "character_quests", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "characters_id"
-    t.bigint "quests_id"
-    t.index ["characters_id"], name: "index_character_quests_on_characters_id"
-    t.index ["quests_id"], name: "index_character_quests_on_quests_id"
+    t.bigint "character_id"
+    t.bigint "quest_id"
+    t.index ["character_id"], name: "index_character_quests_on_character_id"
+    t.index ["quest_id"], name: "index_character_quests_on_quest_id"
   end
 
   create_table "character_weapons", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "characters_id"
-    t.bigint "weapons_id"
-    t.index ["characters_id"], name: "index_character_weapons_on_characters_id"
-    t.index ["weapons_id"], name: "index_character_weapons_on_weapons_id"
+    t.bigint "character_id"
+    t.bigint "weapon_id"
+    t.index ["character_id"], name: "index_character_weapons_on_character_id"
+    t.index ["weapon_id"], name: "index_character_weapons_on_weapon_id"
   end
 
   create_table "characters", force: :cascade do |t|
@@ -98,14 +98,14 @@ ActiveRecord::Schema.define(version: 2020_11_29_020305) do
     t.integer "gold"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "users_id"
-    t.bigint "heros_id"
+    t.bigint "user_id"
+    t.bigint "hero_id"
     t.string "image"
     t.integer "attack"
     t.integer "defend"
     t.integer "movement"
-    t.index ["heros_id"], name: "index_characters_on_heros_id"
-    t.index ["users_id"], name: "index_characters_on_users_id"
+    t.index ["hero_id"], name: "index_characters_on_hero_id"
+    t.index ["user_id"], name: "index_characters_on_user_id"
   end
 
   create_table "heros", force: :cascade do |t|
@@ -137,10 +137,10 @@ ActiveRecord::Schema.define(version: 2020_11_29_020305) do
     t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "lobbies_id"
-    t.bigint "monsters_id"
-    t.index ["lobbies_id"], name: "index_lobby_monsters_on_lobbies_id"
-    t.index ["monsters_id"], name: "index_lobby_monsters_on_monsters_id"
+    t.bigint "lobby_id"
+    t.bigint "monster_id"
+    t.index ["lobby_id"], name: "index_lobby_monsters_on_lobby_id"
+    t.index ["monster_id"], name: "index_lobby_monsters_on_monster_id"
   end
 
   create_table "monsters", force: :cascade do |t|
@@ -205,21 +205,21 @@ ActiveRecord::Schema.define(version: 2020_11_29_020305) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "character_armors", "armors", column: "armors_id"
-  add_foreign_key "character_armors", "characters", column: "characters_id"
-  add_foreign_key "character_artifacts", "artifacts", column: "artifacts_id"
-  add_foreign_key "character_artifacts", "characters", column: "characters_id"
-  add_foreign_key "character_lobbies", "characters", column: "characters_id"
-  add_foreign_key "character_lobbies", "lobbies", column: "lobbies_id"
-  add_foreign_key "character_lobbies", "users", column: "users_id"
-  add_foreign_key "character_potions", "characters", column: "characters_id"
-  add_foreign_key "character_potions", "weapons", column: "weapons_id"
-  add_foreign_key "character_quests", "characters", column: "characters_id"
-  add_foreign_key "character_quests", "quests", column: "quests_id"
-  add_foreign_key "character_weapons", "characters", column: "characters_id"
-  add_foreign_key "character_weapons", "weapons", column: "weapons_id"
-  add_foreign_key "characters", "heros", column: "heros_id"
-  add_foreign_key "characters", "users", column: "users_id"
-  add_foreign_key "lobby_monsters", "lobbies", column: "lobbies_id"
-  add_foreign_key "lobby_monsters", "monsters", column: "monsters_id"
+  add_foreign_key "character_armors", "armors"
+  add_foreign_key "character_armors", "characters", on_delete: :cascade
+  add_foreign_key "character_artifacts", "artifacts"
+  add_foreign_key "character_artifacts", "characters", on_delete: :cascade
+  add_foreign_key "character_lobbies", "characters", on_delete: :cascade
+  add_foreign_key "character_lobbies", "lobbies"
+  add_foreign_key "character_lobbies", "users"
+  add_foreign_key "character_potions", "characters", on_delete: :cascade
+  add_foreign_key "character_potions", "weapons"
+  add_foreign_key "character_quests", "characters", on_delete: :cascade
+  add_foreign_key "character_quests", "quests"
+  add_foreign_key "character_weapons", "characters", on_delete: :cascade
+  add_foreign_key "character_weapons", "weapons"
+  add_foreign_key "characters", "heros"
+  add_foreign_key "characters", "users"
+  add_foreign_key "lobby_monsters", "lobbies"
+  add_foreign_key "lobby_monsters", "monsters"
 end

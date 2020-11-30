@@ -122,8 +122,8 @@ user_character = Character.create! ({
   body: 8, 
   mind: 2,
   gold: 400,
-  users_id: 3,
-  heros_id: 1,
+  user_id: 3,
+  hero_id: 1,
   movement: 2,
   image: 'https://i.imgur.com/h0nbSUe.gif'
 })
@@ -135,8 +135,8 @@ user_character = Character.create! ({
   body: 7, 
   mind: 3,
   gold: 450,
-  users_id: 4,
-  heros_id: 2,
+  user_id: 4,
+  hero_id: 2,
   movement: 2,
   image:'https://i.imgur.com/jHZRMeu.gif'
 })
@@ -148,8 +148,8 @@ user_character = Character.create! ({
   body: 6, 
   mind: 4,
   gold: 600,
-  users_id: 1,
-  heros_id: 3,
+  user_id: 1,
+  hero_id: 3,
   movement: 2,
   image: 'https://i.imgur.com/51xJXTf.gif'
 })
@@ -161,8 +161,8 @@ user_character = Character.create! ({
   body: 4, 
   mind: 6,
   gold: 300,
-  users_id: 5,
-  heros_id: 4,
+  user_id: 5,
+  hero_id: 4,
   movement: 2,
   image:'https://i.imgur.com/PEM18xf.gif'
 })
@@ -176,8 +176,8 @@ user_character = Character.create! ({
   body: 8, 
   mind: 2,
   gold: 400,
-  users_id: 1,
-  heros_id: 1,
+  user_id: 1,
+  hero_id: 1,
   movement: 2,
   image: 'https://i.imgur.com/h0nbSUe.gif'
 })
@@ -189,8 +189,8 @@ user_character = Character.create! ({
   body: 6, 
   mind: 4,
   gold: 600,
-  users_id: 1,
-  heros_id: 2,
+  user_id: 1,
+  hero_id: 2,
   movement: 2,
   image:'https://i.imgur.com/jHZRMeu.gif'
 })
@@ -202,8 +202,8 @@ user_character = Character.create! ({
   body: 4, 
   mind: 6,
   gold: 300,
-  users_id: 1,
-  heros_id: 4,
+  user_id: 1,
+  hero_id: 4,
   movement: 2,
   image:'https://i.imgur.com/PEM18xf.gif'
 })
@@ -216,8 +216,8 @@ user_character = Character.create! ({
   body: 0, 
   mind: 0,
   gold: 0,
-  users_id: 1,
-  heros_id: 5,
+  user_id: 1,
+  hero_id: 5,
   movement: 0,
   image:'https://i.imgur.com/PEM18xf.gif'
 })
@@ -230,8 +230,8 @@ user_character = Character.create! ({
   body: 0, 
   mind: 0,
   gold: 0,
-  users_id: 2,
-  heros_id: 5,
+  user_id: 2,
+  hero_id: 5,
   movement: 0,
   image:'https://i.imgur.com/PEM18xf.gif'
 })
@@ -244,8 +244,8 @@ user_character = Character.create! ({
   body: 0, 
   mind: 0,
   gold: 0,
-  users_id: 3,
-  heros_id: 5,
+  user_id: 3,
+  hero_id: 5,
   movement: 0,
   image:'https://i.imgur.com/PEM18xf.gif'
 })
@@ -258,8 +258,8 @@ user_character = Character.create! ({
   body: 0, 
   mind: 0,
   gold: 0,
-  users_id: 4,
-  heros_id: 5,
+  user_id: 4,
+  hero_id: 5,
   movement: 0,
   image:'https://i.imgur.com/PEM18xf.gif'
 })
@@ -271,8 +271,8 @@ user_character = Character.create! ({
   body: 0, 
   mind: 0,
   gold: 0,
-  users_id: 5,
-  heros_id: 5,
+  user_id: 5,
+  hero_id: 5,
   movement: 0,
   image:'https://i.imgur.com/PEM18xf.gif'
 })
@@ -491,78 +491,78 @@ puts "Re-creating CharacterQuests..."
 CharacterQuest.destroy_all
 
 quest_list = CharacterQuest.create!({
-  characters_id: 1,
-  quests_id: 1,
+  character_id: 1,
+  quest_id: 1,
 })
 
 quest_list = CharacterQuest.create!({
-  characters_id: 1,
-  quests_id: 2,
+  character_id: 1,
+  quest_id: 2,
 })
 
 quest_list = CharacterQuest.create!({
-  characters_id: 1,
-  quests_id: 3,
+  character_id: 1,
+  quest_id: 3,
 })
 
 quest_list = CharacterQuest.create!({
-  characters_id: 2,
-  quests_id: 1,
+  character_id: 2,
+  quest_id: 1,
 })
 
 quest_list = CharacterQuest.create!({
-  characters_id: 2,
-  quests_id: 2,
+  character_id: 2,
+  quest_id: 2,
 })
 
 quest_list = CharacterQuest.create!({
-  characters_id: 2,
-  quests_id: 3,
+  character_id: 2,
+  quest_id: 3,
 })
 
 quest_list = CharacterQuest.create!({
-  characters_id: 3,
-  quests_id: 1,
+  character_id: 3,
+  quest_id: 1,
 })
 
 quest_list = CharacterQuest.create!({
-  characters_id: 3,
-  quests_id: 2,
+  character_id: 3,
+  quest_id: 2,
 })
 
 quest_list = CharacterQuest.create!({
-  characters_id: 3,
-  quests_id: 3,
+  character_id: 3,
+  quest_id: 3,
 })
 
 quest_list = CharacterQuest.create!({
-  characters_id: 4,
-  quests_id: 1,
+  character_id: 4,
+  quest_id: 1,
 })
 
 quest_list = CharacterQuest.create!({
-  characters_id: 4,
-  quests_id: 2,
+  character_id: 4,
+  quest_id: 2,
 })
 
 quest_list = CharacterQuest.create!({
-  characters_id: 4,
-  quests_id: 3,
+  character_id: 4,
+  quest_id: 3,
 })
 
 quest_list = CharacterQuest.create!({
-  characters_id: 5,
-  quests_id: 1,
+  character_id: 5,
+  quest_id: 1,
 })
 
 quest_list = CharacterQuest.create!({
-  characters_id: 5,
-  quests_id: 2,
+  character_id: 5,
+  quest_id: 2,
 })
 
 quest_list = CharacterQuest.create!({
-  characters_id: 5,
-  quests_id: 3,
+  character_id: 5,
+  quest_id: 3,
 })
 
 ## Rule descriptions 
@@ -640,78 +640,78 @@ puts "Re-creating CharacterLobby..."
 CharacterLobby.destroy_all
 
 character_lobby = CharacterLobby.create!({
-  characters_id: 3,
-  users_id: 1,
-  lobbies_id: 1,
+  character_id: 3,
+  user_id: 1,
+  lobby_id: 1,
 })
 
 character_lobby = CharacterLobby.create!({
-  characters_id: 9,
-  users_id: 2,
-  lobbies_id: 1,
+  character_id: 9,
+  user_id: 2,
+  lobby_id: 1,
 })
 character_lobby = CharacterLobby.create!({
-  characters_id: 1,
-  users_id: 3,
-  lobbies_id: 1,
-})
-
-character_lobby = CharacterLobby.create!({
-  characters_id: 2,
-  users_id: 4,
-  lobbies_id: 1,
+  character_id: 1,
+  user_id: 3,
+  lobby_id: 1,
 })
 
 character_lobby = CharacterLobby.create!({
-  # characters_id: 0,
-  users_id: 1,
-  lobbies_id: 2,
+  character_id: 2,
+  user_id: 4,
+  lobby_id: 1,
 })
 
 character_lobby = CharacterLobby.create!({
-  # characters_id: 0,
-  users_id: 2,
-  lobbies_id: 2,
-})
-character_lobby = CharacterLobby.create!({
-  # characters_id: 0,
-  users_id: 3,
-  lobbies_id: 2,
+  # character_id: 0,
+  user_id: 1,
+  lobby_id: 2,
 })
 
 character_lobby = CharacterLobby.create!({
-  # characters_id: 0,
-  users_id: 4,
-  lobbies_id: 2,
+  # character_id: 0,
+  user_id: 2,
+  lobby_id: 2,
+})
+character_lobby = CharacterLobby.create!({
+  # character_id: 0,
+  user_id: 3,
+  lobby_id: 2,
+})
+
+character_lobby = CharacterLobby.create!({
+  # character_id: 0,
+  user_id: 4,
+  lobby_id: 2,
 })
 # SEEDS OF LOBBY IN PROGRESS
 character_lobby = CharacterLobby.create!({
-  characters_id: 4,
-  users_id: 5,
-  lobbies_id: 3,
+  character_id: 4,
+  user_id: 5,
+  lobby_id: 3,
 })
 
 character_lobby = CharacterLobby.create!({
-  characters_id: 2,
-  users_id: 4,
-  lobbies_id: 3,
+  character_id: 2,
+  user_id: 4,
+  lobby_id: 3,
 })
 character_lobby = CharacterLobby.create!({
-  characters_id: 1,
-  users_id: 3,
-  lobbies_id: 3,
-})
-
-character_lobby = CharacterLobby.create!({
-  characters_id: 7,
-  users_id: 1,
-  lobbies_id: 3,
+  character_id: 1,
+  user_id: 3,
+  lobby_id: 3,
 })
 
 character_lobby = CharacterLobby.create!({
-  characters_id: 9,
-  users_id: 2,
-  lobbies_id: 3,
+  character_id: 7,
+  user_id: 1,
+  lobby_id: 3,
+})
+
+character_lobby = CharacterLobby.create!({
+  character_id: 9,
+  user_id: 2,
+  lobby_id: 3,
 })
 
 ## Monsters in the Lobby descriptions 
@@ -727,8 +727,8 @@ LobbyMonster.destroy_all
       mind: 12,
       movement: 110,
       image: "https://i.imgur.com/MrwYk8c.jpg",
-      lobbies_id: 1,
-      monsters_id: 1 #there must be a way to pull this in
+      lobby_id: 1,
+      monster_id: 1 #there must be a way to pull this in
     
     })
     
@@ -740,8 +740,8 @@ LobbyMonster.destroy_all
       mind: 23,
       movement: 27,
       image: "https://i.imgur.com/QPPVnmi.jpg",
-      lobbies_id: 1,
-      monsters_id: 2 #there must be a way to pull this in
+      lobby_id: 1,
+      monster_id: 2 #there must be a way to pull this in
     })
     
     lobby_monster = LobbyMonster.create! ({
@@ -752,8 +752,8 @@ LobbyMonster.destroy_all
       mind: 33,
       movement: 37,
       image: "https://i.imgur.com/QPPVnmi.jpg",
-      lobbies_id: 1,
-      monsters_id: 3 #there must be a way to pull this in
+      lobby_id: 1,
+      monster_id: 3 #there must be a way to pull this in
     })
 
     lobby_monster = LobbyMonster.create! ({
@@ -764,8 +764,8 @@ LobbyMonster.destroy_all
       mind: 12,
       movement: 110,
       image: "https://i.imgur.com/MrwYk8c.jpg",
-      lobbies_id: 2,
-      monsters_id: 1 #there must be a way to pull this in
+      lobby_id: 2,
+      monster_id: 1 #there must be a way to pull this in
     
     })
     
@@ -777,8 +777,8 @@ LobbyMonster.destroy_all
       mind: 23,
       movement: 27,
       image: "https://i.imgur.com/QPPVnmi.jpg",
-      lobbies_id: 2,
-      monsters_id: 2 #there must be a way to pull this in
+      lobby_id: 2,
+      monster_id: 2 #there must be a way to pull this in
     })
     
     lobby_monster = LobbyMonster.create! ({
@@ -789,8 +789,8 @@ LobbyMonster.destroy_all
       mind: 33,
       movement: 37,
       image: "https://i.imgur.com/QPPVnmi.jpg",
-      lobbies_id: 2,
-      monsters_id: 3 #there must be a way to pull this in
+      lobby_id: 2,
+      monster_id: 3 #there must be a way to pull this in
     })
 
     ## Character weapons 
@@ -799,52 +799,52 @@ puts "Re-creating CharacterWeapons"
 CharacterWeapon.destroy_all
 
 character_weapon = CharacterWeapon.create! ({
-  characters_id: 1,
-  weapons_id: 2,
+  character_id: 1,
+  weapon_id: 2,
 
 })
 
 character_weapon = CharacterWeapon.create! ({
-  characters_id: 1,
-  weapons_id: 6,
+  character_id: 1,
+  weapon_id: 6,
 
 })
 
 character_weapon = CharacterWeapon.create! ({
-  characters_id: 2,
-  weapons_id: 7,
+  character_id: 2,
+  weapon_id: 7,
 
 })
 
 character_weapon = CharacterWeapon.create! ({
-  characters_id: 3,
-  weapons_id: 7,
+  character_id: 3,
+  weapon_id: 7,
 
 })
 
 character_weapon = CharacterWeapon.create! ({
-  characters_id: 4,
-  weapons_id: 4,
+  character_id: 4,
+  weapon_id: 4,
 
 })
 
 ## extra characters for user 1
 
 character_weapon = CharacterWeapon.create! ({
-  characters_id: 5,
-  weapons_id: 2,
+  character_id: 5,
+  weapon_id: 2,
 
 })
 
 character_weapon = CharacterWeapon.create! ({
-  characters_id: 6,
-  weapons_id: 7,
+  character_id: 6,
+  weapon_id: 7,
 
 })
 
 character_weapon = CharacterWeapon.create! ({
-  characters_id: 7,
-  weapons_id: 4,
+  character_id: 7,
+  weapon_id: 4,
 
 })
 

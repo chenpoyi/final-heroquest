@@ -42,19 +42,6 @@ charpaper:{
 }
 });
 
-// type CharacterCardProps = {
-//   charName :string,
-//   dateCreated :string,
-//   lastUsed :string,
-//   race :string,
-//   questsCompleted :number,
-//   imgSrc :string,
-//   body :number,
-//   mind :number,
-//   attack :number,
-//   defense :number,
-//   movement :number,
-// }
 type Character = {
   id: number;
   name: string;
@@ -85,6 +72,14 @@ export default function CharacterList({ user }: any) {
     setSelectedIndex(index);
   };
 
+  //pulled out from useEffect
+  const refreshCharacters = function () {
+      getCharacters(user).then((characters) => {
+      setCharacters(characters);
+      setSelectedIndex(0); 
+    });
+  }
+
   const characterList = characters.map((character, index) => {
     return (
       <ListItem
@@ -98,9 +93,7 @@ export default function CharacterList({ user }: any) {
   });
 
   React.useEffect(() => {
-    getCharacters(user).then((characters) => {
-      setCharacters(characters);
-    });
+    refreshCharacters()
   }, []);
 
   return ( 
@@ -111,7 +104,7 @@ export default function CharacterList({ user }: any) {
 
      <Grid container spacing={2} className={classes.root}>
         <Grid item xs={6}>
-          <CharacterCard character={characters[selectedIndex]} />
+          <CharacterCard refreshCharacters={refreshCharacters} character={characters[selectedIndex]} />
           
         </Grid>
 

@@ -13,7 +13,7 @@ type SessionsProps = {
   user: {} | null
   
 }
-export default function Lobbies({user} : SessionsProps) {
+export default function Sessions({user} : SessionsProps) {
   let match = useRouteMatch();
 
   return (

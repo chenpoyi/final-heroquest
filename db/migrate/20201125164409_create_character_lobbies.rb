@@ -4,7 +4,7 @@ class CreateCharacterLobbies < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
-    add_reference :character_lobbies, :characters, index: true, foreign_key: true
-    add_reference :character_lobbies, :lobbies, index: true, foreign_key: true
+    add_reference :character_lobbies, :character, index: true, foreign_key: true
+    add_reference :character_lobbies, :lobby, index: true, foreign_key: true
   end
 end

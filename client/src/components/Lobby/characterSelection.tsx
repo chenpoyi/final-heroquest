@@ -85,29 +85,17 @@ type charSelectionProps = {
   characters : Character[],
   lobby_id :number
 };
-// type Char = {
-//   id :number,
-//   email :string
-//   character: number
-
-// };
-
 
 export default function CharacterSelection({users, characters, lobby_id}:charSelectionProps) {
   const classes = useStyles();
   const [usersState, setUsersState] = React.useState<User[]>(users);
   const [charState, setCharState] = React.useState<Character[]>(characters);
-  // const [character, setCharacter] = React.useState('0');
   React.useEffect(() => {
     setUsersState(users)
     setCharState(characters)
   }, [users, characters]);
-
- 
-
  const playerCards = usersState.map((user, index) => {
-   return (
-     
+   return ( 
 <>
     { charState[index] && (<CharacterCard character={charState[index]}/> )}
     {!charState[index] && (<Card className={classes.root}>
@@ -122,11 +110,8 @@ export default function CharacterSelection({users, characters, lobby_id}:charSel
   </Typography>
           <Divider />
           <Typography variant="h6" component="h2">
-            <List component="nav" aria-label="Pick a Character">
-              {/* <ListItem button> */}
-                {/* <ListItemText primary="Pick a Character" /> */}
+            <List component="nav" aria-label="Pick a Character">   
                 <CharacterModal user={user} setCharacter={(characters: Character[])=>{setCharState(characters)}} index={index} charState={charState} lobby_id ={lobby_id} />
-              {/* </ListItem> */}
             </List>
           </Typography>
         </CardContent>
@@ -140,7 +125,7 @@ export default function CharacterSelection({users, characters, lobby_id}:charSel
     <>
   <Grid container spacing={3} justify="center">
       {playerCards}
-      {/* <CharacterModal user={user} setCharacter={setCharacter} /> */}
+
   </Grid>
    
     </>

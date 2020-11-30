@@ -112,11 +112,11 @@ export default function MakeNewCharacterList({ user }: any) {
   return (
     <>
       <Paper className={classes.charpaper}elevation={10}>
-      <Grid container className={classes.root} spacing={6} alignItems="center" justify="center">
-        <Grid item xs={9} >
+      <Grid container className={classes.root} spacing={3} alignItems="center" justify="center">
+        <Grid item xs={12}  >
           <Typography variant="h3">Select a Hero</Typography>
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={12} sm={6}>
           <MakeNewCharacterCard hero={heroes[selectedIndex]} />
         </Grid>
 

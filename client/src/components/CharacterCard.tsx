@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
@@ -28,13 +29,14 @@ const useStyles = makeStyles({
     fontSize: 15,
   },
   details: {
-    display: 'flex',
-    flexDirection: 'column',
+    display: "flex",
+    flexDirection: "column",
   },
 });
 
 type CharacterCardProps = {
   character: Character;
+  refreshCharacters?: () => void;
 };
 type Character = {
   id: number;
@@ -52,28 +54,41 @@ type Character = {
   gold: number;
 };
 
-export default function CharacterCard({ character }: CharacterCardProps) {
+export default function CharacterCard({ character, refreshCharacters = () => {} }: CharacterCardProps) {
   const classes = useStyles();
   // const bull = <span className={classes.bullet}>•</span>;
+
+
+  const destroyCharacter = function (id) {
+    return axios 
+      .post(`/api/characters/${id}/destroy`) // You can simply make your requests to "/api/whatever you want"
+      .then((response) => {
+        // handle success
+        // console.log(response.data.characters); // The entire response from the Rails API
+        console.log(response.data) // => "Yep this route works" 
+        refreshCharacters()
+      }).catch((err)=>{
+        console.log(err)
+      });
+    
+  
+
+  }
 
   return (
     <>
       {character && (
         <Card className={classes.root}>
-        <div>
+          <div>
             <Typography className={classes.header}>
-            {character.name}
-            {character.race}
+              {character.name}
+              {character.race}
             </Typography>
-          <CardMedia className={classes.media} image={character.image} />
-        </div>
+            <CardMedia className={classes.media} image={character.image} />
+          </div>
           <CardContent>
-            <Typography
-              
-              variant="body2"
-              component="p"
-            >
-              <ul style={{ listStyleType: "none", padding: 0, fontSize: 14}}>
+            <Typography variant="body2" component="p">
+              <ul style={{ listStyleType: "none", padding: 0, fontSize: 14 }}>
                 <li>Quest Completed: {character.questsCompleted}/14</li>
                 <li>Date Created: {character.dateCreated}</li>
                 <li>Last Used: {character.lastUsed}</li>
@@ -86,6 +101,9 @@ export default function CharacterCard({ character }: CharacterCardProps) {
               </ul>
             </Typography>
           </CardContent>
+          <CardActions>
+            <Button onClick={() => {destroyCharacter(character.id)}} color="primary" size="small" variant="contained">Delete</Button>
+          </CardActions>
         </Card>
       )}
     </>

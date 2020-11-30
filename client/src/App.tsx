@@ -19,7 +19,7 @@ import {
 
 import Grid from "@material-ui/core/Grid";
 import Lobbies from "./components/Lobby/Lobbies";
-import Session from "./components/Session/index";
+import Sessions from "./components/Session/Sessions";
 import Home from "./components/Home";
 
 interface IProps {
@@ -103,7 +103,7 @@ class App extends Component<IProps, IState> {
                     </Grid>
                   </Route>
                   <Route path="/session">
-                    <Session user={this.state.user} />
+                    <Sessions user={this.state.user} />
                   </Route>
 
                   <Route path="/newcharacter">

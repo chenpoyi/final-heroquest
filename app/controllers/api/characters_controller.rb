@@ -1,7 +1,7 @@
 class Api::CharactersController < ApplicationController
   def index 
 
-    @characters = Character.where(:users_id => params[:id])
+    @characters = Character.where(:user_id => params[:id])
     # puts @characters.inspect
     # @characters.map{|character| 
     #   puts character.heros.race
@@ -14,9 +14,9 @@ class Api::CharactersController < ApplicationController
   
   def create
     @hero = Hero.find_by(:id => params[:hero_id])
-    @new_character = Character.create(name: params[:name], body: @hero.body, mind: @hero.mind, gold: 0, image: @hero.image, attack: @hero.attack, defend: @hero.defend, movement: @hero.movement, users_id: params[:user_id])
-    @new_weapon = CharacterWeapon.create(characters_id: @new_character.id, weapons_id: @hero.default_weapon )
-    # CharacterWeapon.create(characters_id: @characters, weapons_id: weapon)
+    @new_character = Character.create(name: params[:name], body: @hero.body, mind: @hero.mind, gold: 0, image: @hero.image, attack: @hero.attack, defend: @hero.defend, movement: @hero.movement, user_id: params[:user_id])
+    @new_weapon = CharacterWeapon.create(character_id: @new_character.id, weapon_id: @hero.default_weapon )
+    # CharacterWeapon.create(character_id: @characters, weapons_id: weapon)
     render :json => {
       message: "character created"
     }
@@ -39,9 +39,9 @@ class Api::CharactersController < ApplicationController
   end
 
   def weapons 
-    @weapons_character = CharacterWeapon.where(:characters_id => params[:id])
+    @weapons_character = CharacterWeapon.where(:character_id => params[:id])
     @weapons = @weapons_character.map{|weapon_character|
-      Weapon.find_by(:id => weapon_character.weapons_id)
+      Weapon.find_by(:id => weapon_character.weapon_id)
     }
     puts '-----------------'
     puts @weapons.inspect
@@ -49,6 +49,16 @@ class Api::CharactersController < ApplicationController
       weapons: @weapons
     }
   end
+    
+  def destroy
+    @character = Character.find(params[:id])
+    @character.destroy!
+    
+    render :json =>{
+       message: "Character Destroyed"
+    }
+  end
+
 end
 
 

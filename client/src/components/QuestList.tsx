@@ -1,114 +1,128 @@
-import React from 'react';
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
-import clsx from 'clsx';
-import Card from '@material-ui/core/Card';
-import CardHeader from '@material-ui/core/CardHeader';
-import CardMedia from '@material-ui/core/CardMedia';
-import CardContent from '@material-ui/core/CardContent';
-import CardActions from '@material-ui/core/CardActions';
-import Collapse from '@material-ui/core/Collapse';
-import Avatar from '@material-ui/core/Avatar';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
-import { red } from '@material-ui/core/colors';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import ShareIcon from '@material-ui/icons/Share';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
-import { getQuests } from '../helpers/selectors';
+import React from "react";
+import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
+import clsx from "clsx";
+import Card from "@material-ui/core/Card";
+import CardHeader from "@material-ui/core/CardHeader";
+import CardMedia from "@material-ui/core/CardMedia";
+import CardContent from "@material-ui/core/CardContent";
+import CardActions from "@material-ui/core/CardActions";
+import Collapse from "@material-ui/core/Collapse";
+import Avatar from "@material-ui/core/Avatar";
+import IconButton from "@material-ui/core/IconButton";
+import Typography from "@material-ui/core/Typography";
+import { red } from "@material-ui/core/colors";
+import FavoriteIcon from "@material-ui/icons/Favorite";
+import ShareIcon from "@material-ui/icons/Share";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import MoreVertIcon from "@material-ui/icons/MoreVert";
+import { getQuests } from "../helpers/selectors";
 import Divider from "@material-ui/core/Divider";
-
+import { Grid } from "@material-ui/core";
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       maxWidth: 345,
-   
+      background: "#735D58",
     },
     media: {
       height: 0,
-      paddingTop: '56.25%', // 16:9
+      paddingTop: "56.25%", // 16:9
     },
     expand: {
-      transform: 'rotate(0deg)',
-      marginLeft: 'auto',
-      transition: theme.transitions.create('transform', {
+      transform: "rotate(0deg)",
+      marginLeft: "auto",
+      transition: theme.transitions.create("transform", {
         duration: theme.transitions.duration.shortest,
       }),
     },
     expandOpen: {
-      transform: 'rotate(180deg)',
+      transform: "rotate(180deg)",
     },
     avatar: {
       backgroundColor: red[500],
     },
-  }),
+    title: {
+      fontSize: 30,
+    },
+   
+  })
 );
 
 type Quest = {
-  name :string,
-  description :string
-} 
+  name: string;
+  description: string;
+};
 
 type QuestListProps = {
-  user :any
-}
+  user: any;
+};
 
-export default function QuestList({user}:QuestListProps) {
+export default function QuestList({ user }: QuestListProps) {
   const classes = useStyles();
-  const [expanded, setExpanded] = React.useState(false);
+  const [expanded, setExpanded] = React.useState<boolean[]>([]);
   const [quests, setQuest] = React.useState<Quest[]>([]);
+  
+  const handleExpandClick = (index) => {
+    // setExpanded(!expanded);
+    const newExpanded :boolean[]= [...expanded];
+    newExpanded[index] = !newExpanded[index];
+    console.log(newExpanded)
+    setExpanded(newExpanded);
+  };
 
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
-  }; 
-
-  React.useEffect(()=>{
-    getQuests()
-    .then((quests)=>{
+  React.useEffect(() => {
+    getQuests().then((quests) => {
       setQuest(quests);
     });
-  },[])
+  }, []);
 
   const list = quests.map((quest, index) => {
-    return (         
+    return (
       <>
-      {quests && (<>
-      <Typography paragraph>{quest.name}</Typography>
-          <Typography paragraph>
-            {quest.description}
-           <Divider /> 
-          </Typography></>) }
-          </>)
+        {quests && (
+          <>
+          
+            <Grid item>
+
+           
+              <CardHeader  titleTypographyProps={{variant:'h6' }} title={quest.name}subheader={user.email} />
+
+              <CardActions disableSpacing>
+                <IconButton
+                  className={clsx(classes.expand, {
+                    [classes.expandOpen]: expanded[index],
+                  })}
+                  onClick={()=>{handleExpandClick(index)}}
+                  aria-expanded={expanded[index]}
+                  aria-label="show more"
+                >
+                  <ExpandMoreIcon />
+                </IconButton>
+              </CardActions>
+              <Collapse in={expanded[index]} timeout="auto" unmountOnExit>
+                <CardContent>
+                  <Typography paragraph>
+                    {quest.description}
+                    <Divider />
+                  </Typography>
+                </CardContent>
+              </Collapse>
+              </Grid>
+          </>
+        )}
+      </>
+    );
   });
 
   return (
-    <Card className={classes.root}>
-      <CardHeader
-        title="Completed Quests"
-        subheader={user.email}
-      />
-      <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">
-          High Adventure in a World of Magic
-        </Typography>
-      </CardContent>
-      <CardActions disableSpacing>
-        <IconButton
-          className={clsx(classes.expand, {
-            [classes.expandOpen]: expanded,
-          })}
-          onClick={handleExpandClick}
-          aria-expanded={expanded}
-          aria-label="show more"
-        >
-          <ExpandMoreIcon />
-        </IconButton>
-      </CardActions>
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent>
-        {list}
-        </CardContent>
-      </Collapse>
+<>
+<Card className={classes.root}>
+
+    {list} 
     </Card>
-  );
-}
+</>
+  )
+ 
+  
+  };
+

@@ -5,7 +5,7 @@ class CreateCharacterArmors < ActiveRecord::Migration[5.2]
       t.timestamps
     end
 
-    add_reference :character_armors, :characters, index: true, foreign_key: true
-    add_reference :character_armors, :armors, index: true, foreign_key: true
+    add_reference :character_armors, :character, index: true, foreign_key: true
+    add_reference :character_armors, :armor, index: true, foreign_key: true
   end
 end

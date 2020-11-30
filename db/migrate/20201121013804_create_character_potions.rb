@@ -4,7 +4,7 @@ class CreateCharacterPotions < ActiveRecord::Migration[5.2]
       t.integer :quantity
       t.timestamps
     end
-    add_reference :character_potions, :characters, index: true, foreign_key: true
-    add_reference :character_potions, :weapons, index: true, foreign_key: true
+    add_reference :character_potions, :character, index: true, foreign_key: true
+    add_reference :character_potions, :weapon, index: true, foreign_key: true
   end
 end

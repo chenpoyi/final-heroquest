@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     get '/lobby/:id/characters' => 'lobbies#characters'
     post 'lobby/characters' => 'lobbies#add_characters'
     get '/character/weapons/:id' => 'characters#weapons'
+    post '/characters/:id/destroy' => 'characters#destroy'
     
   end
 
