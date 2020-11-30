@@ -29,6 +29,9 @@ const useStyles = makeStyles({
 
 type MonsterCardProps = {
   monster: Monster;
+  setcurrentlySelectedMonsters: any;
+  currentlySelectedMonsters: any;
+  index: number;
 };
 // Need all monster information to display on card
 type Monster = {
@@ -46,7 +49,7 @@ type Monster = {
 
 // Two states to deal with on the card body points and mind points
 // Data for the initial state comes from the monster table in the db
-export default function MonsterCard({ monster }: MonsterCardProps) {
+export default function MonsterCard({ monster, setcurrentlySelectedMonsters, currentlySelectedMonsters, index }: MonsterCardProps) {
   const classes = useStyles();
   const [bodyState, setBody] = React.useState<number>();
   const [mindState, setMind] = React.useState<number>();
@@ -57,6 +60,9 @@ export default function MonsterCard({ monster }: MonsterCardProps) {
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const bodyNumber = Number(event.target.value);
+    const newState = [...currentlySelectedMonsters];
+    newState[index].body = bodyNumber;
+    setcurrentlySelectedMonsters(newState);
     setBody(bodyNumber);
   };
 
@@ -64,6 +70,9 @@ export default function MonsterCard({ monster }: MonsterCardProps) {
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const mindNumber = Number(event.target.value);
+    const newState = [...currentlySelectedMonsters];
+    newState[index].mind = mindNumber;
+    setcurrentlySelectedMonsters(newState);
     setMind(mindNumber);
   };
 

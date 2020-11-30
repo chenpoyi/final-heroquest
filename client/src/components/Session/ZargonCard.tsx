@@ -109,7 +109,7 @@ export default function ZargonCard({ lobbyMonsters, user }) {
         <CardContent>
           <Grid container>
             <Grid item>
-              <MonsterCard monster={currentlySelectedMonsters[selectedIndex]} />
+              <MonsterCard monster={currentlySelectedMonsters[selectedIndex]} setcurrentlySelectedMonsters={setcurrentlySelectedMonsters} currentlySelectedMonsters={currentlySelectedMonsters} index={selectedIndex}  />
             </Grid>
             <Grid item>
 
