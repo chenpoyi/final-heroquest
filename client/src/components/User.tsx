@@ -21,6 +21,9 @@ const useStyles = makeStyles((theme: Theme) =>
     charpaper: {
       background: "#3c4545",
     },
+    questlist: {
+      marginLeft: 10,
+    }
   })
 );
 
@@ -48,10 +51,14 @@ export default function User({ user }: UserProps) {
           {/* <Grid  item xs={12} sm={3}>
           <h5>Character Stats PlaceHolder</h5>
         </Grid> */}
-          <Grid item xs={12} sm={6}>
-            <QuestList user={user} />
+        
           </Grid>
-        </Grid>
+    
+          <Grid container  spacing={1}>
+            <Grid className={classes.questlist} item xs={12} sm={12}>
+            <QuestList  user={user} />
+            </Grid>
+            </Grid>
       </Paper>
     </>
   );

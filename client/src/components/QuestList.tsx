@@ -80,8 +80,7 @@ export default function QuestList({ user }: QuestListProps) {
       <>
         {quests && (
           <>
-            <Grid container spacing={2}>
-              <Grid item xs={12} direction="row">
+    
                 <CardHeader
                   titleTypographyProps={{ variant: "h6" }}
                   title={quest.name}
@@ -110,8 +109,7 @@ export default function QuestList({ user }: QuestListProps) {
                     </Typography>
                   </CardContent>
                 </Collapse>
-              </Grid>
-            </Grid>
+           
           </>
         )}
       </>
@@ -121,9 +119,9 @@ export default function QuestList({ user }: QuestListProps) {
   return (
     <>
       <Card className={classes.root}>
-        <Grid container spacing={2}>
+       
           {list}
-        </Grid>
+        
       </Card>
     </>
   );

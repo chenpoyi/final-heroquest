@@ -16,7 +16,8 @@ import { getCharacterWeapons } from "../helpers/selectors";
 const useStyles = makeStyles({
   root: {
     maxWidth: 300,
-    borderRadius: 15,
+    borderRadius: 3,
+    backgroundColor: "#735D58"
   },
   media: {
     height: 150,
