@@ -5,6 +5,7 @@ import Modal from '@material-ui/core/Modal';
 import {getCharacters, selectCharacterOfLobby} from "../../helpers/selectors";
 import CharacterCard from "../CharacterCard"
 import Button from '@material-ui/core/Button';
+import { Grid, Paper } from "@material-ui/core";
 
 
 function rand() {
@@ -18,9 +19,13 @@ function getModalStyle() {
   return {
     top:'10%',
     left:'10%',
-    overflow:'scroll',
-    height:'100%',
-    display:'block'
+    //overflow:'scroll',
+    height:'80%',
+    width: '60%',
+    display:'flex',
+    // flexDirection: 'row'
+  
+
   };
 }
 
@@ -34,6 +39,21 @@ const useStyles = makeStyles((theme: Theme) =>
       boxShadow: theme.shadows[5],
       padding: theme.spacing(2, 4, 3),
     },
+    modal:{
+      display:'flex',
+      flexDirection: 'column',
+      // minWidth: '75%'
+      flexWrap: 'nowrap',
+    },
+    card:{
+      justifyContent: 'center',
+      alignItems: 'center',
+      flexDirection: 'column',
+      maxWidth: '30%'
+    },
+    button:{
+      maxWidth: '10%'
+    }
   }),
 );
 
@@ -87,21 +107,24 @@ export default function CharacterModal({user, setCharacter, index, charState, lo
 
   const list = characters.map((character, index) => {
     return (
-    <>
+    <Grid container item className={classes.card}>
     <CharacterCard character={character} user={user}/>
-    <Button variant="contained" size="small" color="primary" onClick={()=>{handleSelect(character)}}> 
+    <Button variant="contained" size="small" color="primary" className={classes.button} onClick={()=>{handleSelect(character)}}> 
         Select
       </Button>
-    </>  )
+    </Grid>  )
   });
 
   const body = (
     <div style={modalStyle} className={classes.paper}>
-      <h2 id="simple-modal-title">Text in a modal</h2>
-      <p id="simple-modal-description">
+      <Grid container className={classes.modal}>
+        <Grid item> <h2 id="simple-modal-title">Choose your character:</h2></Grid>
+     
+  
+        <Grid item container> 
         {list}     
-      </p>
-            
+        </Grid> 
+      </Grid>     
     </div>
   );
 
@@ -114,11 +137,12 @@ export default function CharacterModal({user, setCharacter, index, charState, lo
   },[])
 
   return (
-    <div>
+    <>
       <button type="button" onClick={handleOpen}>
         Choose Character
       </button>
       <Modal
+        className={classes.modal}
         open={open}
         onClose={handleClose}
         aria-labelledby="simple-modal-title"
@@ -126,6 +150,6 @@ export default function CharacterModal({user, setCharacter, index, charState, lo
       >
         {body}
       </Modal>
-    </div>
+  </>
   );
 }
