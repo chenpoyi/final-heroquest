@@ -4,6 +4,7 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import axios from "axios";
 import CharacterList from "./CharacterList";
+import CharacterStats from "./CharacterStats"
 import QuestList from "./QuestList";
 import WeaponList from "./WeaponList";
 import Typography from "@material-ui/core/Typography";
@@ -51,14 +52,20 @@ export default function User({ user }: UserProps) {
           {/* <Grid  item xs={12} sm={3}>
           <h5>Character Stats PlaceHolder</h5>
         </Grid> */}
-        
+
+        </Grid>
+
+        <Grid container spacing={1}>
+          <Grid className={classes.questlist} item xs={12} sm={4}>
+            <QuestList user={user} />
           </Grid>
-    
-          <Grid container  spacing={1}>
-            <Grid className={classes.questlist} item xs={12} sm={12}>
-            <QuestList  user={user} />
-            </Grid>
-            </Grid>
+          <Grid className={classes.questlist} item xs={12} sm={3}>
+            <CharacterStats category={"Weapons"} />
+          </Grid>
+          <Grid className={classes.questlist} item xs={12} sm={3}>
+            <CharacterStats category={"Monsters"}/>
+          </Grid>
+        </Grid>
       </Paper>
     </>
   );

@@ -64,6 +64,8 @@ export const getCharacterWeapons = function (id) {
     });
 }
 
+
+
 export const getQuests = function () {
   return axios
     .get("/api/quests/1") // You can simply make your requests to "/api/whatever you want"
@@ -200,6 +202,28 @@ export const addCharacter = function(name: string, hero_id: number, user_id: num
       console.log(err)
     });
 };
+
+export const getKills = function(category){
+  if(category=="Monsters"){
+    return monstersKillsData
+  }
+  return weaponsKillsData;
+}
+
+// export const getMonstersKills = function(){
+//   return monstersKillsData;
+// }
+
+const weaponsKillsData = [
+  {name: 'Broadsword', kills: 10},
+  {name: 'Small Dagger', kills: 7}
+]
+
+const monstersKillsData = [
+  {name: 'Orc', kills: 10},
+  {name: 'Chaos Warrior', kills: 7}
+]
+
 const charactersData = [
   { name: 'Character 1', gold: 60 },
   { name: 'Character 2', gold: 90 },
