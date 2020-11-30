@@ -4,22 +4,22 @@ import green from '@material-ui/core/colors/green';
 import CssBaseline from "@material-ui/core/CssBaseline";
 
 
-
-
 export const theme = createMuiTheme({
   palette: {
     primary: {
       main: "#260101",
-      
     },
     secondary: {
-      main: "#000",
+      main: "#3c4545",
     },
     type: "dark", 
     background:{
       default: "#212626"
     },
+ 
+    
   },
+
   // overrides: {
   //   MuiCssBaseline: {
   //     "@global": {
@@ -29,5 +29,10 @@ export const theme = createMuiTheme({
   //       }
   //     }
   //   }
-  // }  
+  // } 
+
 });
+
+// theme.props = {
+//  
+// }

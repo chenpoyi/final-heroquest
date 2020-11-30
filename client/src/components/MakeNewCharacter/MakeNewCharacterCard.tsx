@@ -18,7 +18,7 @@ const useStyles = makeStyles({
     margin: 5,
     padding: 5,
     display: "flex",
-    background: "#0D0D0D",
+    background: "#735D58",
   },
   media: {
     minHeight: 200,
@@ -28,6 +28,7 @@ const useStyles = makeStyles({
   },
   header: {
     fontSize: 15,
+    marginLeft: 20,
   },
   details: {
     display: 'flex',

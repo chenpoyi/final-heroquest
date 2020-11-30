@@ -23,7 +23,6 @@ import { Grid } from "@material-ui/core";
 const useStyles = makeStyles({
   root: {
     maxWidth: "100%", 
-
   },
   media: {
     height: 150,
@@ -38,8 +37,13 @@ const useStyles = makeStyles({
 charpaper:{
   width: "100%",
   height: "100%",
-  background: "#212626"
-}
+  
+},
+listitem: {
+  borderRadius: 3,
+  marginLeft: 10,
+},
+
 });
 
 type Character = {
@@ -84,6 +88,7 @@ export default function CharacterList({ user }: any) {
     return (
       <ListItem
         button
+        className={classes.listitem}
         selected={selectedIndex === index}
         onClick={(event) => handleListItemClick(event, index)}
       >
@@ -98,15 +103,12 @@ export default function CharacterList({ user }: any) {
 
   return ( 
     <>
-<Paper className={classes.charpaper}elevation={10}>
 
 
 
-     <Grid container spacing={2} className={classes.root}>
-        <Grid item xs={6}>
-          <CharacterCard refreshCharacters={refreshCharacters} character={characters[selectedIndex]} user={user}/>
-          
-        </Grid>
+
+     <Grid container spacing={1} className={classes.root}>
+       
 
         <Grid item xs={3}>
           <Typography className={classes.list}>
@@ -120,13 +122,16 @@ export default function CharacterList({ user }: any) {
               </Button>
           </Link>
         </Grid>
-    
+        <Grid item xs={6}>
+          <CharacterCard refreshCharacters={refreshCharacters} character={characters[selectedIndex]} user={user}/>
+          
+        </Grid>
       <Grid item xs={3}>
       <WeaponList character={characters[selectedIndex]} />
-      
+      {/* Weapon picture?? */}
         </Grid>
       </Grid>
-      </Paper>
+     
     </>
   );
 }

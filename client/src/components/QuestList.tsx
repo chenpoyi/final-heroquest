@@ -44,7 +44,6 @@ const useStyles = makeStyles((theme: Theme) =>
     title: {
       fontSize: 30,
     },
-   
   })
 );
 
@@ -61,12 +60,12 @@ export default function QuestList({ user }: QuestListProps) {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState<boolean[]>([]);
   const [quests, setQuest] = React.useState<Quest[]>([]);
-  
+
   const handleExpandClick = (index) => {
     // setExpanded(!expanded);
-    const newExpanded :boolean[]= [...expanded];
+    const newExpanded: boolean[] = [...expanded];
     newExpanded[index] = !newExpanded[index];
-    console.log(newExpanded)
+    console.log(newExpanded);
     setExpanded(newExpanded);
   };
 
@@ -81,33 +80,38 @@ export default function QuestList({ user }: QuestListProps) {
       <>
         {quests && (
           <>
-          
-            <Grid item>
+            <Grid container spacing={2}>
+              <Grid item xs={12} direction="row">
+                <CardHeader
+                  titleTypographyProps={{ variant: "h6" }}
+                  title={quest.name}
+                  subheader={user.email}
+                />
 
-           
-              <CardHeader  titleTypographyProps={{variant:'h6' }} title={quest.name}subheader={user.email} />
-
-              <CardActions disableSpacing>
-                <IconButton
-                  className={clsx(classes.expand, {
-                    [classes.expandOpen]: expanded[index],
-                  })}
-                  onClick={()=>{handleExpandClick(index)}}
-                  aria-expanded={expanded[index]}
-                  aria-label="show more"
-                >
-                  <ExpandMoreIcon />
-                </IconButton>
-              </CardActions>
-              <Collapse in={expanded[index]} timeout="auto" unmountOnExit>
-                <CardContent>
-                  <Typography paragraph>
-                    {quest.description}
-                    <Divider />
-                  </Typography>
-                </CardContent>
-              </Collapse>
+                <CardActions disableSpacing>
+                  <IconButton
+                    className={clsx(classes.expand, {
+                      [classes.expandOpen]: expanded[index],
+                    })}
+                    onClick={() => {
+                      handleExpandClick(index);
+                    }}
+                    aria-expanded={expanded[index]}
+                    aria-label="show more"
+                  >
+                    <ExpandMoreIcon />
+                  </IconButton>
+                </CardActions>
+                <Collapse in={expanded[index]} timeout="auto" unmountOnExit>
+                  <CardContent>
+                    <Typography paragraph>
+                      {quest.description}
+                      <Divider />
+                    </Typography>
+                  </CardContent>
+                </Collapse>
               </Grid>
+            </Grid>
           </>
         )}
       </>
@@ -115,14 +119,12 @@ export default function QuestList({ user }: QuestListProps) {
   });
 
   return (
-<>
-<Card className={classes.root}>
-
-    {list} 
-    </Card>
-</>
-  )
- 
-  
-  };
-
+    <>
+      <Card className={classes.root}>
+        <Grid container spacing={2}>
+          {list}
+        </Grid>
+      </Card>
+    </>
+  );
+}

@@ -28,13 +28,20 @@ const useStyles = makeStyles({
   },
   list: {
     maxWidth: 125,
-    fontSize: 15,
-    
+   
+  },
+  heroList: {
+    borderRadius: 3,
+
   },
   charpaper:{
     width: "100%",
     height: "100%",
-    background: "#8C4242"
+    background: "#3c4545"
+  },
+
+  title: {
+    marginLeft: 20,
   }
 
 
@@ -57,15 +64,6 @@ type Hero = {
   default_weapon: number;
 };
 
-// id: 1,
-//     race: 'barbarian',
-//     attack: 3,
-//     defend: 2,
-//     body: 8 ,
-//     mind: 2,
-//     default_weapon: 2,
-//     image: 'https://i.imgur.com/h0nbSUe.gif'
-
 export default function MakeNewCharacterList({ user }: any) {
   const [heroes, setHeroes] = React.useState<Hero[]>([]);
 
@@ -85,6 +83,7 @@ export default function MakeNewCharacterList({ user }: any) {
     return (
       <ListItem
         button
+        className={classes.heroList}
         selected={selectedIndex === index}
         onClick={(event) => handleListItemClick(event, index)}
       >
@@ -112,9 +111,9 @@ export default function MakeNewCharacterList({ user }: any) {
   return (
     <>
       <Paper className={classes.charpaper}elevation={10}>
-      <Grid container className={classes.root} spacing={3} alignItems="center" justify="center">
+      <Grid container className={classes.root} spacing={6} alignItems="center" justify="center">
         <Grid item xs={12}  >
-          <Typography variant="h3">Select a Hero</Typography>
+          <Typography className={classes.title} variant="h3">Select a Hero</Typography>
         </Grid>
         <Grid item xs={12} sm={6}>
           <MakeNewCharacterCard hero={heroes[selectedIndex]} />
@@ -122,7 +121,7 @@ export default function MakeNewCharacterList({ user }: any) {
 
         <Grid item xs={3}>
           <Typography className={classes.list}>
-            <List component="nav" aria-label="main mailbox folders">
+            <List  component="nav" aria-label="main mailbox folders">
               {heroList}
             </List>
           </Typography>

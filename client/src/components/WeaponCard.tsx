@@ -15,38 +15,34 @@ import { AutoSizer } from "@material-ui/data-grid";
 const useStyles = makeStyles({
   root: {
     maxWidth: "100%",
-    background: "#555",
+
     padding: 40,
   },
   media: {
     height: 150,
-    
-    backgroundSize: "contain"
+
+    backgroundSize: "contain",
   },
 });
 
-export default function WeaponCard({weapon} :any) {
+export default function WeaponCard({ weapon }: any) {
   const classes = useStyles();
 
   return (
     <>
-    {weapon && (<Grid container>
-      <Card className={classes.root}>
-          <CardHeader 
-            title={weapon.name}
-          />
+      {weapon && (
+        <Card className={classes.root}>
+          <CardHeader title={weapon.name} />
           <CardMedia
             className={classes.media}
             image={weapon.image}
             title={weapon.name}
           />
           <CardContent>
-     
-            <Typography>
-             {weapon.description}
-            </Typography>
+            <Typography>{weapon.description}</Typography>
           </CardContent>
-      </Card>
-    </Grid>)}</>
+        </Card>
+      )}
+    </>
   );
 }

@@ -1,0 +1,7 @@
+Character Card
+title = 20
+background color cards #212626 (in theme)
+paper color "#3c4545" (in user)
+
+media
+background: "contain"
