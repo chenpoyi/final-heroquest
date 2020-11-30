@@ -32,13 +32,15 @@ const useStyles = makeStyles({
   media: {
     minHeight: 160,
     minWidth: 160,
-
+    border: 10,
+    borderColor: "green",
+    borderRadius: 15,
     backgroundSize: "contain",
   },
-  mediaPaper:{
-    padding: 5,
-    background: " #212626"
-  },
+  // mediaPaper:{
+  //   padding: 5,
+  //   background: " #212626"
+  // },
   header: {
     fontSize: 15,
     margin: 5
@@ -134,9 +136,9 @@ export default function MyCharacterCard({ id, name, image, body, mind, attack, d
       <Typography className={classes.subheader}>
         {users.find(element => element.id == user_id).email}
       </Typography>
-      <Paper className={classes.mediaPaper}>
-      <CardMedia className={classes.media} image={image} />
-      </Paper>
+      {/* <Paper className={classes.mediaPaper}> */}
+      <CardMedia style={{border: 10, borderColor: "green"}} className={classes.media} image={image} />
+      {/* </Paper> */}
       </Grid>
       <CardContent>
         <Typography variant="body2" component="p">
@@ -218,9 +220,9 @@ export default function MyCharacterCard({ id, name, image, body, mind, attack, d
           {(user_id == user.id) && (<Button className={classes.button }onClick={handleCharacterSave} size="small" variant="contained">Save</Button>)}
 
           </Grid>
-</>)}</>
 
 
+          </>)}</>
 
       </CardContent>
     </Card>

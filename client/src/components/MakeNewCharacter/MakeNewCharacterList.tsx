@@ -34,7 +34,7 @@ const useStyles = makeStyles({
   charpaper:{
     width: "100%",
     height: "100%",
-    background: "#212626"
+    background: "#8C4242"
   }
 
 

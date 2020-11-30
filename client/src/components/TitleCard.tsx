@@ -9,6 +9,8 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import Signup from "./Signup";
+// import { theme } from "../Theme"
+import { useTheme } from '@material-ui/core/styles';
 import {
   BrowserRouter as Router,
   Switch,
@@ -24,6 +26,8 @@ const useStyles = makeStyles({
     maxWidth: "100%",
     background: "#735D58",
     padding: 40,
+    
+    
   },
   media: {
     height: 400,
