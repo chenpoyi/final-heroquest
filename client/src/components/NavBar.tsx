@@ -21,6 +21,7 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       flexGrow: 1,
+
     },
     menuButton: {
       marginRight: theme.spacing(2),
@@ -28,6 +29,12 @@ const useStyles = makeStyles((theme: Theme) =>
     title: {
       flexGrow: 1,
     },
+    navbar: {
+    },
+    logo: {
+      maxHeight:50,
+      
+    }
     
     
     
@@ -95,11 +102,13 @@ export default function NavBar({loggedInStatus, handleSuccessfulLogout, user}: N
      
 
       <AppBar >
-        <Toolbar>
+        <Toolbar className={classes.navbar}>
           <LeftDrawer />
           <Typography variant="h6" className={classes.title}>
-            HeroQuest
+          <img className={classes.logo} src="https://upload.wikimedia.org/wikipedia/de/9/92/Heroquest_logo.png"/>
+
           </Typography>
+
 
           {loggedInStatus && user && (
             <div>
