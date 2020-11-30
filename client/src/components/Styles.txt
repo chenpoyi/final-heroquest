@@ -5,3 +5,11 @@ paper color "#3c4545" (in user)
 
 media
 background: "contain"
+
+Armory
+data grid
+ <div style={{ marginLeft: 39, height: 300, width: '45%' }}>
+weapons card
+ <div style={{ marginLeft: 39, height: 300, width: '45%', marginTop: 20 }}>
+ check out card
+ 

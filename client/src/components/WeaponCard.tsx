@@ -14,15 +14,19 @@ import { AutoSizer } from "@material-ui/data-grid";
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: "100%",
-
+    maxWidth: "60%",
     padding: 40,
+    background: "#735D58",
+    marginLeft: 7,
+    
   },
   media: {
-    height: 150,
-
+    height: 125,
     backgroundSize: "contain",
   },
+  weapondescription:{
+    fontSize: 12,
+  }
 });
 
 export default function WeaponCard({ weapon }: any) {
@@ -39,7 +43,7 @@ export default function WeaponCard({ weapon }: any) {
             title={weapon.name}
           />
           <CardContent>
-            <Typography>{weapon.description}</Typography>
+            <Typography className={classes.weapondescription}>{weapon.description}</Typography>
           </CardContent>
         </Card>
       )}
