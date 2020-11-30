@@ -115,167 +115,180 @@ users = User.create({
 
   Character.destroy_all
 
-user_character = Character.create! ({
-  name:"Ragnor",
-  attack: 3,
-  defend: 2,
-  body: 8, 
-  mind: 2,
-  gold: 400,
-  user_id: 3,
-  hero_id: 1,
-  movement: 2,
-  image: 'https://i.imgur.com/h0nbSUe.gif'
-})
-
-user_character = Character.create! ({
-  name:"Saurlith",
-  attack: 2,
-  defend: 2,
-  body: 7, 
-  mind: 3,
-  gold: 450,
-  user_id: 4,
-  hero_id: 2,
-  movement: 2,
-  image:'https://i.imgur.com/jHZRMeu.gif'
-})
-
-user_character = Character.create! ({
-  name:"Maursin",
-  attack: 2,
-  defend: 2,
-  body: 6, 
-  mind: 4,
-  gold: 600,
-  user_id: 1,
-  hero_id: 3,
-  movement: 2,
-  image: 'https://i.imgur.com/51xJXTf.gif'
-})
-
-user_character = Character.create! ({
-  name:"Elsin",
-  attack: 1,
-  defend: 2,
-  body: 4, 
-  mind: 6,
-  gold: 300,
-  user_id: 5,
-  hero_id: 4,
-  movement: 2,
-  image:'https://i.imgur.com/PEM18xf.gif'
-})
-
-## extra characters for user 1
-
-user_character = Character.create! ({
-  name:"Detrix",
-  attack: 3,
-  defend: 2,
-  body: 8, 
-  mind: 2,
-  gold: 400,
-  user_id: 1,
-  hero_id: 1,
-  movement: 2,
-  image: 'https://i.imgur.com/h0nbSUe.gif'
-})
-
-user_character = Character.create! ({
-  name:"Axios",
-  attack: 2,
-  defend: 2,
-  body: 6, 
-  mind: 4,
-  gold: 600,
-  user_id: 1,
-  hero_id: 2,
-  movement: 2,
-  image:'https://i.imgur.com/jHZRMeu.gif'
-})
-
-user_character = Character.create! ({
-  name:"Doloman the Wise",
-  attack: 1,
-  defend: "2D6",
-  body: 4, 
-  mind: 6,
-  gold: 300,
-  user_id: 1,
-  hero_id: 4,
-  movement: 2,
-  image:'https://i.imgur.com/PEM18xf.gif'
-})
-# Zargon for everyone
-
-user_character = Character.create! ({
-  name:"Zargon",
-  attack: 0,
-  defend: 0,
-  body: 0, 
-  mind: 0,
-  gold: 0,
-  user_id: 1,
-  hero_id: 5,
-  movement: 0,
-  image:'https://i.imgur.com/PEM18xf.gif'
-})
-
-
-user_character = Character.create! ({
-  name:"Zargon",
-  attack: 0,
-  defend: 0,
-  body: 0, 
-  mind: 0,
-  gold: 0,
-  user_id: 2,
-  hero_id: 5,
-  movement: 0,
-  image:'https://i.imgur.com/PEM18xf.gif'
-})
-
-
-user_character = Character.create! ({
-  name:"Zargon",
-  attack: 0,
-  defend: 0,
-  body: 0, 
-  mind: 0,
-  gold: 0,
-  user_id: 3,
-  hero_id: 5,
-  movement: 0,
-  image:'https://i.imgur.com/PEM18xf.gif'
-})
-
-
-user_character = Character.create! ({
-  name:"Zargon",
-  attack: 0,
-  defend: 0,
-  body: 0, 
-  mind: 0,
-  gold: 0,
-  user_id: 4,
-  hero_id: 5,
-  movement: 0,
-  image:'https://i.imgur.com/PEM18xf.gif'
-})
-
-user_character = Character.create! ({
-  name:"Zargon",
-  attack: 0,
-  defend: 0,
-  body: 0, 
-  mind: 0,
-  gold: 0,
-  user_id: 5,
-  hero_id: 5,
-  movement: 0,
-  image:'https://i.imgur.com/PEM18xf.gif'
-})
+  user_character = Character.create! ({
+    name:"Ragnor",
+    attack: 3,
+    defend: 2,
+    body: 8, 
+    mind: 2,
+    gold: 400,
+    user_id: 3,
+    hero_id: 1,
+    movement: 2,
+    image: 'https://i.imgur.com/h0nbSUe.gif'
+  })
+  
+  user_character = Character.create! ({
+    name:"Saurlith",
+    attack: 2,
+    defend: 2,
+    body: 7, 
+    mind: 3,
+    gold: 450,
+    user_id: 4,
+    hero_id: 2,
+    movement: 2,
+    image:'https://i.imgur.com/jHZRMeu.gif'
+  })
+  
+  user_character = Character.create! ({
+    name:"Maursin",
+    attack: 2,
+    defend: 2,
+    body: 6, 
+    mind: 4,
+    gold: 600,
+    user_id: 1,
+    hero_id: 3,
+    movement: 2,
+    image: 'https://i.imgur.com/51xJXTf.gif'
+  })
+  
+  user_character = Character.create! ({
+    name:"Elsin",
+    attack: 1,
+    defend: 2,
+    body: 4, 
+    mind: 6,
+    gold: 300,
+    user_id: 5,
+    hero_id: 4,
+    movement: 2,
+    image:'https://i.imgur.com/PEM18xf.gif'
+  })
+  
+  ## extra characters for user 1
+  
+  user_character = Character.create! ({
+    name:"Detrix",
+    attack: 3,
+    defend: 2,
+    body: 8, 
+    mind: 2,
+    gold: 400,
+    user_id: 1,
+    hero_id: 1,
+    movement: 2,
+    image: 'https://i.imgur.com/h0nbSUe.gif'
+  })
+  
+  user_character = Character.create! ({
+    name:"Axios",
+    attack: 2,
+    defend: 2,
+    body: 6, 
+    mind: 4,
+    gold: 600,
+    user_id: 1,
+    hero_id: 2,
+    movement: 2,
+    image:'https://i.imgur.com/jHZRMeu.gif'
+  })
+  
+  user_character = Character.create! ({
+    name:"Doloman the Wise",
+    attack: 1,
+    defend: "2D6",
+    body: 4, 
+    mind: 6,
+    gold: 300,
+    user_id: 1,
+    hero_id: 4,
+    movement: 2,
+    image:'https://i.imgur.com/PEM18xf.gif'
+  })
+  # Zargon for everyone
+  
+  user_character = Character.create! ({
+    name:"Zargon",
+    attack: 0,
+    defend: 0,
+    body: 0, 
+    mind: 0,
+    gold: 0,
+    user_id: 1,
+    hero_id: 5,
+    movement: 0,
+    image:'https://i.imgur.com/PEM18xf.gif'
+  })
+  
+  
+  user_character = Character.create! ({
+    name:"Zargon",
+    attack: 0,
+    defend: 0,
+    body: 0, 
+    mind: 0,
+    gold: 0,
+    user_id: 2,
+    hero_id: 5,
+    movement: 0,
+    image:'https://i.imgur.com/PEM18xf.gif'
+  })
+  
+  user_character = Character.create! ({
+    name:"Cypress",
+    attack: 1,
+    defend: "2D6",
+    body: 4, 
+    mind: 6,
+    gold: 400,
+    user_id: 2,
+    hero_id: 4,
+    movement: 2,
+    image:'https://i.imgur.com/PEM18xf.gif'
+  })
+  
+  
+  user_character = Character.create! ({
+    name:"Zargon",
+    attack: 0,
+    defend: 0,
+    body: 0, 
+    mind: 0,
+    gold: 0,
+    user_id: 3,
+    hero_id: 5,
+    movement: 0,
+    image:'https://i.imgur.com/PEM18xf.gif'
+  })
+  
+  
+  user_character = Character.create! ({
+    name:"Zargon",
+    attack: 0,
+    defend: 0,
+    body: 0, 
+    mind: 0,
+    gold: 0,
+    user_id: 4,
+    hero_id: 5,
+    movement: 0,
+    image:'https://i.imgur.com/PEM18xf.gif'
+  })
+  
+  user_character = Character.create! ({
+    name:"Zargon",
+    attack: 0,
+    defend: 0,
+    body: 0, 
+    mind: 0,
+    gold: 0,
+    user_id: 5,
+    hero_id: 5,
+    movement: 0,
+    image:'https://i.imgur.com/PEM18xf.gif'
+  })
   ## Weapons for Armory
 
   puts "Re-creating Weapons for Armory..."
@@ -712,6 +725,35 @@ character_lobby = CharacterLobby.create!({
   character_id: 9,
   user_id: 2,
   lobby_id: 3,
+})
+# SEEDS OF LOBBY IN PROGRESS WITH SCOTT AS ZARGON
+character_lobby = CharacterLobby.create!({
+  character_id: 8,
+  user_id: 1,
+  lobby_id: 4,
+})
+
+character_lobby = CharacterLobby.create!({
+  character_id: 2,
+  user_id: 4,
+  lobby_id: 4,
+})
+character_lobby = CharacterLobby.create!({
+  character_id: 1,
+  user_id: 3,
+  lobby_id: 4,
+})
+
+character_lobby = CharacterLobby.create!({
+  character_id: 4,
+  user_id: 5, 
+  lobby_id: 4,
+})
+
+character_lobby = CharacterLobby.create!({
+  character_id: 10,
+  user_id: 2,
+  lobby_id: 4,
 })
 
 ## Monsters in the Lobby descriptions 

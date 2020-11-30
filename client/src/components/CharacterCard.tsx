@@ -11,6 +11,7 @@ import SecurityIcon from "@material-ui/icons/Security";
 import Avatar from "@material-ui/core/Avatar";
 import IconButton from "@material-ui/core/IconButton";
 import CardMedia from "@material-ui/core/CardMedia";
+import Paper from '@material-ui/core/Paper';
 
 const useStyles = makeStyles({
   root: {
@@ -25,26 +26,37 @@ const useStyles = makeStyles({
 
     backgroundSize: "contain",
   },
-  header: {
-    fontSize: 15,
-  },
+  
   details: {
     display: "flex",
     flexDirection: "column",
+  },
+  header: {
+    fontSize: 15,
+    margin: 5
+  },
+  subheader: {
+    fontSize: 13,
+    margin: 5
+  },
+  mediaPaper:{
+    padding: 5,
+    background: " #212626"
   },
 });
 
 type CharacterCardProps = {
   character: Character;
   refreshCharacters?: () => void;
+  user: any;
 };
 type Character = {
   id: number;
   name: string;
-  dateCreated: string;
-  lastUsed: string;
+  // dateCreated: string;
+  // lastUsed: string;
   race: string;
-  questsCompleted: number;
+  // questsCompleted: number;
   image: string;
   body: number;
   mind: number;
@@ -54,7 +66,7 @@ type Character = {
   gold: number;
 };
 
-export default function CharacterCard({ character, refreshCharacters = () => {} }: CharacterCardProps) {
+export default function CharacterCard({ character, refreshCharacters = () => {}, user }: CharacterCardProps) {
   const classes = useStyles();
   // const bull = <span className={classes.bullet}>•</span>;
 
@@ -81,17 +93,25 @@ export default function CharacterCard({ character, refreshCharacters = () => {} 
         <Card className={classes.root}>
           <div>
             <Typography className={classes.header}>
-              {character.name}
-              {character.race}
+            {character.name}
             </Typography>
-            <CardMedia className={classes.media} image={character.image} />
-          </div>
+            <Typography className={classes.subheader}>
+            {user.email}
+            </Typography>
+            <Paper className={classes.mediaPaper}>
+
+          <CardMedia className={classes.media} image={character.image} />
+          </Paper>
+        </div>
           <CardContent>
-            <Typography variant="body2" component="p">
-              <ul style={{ listStyleType: "none", padding: 0, fontSize: 14 }}>
-                <li>Quest Completed: {character.questsCompleted}/14</li>
+            <Typography   
+              variant="body2"
+              component="p"
+            >
+              <ul style={{ listStyleType: "none", padding: 0, fontSize: 14}}>
+                {/* <li>Quest Completed: {character.questsCompleted}/14</li>
                 <li>Date Created: {character.dateCreated}</li>
-                <li>Last Used: {character.lastUsed}</li>
+                <li>Last Used: {character.lastUsed}</li> */}
                 <li>Body Points: {character.body}</li>
                 <li>Mind Points: {character.mind}</li>
                 <li>Attack Dice: {character.attack}</li>
