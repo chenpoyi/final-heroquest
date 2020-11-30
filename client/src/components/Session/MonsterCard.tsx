@@ -10,20 +10,23 @@ import FormControl from "@material-ui/core/FormControl";
 import TextField from "@material-ui/core/TextField";
 import Divider from "@material-ui/core/Divider";
 import { updateCharacterPoints } from "../../helpers/selectors";
+import { Grid } from "@material-ui/core";
 
 // monster card for Zargon view
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 150,
-    maxHeight: 150
+    maxWidth: 500,
+    marginTop: 10
+    // maxHeight: 150
   },
   media: {
+    minWidth: 150,
     height: 150,
     backgroundSize: "contain",
   },
 });
- 
+
 type MonsterCardProps = {
   monster: Monster;
 };
@@ -64,8 +67,8 @@ export default function MonsterCard({ monster }: MonsterCardProps) {
     setMind(mindNumber);
   };
 
-//Setting inital state for monsters in the game currently hardcoded 
-//This is not an issue these do not change
+  //Setting inital state for monsters in the game currently hardcoded 
+  //This is not an issue these do not change
 
   React.useEffect(() => {
     if (monster) {
@@ -81,51 +84,62 @@ export default function MonsterCard({ monster }: MonsterCardProps) {
       {monster && (
         <Card className={classes.root}>
           <CardHeader title={monster.name}></CardHeader>
-
-          <CardMedia className={classes.media} image={monster.image} />
-          <CardContent>
-            <Typography variant="body2" component="p">
-              <ul style={{ listStyleType: "none" }}>
-                <li>Attack Dice: {monster.attack}</li>
-                <li>Defense Dice: {monster.defend}</li>
-                <li>Movement: {monster.movement}</li>
-              </ul>
-            </Typography>
-
-            <FormControl variant="outlined">
-              <TextField
-                id="outlined-number"
-                label="Body"
-                type="number"
-                defaultValue={bodyState}
-                value={bodyState}
-                onChange={(e) => {
-                  handleBodyChange(e);
-                }}
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                variant="outlined"
-              />
-            </FormControl>
-
-            <FormControl variant="outlined">
-              <TextField
-                id="outlined-number"
-                label="Mind"
-                type="number"
-                defaultValue={mindState}
-                value={mindState}
-                onChange={(e) => {
-                  handleMindChange(e);
-                }}
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                variant="outlined"
-              />
-            </FormControl>
-          </CardContent>
+          <Grid container direction="row">
+            <Grid item>
+              <CardMedia className={classes.media} image={monster.image} />
+            </Grid>
+            <Grid item >
+              <CardContent>
+                <Grid container direction="column">
+             
+                <Typography variant="body2" >
+                  <ul style={{ listStyleType: "none" }}>
+                    <li>Attack Dice: {monster.attack}</li>
+                    <li>Defense Dice: {monster.defend}</li>
+                    <li>Movement: {monster.movement}</li>
+                  </ul>
+                </Typography>
+                
+ 
+                <FormControl variant="outlined">
+                  <TextField
+                    id="outlined-number"
+                    label="Body"
+                    type="number"
+                    defaultValue={bodyState}
+                    value={bodyState}
+                    onChange={(e) => {
+                      handleBodyChange(e);
+                    }}
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
+                    variant="outlined"
+                  />
+                </FormControl>
+             
+             
+                <FormControl variant="outlined">
+                  <TextField
+                    id="outlined-number"
+                    label="Mind"
+                    type="number"
+                    defaultValue={mindState}
+                    value={mindState}
+                    onChange={(e) => {
+                      handleMindChange(e);
+                    }}
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
+                    variant="outlined"
+                  />
+                </FormControl>
+     
+                    </Grid>
+              </CardContent>
+            </Grid>
+          </Grid>
         </Card>
       )}
     </>

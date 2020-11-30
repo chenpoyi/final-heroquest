@@ -15,18 +15,58 @@ import TextField from '@material-ui/core/TextField';
 
 import Divider from '@material-ui/core/Divider'
 
+import { Grid } from "@material-ui/core";
+import Paper from '@material-ui/core/Paper';
+
 import { updateCharacterPoints } from '../../helpers/selectors'
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 300
+  maxWidth: 350,
+  minWidth: 340,
+  // margin: 5,
+  padding: 5,
+  display: "flex",
+  background: "#735D58",
   },
   media: {
-    height: 150,
+    minHeight: 160,
+    minWidth: 160,
+
+    backgroundSize: "contain",
   },
-
-
+  mediaPaper:{
+    padding: 5,
+    background: " #212626"
+  },
+  header: {
+    fontSize: 15,
+    margin: 5
+  },
+  subheader: {
+    fontSize: 13,
+    margin: 5
+  },
+  details: {
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  button: {
+    marginTop: 5
+  },
+  textfield: {
+    marginTop: 5
+  }
 });
+
+// root: {
+//   maxWidth: 350,
+//   minWidth: 340,
+//   margin: 5,
+//   padding: 5,
+//   display: "flex",
+//   background: "#735D58",
+// },
 
 type CharacterCardProps = {
   id: number,
@@ -35,16 +75,16 @@ type CharacterCardProps = {
   // lastUsed :string, 
   // race :string, 
   // questsCompleted :number, 
-  image :string,
-  body :number,
-  mind :number,
-  attack :number,
-  defend :number,
-  movement :number,
-  gold :number,
-  users_id :number,
-  user :any,
-  users :any
+  image: string,
+  body: number,
+  mind: number,
+  attack: number,
+  defend: number,
+  movement: number,
+  gold: number,
+  users_id: number,
+  user: any,
+  users: any
 }
 
 export default function MyCharacterCard({ id, name, image, body, mind, attack, defend, movement, gold, users_id, user, users }: CharacterCardProps) {
@@ -85,20 +125,22 @@ export default function MyCharacterCard({ id, name, image, body, mind, attack, d
   }, [gold, body, mind])
 
   return (
+  
     <Card className={classes.root}>
-      <CardHeader
-        title={`${name}`}
-        subheader={users.find(element => element.id == users_id).email}
-
-      >
-
-      </CardHeader>
-
+      <Grid>
+      <Typography className={classes.header}>
+        {name}
+      </Typography>
+      <Typography className={classes.subheader}>
+        {users.find(element => element.id == users_id).email}
+      </Typography>
+      <Paper className={classes.mediaPaper}>
       <CardMedia className={classes.media} image={image} />
+      </Paper>
+      </Grid>
       <CardContent>
-
         <Typography variant="body2" component="p">
-          <ul style={{ listStyleType: "none" }}>
+          <ul style={{ listStyleType: "none", padding: 0, fontSize: 14 }}>
             <li>
               Attack Dice: {attack}
             </li>
@@ -124,11 +166,12 @@ export default function MyCharacterCard({ id, name, image, body, mind, attack, d
 
         </Typography>
         <> {(users_id == user.id) && (<>
-          <FormControl variant="outlined">
+          <FormControl className={classes.textfield} variant="outlined">
             <TextField
               id="outlined-number"
               label="Body"
               type="number"
+              size="small"
               defaultValue={bodyState}
               value={bodyState}
               onChange={(e) => { handleBodyChange(e) }}
@@ -140,11 +183,12 @@ export default function MyCharacterCard({ id, name, image, body, mind, attack, d
           </FormControl>
 
 
-          <FormControl variant="outlined">
+          <FormControl  className={classes.textfield} variant="outlined">
             <TextField
               id="outlined-number"
               label="Mind"
               type="number"
+              size="small"
               defaultValue={mindState}
               value={mindState}
               onChange={(e) => { handleMindChange(e) }}
@@ -155,11 +199,12 @@ export default function MyCharacterCard({ id, name, image, body, mind, attack, d
             />
           </FormControl>
 
-          <FormControl variant="outlined">
+          <FormControl className={classes.textfield} variant="outlined">
             <TextField
               id="outlined-number"
               label="Gold"
               type="number"
+              size="small"
               defaultValue={goldState}
               value={goldState}
               onChange={(e) => { handleGoldChange(e) }}
@@ -168,12 +213,16 @@ export default function MyCharacterCard({ id, name, image, body, mind, attack, d
               }}
               variant="outlined"
             />
-          </FormControl></>)}</>
+          </FormControl>
+          <Grid container justify="center">
+          {(users_id == user.id) && (<Button className={classes.button }onClick={handleCharacterSave} size="small" variant="contained">Save</Button>)}
+
+          </Grid>
+</>)}</>
 
 
 
       </CardContent>
-      {(users_id == user.id) && (<Button onClick={handleCharacterSave} size="small">Save</Button>)}
     </Card>
   );
 }

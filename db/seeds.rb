@@ -236,6 +236,19 @@ user_character = Character.create! ({
   image:'https://i.imgur.com/PEM18xf.gif'
 })
 
+user_character = Character.create! ({
+  name:"Cypress",
+  attack: 1,
+  defend: "2D6",
+  body: 4, 
+  mind: 6,
+  gold: 400,
+  users_id: 2,
+  heros_id: 4,
+  movement: 2,
+  image:'https://i.imgur.com/PEM18xf.gif'
+})
+
 
 user_character = Character.create! ({
   name:"Zargon",
@@ -712,6 +725,36 @@ character_lobby = CharacterLobby.create!({
   characters_id: 9,
   users_id: 2,
   lobbies_id: 3,
+})
+
+# SEEDS OF LOBBY IN PROGRESS WITH SCOTT AS ZARGON
+character_lobby = CharacterLobby.create!({
+  characters_id: 8,
+  users_id: 1,
+  lobbies_id: 4,
+})
+
+character_lobby = CharacterLobby.create!({
+  characters_id: 2,
+  users_id: 4,
+  lobbies_id: 4,
+})
+character_lobby = CharacterLobby.create!({
+  characters_id: 1,
+  users_id: 3,
+  lobbies_id: 4,
+})
+
+character_lobby = CharacterLobby.create!({
+  characters_id: 4,
+  users_id: 5, 
+  lobbies_id: 4,
+})
+
+character_lobby = CharacterLobby.create!({
+  characters_id: 10,
+  users_id: 2,
+  lobbies_id: 4,
 })
 
 ## Monsters in the Lobby descriptions 

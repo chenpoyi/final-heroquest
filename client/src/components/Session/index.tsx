@@ -5,7 +5,8 @@ import { getOneCharacter, getLobbyMonsters, getUsersOfLobby, getCharactersOfLobb
 import MyCharacterCard from "./MyCharacterCard";
 import ZargonCard from "./ZargonCard";
 import CharacterCard from "../CharacterCard";
-
+import { Grid } from "@material-ui/core";
+import Paper from '@material-ui/core/Paper';
 import useInterval from '@use-it/interval';
 
 import {
@@ -30,38 +31,71 @@ type Monster = {
   // user?: any;
 };
 
-type Character ={
-  
-id:number,
-name:string,
-attack:number,
-defend:number,
-body:number,
-mind:number,
-gold:number,
-created_at:string,
-updated_at:string,
-users_id:number,
-heros_id: number,
-movement: number,
-weapon: number,
-image: string
+type Character = {
+
+  id: number,
+  name: string,
+  race: string,
+  attack: number,
+  defend: number,
+  body: number,
+  mind: number,
+  gold: number,
+  created_at: string,
+  updated_at: string,
+  users_id: number,
+  heros_id: number,
+  movement: number,
+  weapon: number,
+  image: string
 }
 
 type SessionParams = {
   sessionID: string
 }
+
+const useStyles = makeStyles({
+  root: {
+    maxWidth: "100%",
+    width: "100%",
+    margin: 50,
+    alignItems: "center"
+  },
+  media: {
+    height: 150,
+  },
+  list: {
+    maxWidth: 125,
+    fontSize: 15,
+
+  },
+  charpaper: {
+    width: "100%",
+    height: "100%",
+    background: "#212626"
+  },
+
+  card: {
+    width: "100%"
+  }
+
+
+
+
+});
+
 export default function Session({ user }: SessionProps) {
   let { sessionID } = useParams<SessionParams>();
   const [id, setId] = React.useState(Number(sessionID));
-  const [users, setUsers] = React.useState([]);
+  const [users, setUsers] = React.useState<any[]>([]);
 
   // const [character, setCharacter] = React.useState(null);
   const [characters, setCharacters] = React.useState<Character[]>([]);
   const [lobbyMonsters, setLobbyMonsters] = React.useState<Monster[]>();
-  
+
   // const newCharacter = getOneCharacter(1);
 
+  const classes = useStyles();
 
 
 
@@ -71,16 +105,16 @@ export default function Session({ user }: SessionProps) {
   //   });
   // };
 
-  const list = characters.sort(function(x,y){ return x.users_id == user.id ? -1 : y.users_id == user.id ? 1 : 0; })
-  .map((character, index)=>{
-    return(
-    <>
-    {character && lobbyMonsters && (character.users_id == user.id && character.name =='Zargon')&&(<ZargonCard lobbyMonsters={lobbyMonsters} user={user}/>)}
-    {character &&!(character.users_id == user.id && character.name =='Zargon')&&(<MyCharacterCard {...character} user = {user} users ={users}/>)}
-    {/* {character && (character.users_id!=user.id)&&(<CharacterCard {...characters[index]} user = {users[index]}/>)} */}
-    </>
-    )
-  })
+  const list = characters.sort(function (x, y) { return x.users_id == user.id ? -1 : y.users_id == user.id ? 1 : 0; })
+    .map((character, index) => {
+      return (
+        <>
+          {character && lobbyMonsters && (character.users_id == user.id && character.name == 'Zargon') && (<Grid item sm={12}><ZargonCard lobbyMonsters={lobbyMonsters} user={user} /></Grid>)}
+          {character && character.users_id == user.id && character.name != 'Zargon' && (<Grid item sm={12}><MyCharacterCard {...character} user={user} users={users} /></Grid>)}
+          {character && character.users_id != user.id && (<Grid item sm={5}><CharacterCard character={character} user={users.find(element => element.id == character.users_id)} /></Grid>)}
+        </>
+      )
+    })
 
   // React.useEffect(getCharacter, []);
 
@@ -88,25 +122,25 @@ export default function Session({ user }: SessionProps) {
   useInterval(() => {
     // setCount((currentCount) => currentCount + 1);
     getUsersOfLobby(id)
-    .then((newUsers)=>{
-      setUsers(newUsers);
-      getCharactersOfLobby(id)
-      .then((newCharacters)=>{
-        setCharacters(newCharacters)
+      .then((newUsers) => {
+        setUsers(newUsers);
+        getCharactersOfLobby(id)
+          .then((newCharacters) => {
+            setCharacters(newCharacters)
+          })
       })
-    })
   }, 10000);
 
   React.useEffect(() => {
     getUsersOfLobby(id)
-    .then((newUsers)=>{
-      setUsers(newUsers);
-      getCharactersOfLobby(id)
-      .then((newCharacters)=>{
-        setCharacters(newCharacters)
+      .then((newUsers) => {
+        setUsers(newUsers);
+        getCharactersOfLobby(id)
+          .then((newCharacters) => {
+            setCharacters(newCharacters)
+          })
       })
-    })
-    
+
   }, [])
 
   React.useEffect(() => {
@@ -114,12 +148,14 @@ export default function Session({ user }: SessionProps) {
   }, []);
 
   return (
-    <div>
-      {/* <MyCharacterCard {...character} user = {user}/> */}
-{/* {    <ZargonCard lobbyMonsters={lobbyMonsters}/> } */}
-{/* {characters && lobbyMonsters && (characters.find((element)=>{element.users_id == user.id}).name =='Zargon')&&(<ZargonCard lobbyMonsters={lobbyMonsters}/>)} */}
-   {list}
-       
-    </div>
-  );
+    <Paper className={classes.charpaper} elevation={10}>
+      <Grid container className={classes.root} spacing={3} alignItems="flex-start" justify="flex-start" direction="row"
+      >
+        {/* <MyCharacterCard {...character} user = {user}/> */}
+        {/* {    <ZargonCard lobbyMonsters={lobbyMonsters}/> } */}
+        {/* {characters && lobbyMonsters && (characters.find((element)=>{element.users_id == user.id}).name =='Zargon')&&(<ZargonCard lobbyMonsters={lobbyMonsters}/>)} */}
+        {list}
+
+      </Grid>
+    </Paper>);
 }

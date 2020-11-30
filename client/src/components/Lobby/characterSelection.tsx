@@ -109,7 +109,7 @@ export default function CharacterSelection({users, characters, lobby_id}:charSel
    return (
      
 <>
-    { charState[index] && (<CharacterCard character={charState[index]}/> )}
+    { charState[index] && (<CharacterCard character={charState[index]} user={user}/> )}
     {!charState[index] && (<Card className={classes.root}>
         <CardContent>
         <Typography

@@ -111,7 +111,7 @@ export default function CharacterList({ user }: any) {
 
      <Grid container spacing={2} className={classes.root}>
         <Grid item xs={6}>
-          <CharacterCard character={characters[selectedIndex]} />
+          <CharacterCard character={characters[selectedIndex]} user={user}/>
           
         </Grid>
 

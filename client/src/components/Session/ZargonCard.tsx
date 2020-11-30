@@ -21,10 +21,13 @@ import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/Inbox';
 import DraftsIcon from '@material-ui/icons/Drafts';
 import MonsterCard from './MonsterCard'
+import { Grid } from "@material-ui/core";
+
 const useStyles = makeStyles({
   root: {
-    maxWidth: "100%",
-    margin: 50,
+    maxWidth: "60%",
+  
+    margin: 10,
   },
   media: {
     height: 150,
@@ -40,7 +43,7 @@ const useStyles = makeStyles({
 // monster card is rendered when the monster is selected from the list of current monsters
 
 
-export default function ZargonCard({lobbyMonsters, user}) {
+export default function ZargonCard({ lobbyMonsters, user }) {
   const classes = useStyles();
   // These states are used to set the the monsters in the two lists 
   // List one data from the monsters - Selecting a monster
@@ -51,19 +54,19 @@ export default function ZargonCard({lobbyMonsters, user}) {
   // const [selectedActiveMonster, setSelectedActiveMonster] = React.useState<any>(currentlySelectedMonsters[0]);
 
   // this useEffect pulls the monster data for List one
-    React.useEffect(()=>{
-      setMonstersState(getMonsters())
-    },[])
-    React.useEffect(()=>{
-      // if(lobbyMonsters){
-      // const lobbyMonstersInfo = lobbyMonsters.map((lobbyMonster)=>{
-      //   return monstersState.find(element => element.id == lobbyMonster.id)
-      // })
-      setcurrentlySelectedMonsters(lobbyMonsters)
-    },[lobbyMonsters])
+  React.useEffect(() => {
+    setMonstersState(getMonsters())
+  }, [])
+  React.useEffect(() => {
+    // if(lobbyMonsters){
+    // const lobbyMonstersInfo = lobbyMonsters.map((lobbyMonster)=>{
+    //   return monstersState.find(element => element.id == lobbyMonster.id)
+    // })
+    setcurrentlySelectedMonsters(lobbyMonsters)
+  }, [lobbyMonsters])
 
   // This state is used For list highlighting
-  const [selectedIndex, setSelectedIndex] = React.useState(1); 
+  const [selectedIndex, setSelectedIndex] = React.useState(1);
   const monsterList = monstersState.map((monster, index) => {
     return (<MenuItem key={monster.id} value={index}>{monster.name}</MenuItem>)
   });
@@ -76,20 +79,20 @@ export default function ZargonCard({lobbyMonsters, user}) {
   };
 
   const activeMonsterList = currentlySelectedMonsters.map((monster, index) => {
-    return (  
-    <ListItem
-      button
-      selected={selectedIndex === index}
-      onClick={(event) => handleListItemClick(event, index)}
-    >
-      <ListItemText primary={monster.name} />
-    </ListItem>)
-    
+    return (
+      <ListItem
+        button
+        selected={selectedIndex === index}
+        onClick={(event) => handleListItemClick(event, index)}
+      >
+        <ListItemText primary={monster.name} />
+      </ListItem>)
+
   });
 
   const handleMonsterSave = () => {
-    setcurrentlySelectedMonsters( (prev) => {
-      const newArr = [...prev, monstersState[selectedMonsterId]] 
+    setcurrentlySelectedMonsters((prev) => {
+      const newArr = [...prev, monstersState[selectedMonsterId]]
       console.log(newArr)
       return newArr
     })
@@ -98,33 +101,41 @@ export default function ZargonCard({lobbyMonsters, user}) {
 
   return (
     <>
-    <Card className={classes.root}>
-      <CardHeader title={`Zargon`} subheader={`${user.email}`}>
+      <Card className={classes.root}>
+        <CardHeader title={`Zargon`} subheader={`${user.email}`}>
 
-      </CardHeader>
-      <CardMedia className={classes.media} image={"imgSrc"} />
-      <CardContent>
-    <MonsterCard monster={currentlySelectedMonsters[selectedIndex]}/>
-      <List component="nav" aria-label="main mailbox folders">
-      <>{currentlySelectedMonsters && (<>{activeMonsterList}</>)}</>
-      </List>
-        <FormControl >
-        <InputLabel id="demo-simple-select-helper-label">Monster</InputLabel>
-        <Select
-          labelId="demo-simple-select-helper-label"
-          id="demo-simple-select-helper"
-          value={selectedMonsterId}
-          onChange={(event) => setSelectedMonsterId(event.target.value)}
-        >
-          {monsterList}
-        </Select>
-        <Button onClick={handleMonsterSave}>
-          ADD MONSTER
-        </Button>
-        
-      </FormControl>
-      </CardContent>
-    </Card>
+        </CardHeader>
+        {/* <CardMedia className={classes.media} image={"imgSrc"} /> */}
+        <CardContent>
+          <Grid container>
+            <Grid item>
+              <MonsterCard monster={currentlySelectedMonsters[selectedIndex]} />
+            </Grid>
+            <Grid item>
+
+              <List component="nav" aria-label="main mailbox folders">
+                <>{currentlySelectedMonsters && (<>{activeMonsterList}</>)}</>
+              </List>
+
+              <FormControl >
+                <InputLabel id="demo-simple-select-helper-label">Monster</InputLabel>
+                <Select
+                  labelId="demo-simple-select-helper-label"
+                  id="demo-simple-select-helper"
+                  value={selectedMonsterId}
+                  onChange={(event) => setSelectedMonsterId(event.target.value)}
+                >
+                  {monsterList}
+                </Select>
+                <Button onClick={handleMonsterSave}>
+                  ADD MONSTER
+                </Button>
+
+              </FormControl>
+            </Grid>
+          </Grid>
+        </CardContent>
+      </Card>
     </>
   );
 }

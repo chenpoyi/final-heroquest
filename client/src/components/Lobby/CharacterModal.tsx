@@ -88,7 +88,7 @@ export default function CharacterModal({user, setCharacter, index, charState, lo
   const list = characters.map((character, index) => {
     return (
     <>
-    <CharacterCard character={character}/>
+    <CharacterCard character={character} user={user}/>
     <Button variant="contained" size="small" color="primary" onClick={()=>{handleSelect(character)}}> 
         Select
       </Button>
