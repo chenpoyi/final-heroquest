@@ -71,7 +71,7 @@ class App extends Component<IProps, IState> {
     return (
       <Router>
         <div>
-          <Grid container spacing={4}>
+          <Grid container spacing={2}>
             <Grid item className="App">
               <NavBar
                 loggedInStatus={this.state.loggedInStatus}
@@ -93,7 +93,9 @@ class App extends Component<IProps, IState> {
                     <Signup />
                   </Route>
                   <Route path="/armory">
+                  <Grid container spacing={2}>
                     <Armory user={this.state.user} />
+                  </Grid>
                   </Route>
                   <Route path="/lobby">
                     <Grid item>
