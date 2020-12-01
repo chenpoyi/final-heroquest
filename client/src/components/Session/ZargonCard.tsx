@@ -123,9 +123,7 @@ export default function ZargonCard({ lobbyMonsters, user }) {
         {/* <CardMedia className={classes.media} image={"imgSrc"} /> */}
         <CardContent>
           <Grid container>
-            <Grid item>
-              <MonsterCard monster={currentlySelectedMonsters[selectedIndex]} setcurrentlySelectedMonsters={setcurrentlySelectedMonsters} currentlySelectedMonsters={currentlySelectedMonsters} index={selectedIndex}  />
-            </Grid>
+            
             <Grid item>
 
               <List component="nav" aria-label="main mailbox folders">
@@ -164,6 +162,9 @@ export default function ZargonCard({ lobbyMonsters, user }) {
 
 
               </FormControl>
+            </Grid>
+            <Grid item>
+              <MonsterCard monster={currentlySelectedMonsters[selectedIndex]} setcurrentlySelectedMonsters={setcurrentlySelectedMonsters} currentlySelectedMonsters={currentlySelectedMonsters} index={selectedIndex}  />
             </Grid>
           </Grid>
         </CardContent>

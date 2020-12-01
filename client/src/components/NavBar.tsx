@@ -1,4 +1,6 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
+import { Grid } from "@material-ui/core";
+
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -14,7 +16,7 @@ import Menu from '@material-ui/core/Menu';
 import LeftDrawer from './LeftDrawer';
 
 import axios from 'axios';
-import  { Redirect, Route } from 'react-router-dom'
+import { Redirect, Route } from 'react-router-dom'
 
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -32,29 +34,29 @@ const useStyles = makeStyles((theme: Theme) =>
     navbar: {
     },
     logo: {
-      maxHeight:50,
-      
+      maxHeight: 50,
+
     }
-    
-    
-    
+
+
+
   }),
 );
 
 type NavBarProps = {
   loggedInStatus: boolean;
-  handleSuccessfulLogout :any
-  user :any
+  handleSuccessfulLogout: any
+  user: any
 }
 
 
 
-export default function NavBar({loggedInStatus, handleSuccessfulLogout, user}: NavBarProps) {
+export default function NavBar({ loggedInStatus, handleSuccessfulLogout, user }: NavBarProps) {
   const classes = useStyles();
   const [auth, setAuth] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
-  
+
 
   // useEffect(() => {
   //   if(localStorage.getItem('email')){
@@ -88,31 +90,31 @@ export default function NavBar({loggedInStatus, handleSuccessfulLogout, user}: N
       .then((response) => {
         // handle success
         handleSuccessfulLogout();
-        return <Redirect to='/'  />
+        return <Redirect to='/' />
 
         // return <Route path="/" render={TitleCard} />
       });
 
   }
 
-  
+
 
   return (
     <div className={classes.root}>
-     
+
 
       <AppBar >
         <Toolbar className={classes.navbar}>
           <LeftDrawer />
           <Typography variant="h6" className={classes.title}>
-          <img className={classes.logo} src="https://upload.wikimedia.org/wikipedia/de/9/92/Heroquest_logo.png"/>
+            <img className={classes.logo} src="https://upload.wikimedia.org/wikipedia/de/9/92/Heroquest_logo.png" />
 
           </Typography>
-
+ 
 
           {loggedInStatus && user && (
-            <div>
-            
+           <>
+              
               <IconButton
                 aria-label="account of current user"
                 aria-controls="menu-appbar"
@@ -120,14 +122,17 @@ export default function NavBar({loggedInStatus, handleSuccessfulLogout, user}: N
                 onClick={handleMenu}
                 color="inherit"
               >
-                <AccountCircle />
+                <Typography variant="body1" className={classes.title}>
+                Logged in as: {user.email}
+
+              </Typography>
               </IconButton>
               <Menu
                 id="menu-appbar"
                 anchorEl={anchorEl}
                 anchorOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
+                  vertical: 'bottom',
+                  horizontal: 'left',
                 }}
                 keepMounted
                 transformOrigin={{
@@ -141,11 +146,11 @@ export default function NavBar({loggedInStatus, handleSuccessfulLogout, user}: N
                 <MenuItem onClick={handleClose}>My account</MenuItem>
                 <MenuItem onClick={handleLogout}>Logout</MenuItem>
               </Menu>
-            </div>
+              </>
           )}
         </Toolbar>
       </AppBar>
-     
+
     </div>
   );
 }

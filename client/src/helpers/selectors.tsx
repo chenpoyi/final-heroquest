@@ -360,41 +360,41 @@ const monsterData = [
 // monsters in the lobby
 
 const lobbyMonsters = [
-{
-  id: 1,
-  name:"Orc",
-  body: 11, 
-  mind: 12,
-  lobbies_id: 3, 
-  image: "https://i.imgur.com/MrwYk8c.jpg",
-  attack: 3,
-  defend: 2,
-  movement: 8
-},
+// {
+//   id: 1,
+//   name:"Orc",
+//   body: 11, 
+//   mind: 12,
+//   lobbies_id: 3, 
+//   image: "https://i.imgur.com/MrwYk8c.jpg",
+//   attack: 3,
+//   defend: 2,
+//   movement: 8
+// },
 
-{
-  id: 2,
-  name:"Chaos Warrior",
-  body: 23, 
-  mind: 23,
-  lobbies_id: 3,
-  image: "https://i.imgur.com/QPPVnmi.jpg",
-  attack: 4,
-  defend: 4,
-  movement: 7
-},
+// {
+//   id: 2,
+//   name:"Chaos Warrior",
+//   body: 23, 
+//   mind: 23,
+//   lobbies_id: 3,
+//   image: "https://i.imgur.com/QPPVnmi.jpg",
+//   attack: 4,
+//   defend: 4,
+//   movement: 7
+// },
 
-{
-  id: 3,
-  name:"Gargoyle",
-  body: 33, 
-  mind: 33,
-  lobbies_id: 3,
-  image: "https://i.imgur.com/ocatT4L.jpeg",
-  attack: 4,
-  defend: 5,
-  movement: 6
-}
+// {
+//   id: 3,
+//   name:"Gargoyle",
+//   body: 33, 
+//   mind: 33,
+//   lobbies_id: 3,
+//   image: "https://i.imgur.com/ocatT4L.jpeg",
+//   attack: 4,
+//   defend: 5,
+//   movement: 6
+// }
 ];
 
 // make a new character
