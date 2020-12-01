@@ -23,6 +23,7 @@ import Grid from '@material-ui/core/Grid';
 import CharacterModal from './CharacterModal'
 import CharacterSelection from "./characterSelection"
 import { getUsersOfLobby, getCharactersOfLobby } from "../../helpers/selectors"
+import { Paper } from '@material-ui/core';
 
 
 type LobbyProps = {
@@ -52,7 +53,12 @@ const useStyles = makeStyles({
   },
   lobbytitle: {
     marginBottom: 40,
-  }
+  },
+  charpaper: {
+    width: "100%",
+    height: "100%",
+    background: "#3c4545"
+  },
 });
 const emptyPlayer: User = {
   id: 0,
@@ -93,6 +99,7 @@ export default function Lobby({ user }: LobbyProps) {
   }, 10000);
 
   return (
+    <Paper className={classes.charpaper} elevation={10}>
     <Grid container className={classes.root}>
       <Grid item>
       <Typography className={classes.lobbytitle}gutterBottom variant="h2" component="h2">
@@ -113,5 +120,6 @@ export default function Lobby({ user }: LobbyProps) {
       </Grid>
       {/* <CharacterModal user={user} setCharacter={setCharacter} /> */}
     </Grid>
+    </Paper>
   );
 } 

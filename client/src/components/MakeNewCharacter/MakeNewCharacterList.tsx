@@ -41,7 +41,7 @@ const useStyles = makeStyles({
   },
 
   title: {
-    marginLeft: 20,
+    marginLeft: 110,
   }
 
 
@@ -110,23 +110,23 @@ export default function MakeNewCharacterList({ user }: any) {
 
   return (
     <>
-      <Paper className={classes.charpaper}elevation={10}>
+      <Paper className={classes.charpaper} elevation={10}>
       <Grid container className={classes.root} spacing={6} alignItems="center" justify="center">
         <Grid item xs={12}  >
-          <Typography className={classes.title} variant="h3">Select a Hero</Typography>
+          <Typography className={classes.title} variant="h3">Create a Character</Typography>
         </Grid>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12} sm={4}>
           <MakeNewCharacterCard hero={heroes[selectedIndex]} />
         </Grid>
 
-        <Grid item xs={3}>
+        <Grid item xs={12} sm={2}>
           <Typography className={classes.list}>
             <List  component="nav" aria-label="main mailbox folders">
               {heroList}
             </List>
           </Typography>
         </Grid>
-        <Grid item>
+        <Grid item xs={12} sm={4}>
           <FormControl variant="outlined">
             <TextField
               id="outlined-number"

@@ -20,12 +20,15 @@ import {
   useRouteMatch,
 } from "react-router-dom";
 import { AutoSizer } from "@material-ui/data-grid";
+import { Paper } from "@material-ui/core";
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: "100%",
+    maxWidth: "80%",
     background: "#735D58",
     padding: 40,
+    maxHeight: "80%",
+    margin: 150,
     
     
   },
@@ -38,12 +41,18 @@ const useStyles = makeStyles({
   menuLink: {
     textDecoration: 'none',
 },
+charpaper: {
+  width: "100%",
+  height: "100%",
+  background: "#3c4545"
+},
 });
 
 export default function TitleCard({user} :any) {
   const classes = useStyles();
 
   return (
+    <Paper className={classes.charpaper}>
     <Grid container>
       <Card className={classes.root}>
         
@@ -96,5 +105,6 @@ export default function TitleCard({user} :any) {
         </CardActions>
       </Card>
     </Grid>
+    </Paper>
   );
 }

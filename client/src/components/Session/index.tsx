@@ -78,7 +78,13 @@ const useStyles = makeStyles({
 
   card: {
     width: "100%"
-  }
+  },
+
+sessionstitle:{
+  marginBottom: 40,
+  marginTop: 70, 
+  marginLeft: 60,
+}
 
 
 
@@ -148,7 +154,7 @@ export default function Session({ user }: SessionProps) {
 
   return (
     <Paper className={classes.charpaper} elevation={10}>
-      <Typography gutterBottom variant="h1" component="h2">
+      <Typography className={classes.sessionstitle}gutterBottom variant="h2" component="h2">
                   Session: {id}
                 </Typography>
       <Grid container className={classes.root} spacing={3} alignItems="flex-start" justify="flex-start" direction="row">
