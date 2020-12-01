@@ -86,6 +86,8 @@ export default function MonsterCard({ monster, setcurrentlySelectedMonsters, cur
     }
   }, [monster]);
 
+  
+
   // The card will only render when monster is true
   // and body and mind points will be adjustable
   return (
@@ -147,16 +149,7 @@ export default function MonsterCard({ monster, setcurrentlySelectedMonsters, cur
      
                     </Grid>
               </CardContent>
-              <Button
-              onClick={() => {
-                destroyMonster(monster.id);
-              }}
-              color="primary"
-              size="small"
-              variant="contained"
-            >
-              Delete
-            </Button>)
+         
             </Grid>
           </Grid>
         </Card>

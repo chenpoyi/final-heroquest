@@ -73,14 +73,14 @@ export default function LeftDrawer( ) {
             <ListItemText primary={"Home"} />
           </ListItem>
         </Link>
-        <Link className={classes.menuLink} to="/armory">
-          <ListItem button key={"Armory"}>
-            <ListItemText primary={"Armory"}  />
-          </ListItem>
-        </Link>
         <Link className={classes.menuLink} to="/user">
           <ListItem button key={"Characters"}>
             <ListItemText primary={"Characters"} />
+          </ListItem>
+        </Link>
+        <Link className={classes.menuLink} to="/armory">
+          <ListItem button key={"Armory"}>
+            <ListItemText primary={"Armory"}  />
           </ListItem>
         </Link>
       </List>

@@ -32,7 +32,8 @@ const useStyles = makeStyles((theme: Theme) =>
       margin: 70,
       minWidth: "35%",
       marginBottom: 20,
-      maxWidth: "35%"
+      maxWidth: "35%",
+      
     },
     selectEmpty: {
       marginTop: theme.spacing(2),
@@ -50,6 +51,10 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     weaponcard: {
       maxWidth: "60%",
+      marginLeft: 60,
+    },
+    armory: {
+      marginTop: 70,
       marginLeft: 60,
     },
   })
@@ -165,6 +170,9 @@ export default function Armory({ user }: ArmoryProps) {
 
   return (
     <>
+      <Typography className={classes.armory}variant={"h2"}>
+          Armory
+        </Typography>
       <Grid container spacing={1}>
         <FormControl className={classes.formControl}>
           <Grid item xs={12}>
@@ -181,7 +189,7 @@ export default function Armory({ user }: ArmoryProps) {
             </Select>
 
             <FormHelperText>Select a character</FormHelperText>
-            <Typography variant="body2" component="p">
+            <Typography variant="body1" component="p">
               This character has: {gold()} gold.
             </Typography>
           </Grid>

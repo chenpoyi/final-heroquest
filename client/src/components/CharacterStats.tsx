@@ -64,6 +64,7 @@ type Character = {
 const useStyles = makeStyles({
   table: {
     minWidth: 300,
+    overFlow: "scroll",
   },
 });
 

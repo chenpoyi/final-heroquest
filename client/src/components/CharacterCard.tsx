@@ -108,7 +108,7 @@ export default function CharacterCard({
             </div>
             <CardContent>
               <Typography variant="body2" component="p">
-                <ul style={{ listStyleType: "none", padding: 0, fontSize: 14 }}>
+                <ul style={{ listStyleType: "none", padding: 0, fontSize: 18 }}>
                   {/* <li>Quest Completed: {character.questsCompleted}/14</li>
                 <li>Date Created: {character.dateCreated}</li>
                 <li>Last Used: {character.lastUsed}</li> */}

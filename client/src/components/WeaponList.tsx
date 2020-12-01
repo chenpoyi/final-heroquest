@@ -9,6 +9,7 @@ import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 
 import CardHeader from "@material-ui/core/CardHeader";
+import Typography from "@material-ui/core/Typography";
 
 import { BrowserRouter as Router, Link } from "react-router-dom";
 import { getCharacterWeapons } from "../helpers/selectors";
@@ -17,7 +18,7 @@ const useStyles = makeStyles({
   root: {
     maxWidth: 300,
     borderRadius: 3,
-    backgroundColor: "#735D58"
+    backgroundColor: "#735D58",
   },
   media: {
     height: 150,
@@ -31,6 +32,10 @@ const useStyles = makeStyles({
   armorybutton: {
     marginTop: 15,
   },
+  weapontitle: {
+    marginLeft: 10,
+    marginTop: 10,
+  }
 });
 
 type Character = {
@@ -78,24 +83,24 @@ export default function WeaponList({ character }: any) {
     <>
       <div className={classes.root}>
         <Card className={classes.root}>
-          <CardHeader title={`Weapons`}></CardHeader>
+          <Typography className={classes.weapontitle} variant={'h5'} paragraph>Weapons</Typography>
           <CardContent>
             <List component="nav" aria-label="main mailbox folders">
               {weaponsList}
             </List>
           </CardContent>
         </Card>
-        <Link className={classes.menuLink} to="/armory">
-          <Button
-            className={classes.armorybutton}
-            variant="contained"
-            size="small"
-            color="primary"
-          >
-            Armory
-          </Button>
-        </Link>
       </div>
+      <Link className={classes.menuLink} to="/armory">
+        <Button
+          className={classes.armorybutton}
+          variant="contained"
+          size="small"
+          color="primary"
+        >
+          Armory
+        </Button>
+      </Link>
     </>
   );
 }

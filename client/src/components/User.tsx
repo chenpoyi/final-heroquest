@@ -4,7 +4,7 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import axios from "axios";
 import CharacterList from "./CharacterList";
-import CharacterStats from "./CharacterStats"
+import CharacterStats from "./CharacterStats";
 import QuestList from "./QuestList";
 import WeaponList from "./WeaponList";
 import Typography from "@material-ui/core/Typography";
@@ -24,6 +24,13 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     questlist: {
       marginLeft: 10,
+    },
+    mycharactertext: {
+      marginTop: 70,
+      marginLeft: 130,
+    },
+    emailtext: {
+      marginLeft: 130,
     }
   })
 );
@@ -42,20 +49,19 @@ export default function User({ user }: UserProps) {
   return (
     <>
       <Paper className={classes.charpaper}>
-        <Grid container spacing={3} className={classes.root}>
+        <Typography className={classes.mycharactertext} variant={"h2"}>
+          My Characters
+        </Typography>
+        <Grid container spacing={1} className={classes.root}>
           <Grid item xs={12} sm={12}>
-            <Typography variant="h3">{user.email}</Typography>
+            <Typography className={classes.emailtext} variant="h4">{user.email}</Typography>
           </Grid>
           <Grid item xs={12} sm={12}>
             <CharacterList user={user} />
           </Grid>
-          {/* <Grid  item xs={12} sm={3}>
-          <h5>Character Stats PlaceHolder</h5>
-        </Grid> */}
-
         </Grid>
 
-        <Grid container spacing={1}>
+        <Grid container justify={"center"} spacing={1}>
           <Grid className={classes.questlist} item xs={12} sm={4}>
             <QuestList user={user} />
           </Grid>
@@ -63,7 +69,7 @@ export default function User({ user }: UserProps) {
             <CharacterStats category={"Weapons"} />
           </Grid>
           <Grid className={classes.questlist} item xs={12} sm={3}>
-            <CharacterStats category={"Monsters"}/>
+            <CharacterStats category={"Monsters"} />
           </Grid>
         </Grid>
       </Paper>

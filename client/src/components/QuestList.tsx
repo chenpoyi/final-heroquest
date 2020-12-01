@@ -81,13 +81,22 @@ export default function QuestList({ user }: QuestListProps) {
         {quests && (
           <>
     
-                <CardHeader
+                {/* <CardHeader
                   titleTypographyProps={{ variant: "h6" }}
                   title={quest.name}
-                  subheader={user.email}
-                />
+                  subheader={user.email}></CardHeader> */}
+
+                
 
                 <CardActions disableSpacing>
+
+                <Typography paragraph>
+                      {quest.name}
+              
+                </Typography>
+
+
+                  
                   <IconButton
                     className={clsx(classes.expand, {
                       [classes.expandOpen]: expanded[index],

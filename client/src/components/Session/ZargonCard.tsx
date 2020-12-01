@@ -51,6 +51,8 @@ export default function ZargonCard({ lobbyMonsters, user }) {
   const [monstersState, setMonstersState] = React.useState<any>([]);
   const [selectedMonsterId, setSelectedMonsterId] = React.useState<any>([]);
   const [currentlySelectedMonsters, setcurrentlySelectedMonsters] = React.useState<any>([]);
+    // This state is used For list highlighting
+    const [selectedIndex, setSelectedIndex] = React.useState(1);
   // const [selectedActiveMonster, setSelectedActiveMonster] = React.useState<any>(currentlySelectedMonsters[0]);
 
   // this useEffect pulls the monster data for List one
@@ -65,8 +67,7 @@ export default function ZargonCard({ lobbyMonsters, user }) {
     setcurrentlySelectedMonsters(lobbyMonsters)
   }, [lobbyMonsters])
 
-  // This state is used For list highlighting
-  const [selectedIndex, setSelectedIndex] = React.useState(1);
+
   const monsterList = monstersState.map((monster, index) => {
     return (<MenuItem key={monster.id} value={index}>{monster.name}</MenuItem>)
   });
@@ -77,6 +78,20 @@ export default function ZargonCard({ lobbyMonsters, user }) {
   ) => {
     setSelectedIndex(index);
   };
+
+  const destroyMonster = () => {
+    const newArr = [...currentlySelectedMonsters];
+    newArr.splice(selectedIndex, 1)
+    setcurrentlySelectedMonsters(newArr)
+    setSelectedIndex(0)
+    //put button on page
+    //delete monster state
+    // and update monster list
+    //rerender monster list with deleted monster
+    //use currentlyselected monster
+
+  }
+
 
   const activeMonsterList = currentlySelectedMonsters.map((monster, index) => {
     return (
@@ -127,16 +142,34 @@ export default function ZargonCard({ lobbyMonsters, user }) {
                 >
                   {monsterList}
                 </Select>
-                <Button onClick={handleMonsterSave}>
+                <Button 
+                  color="primary"
+                  size="small"
+                  variant="contained"
+                  onClick={handleMonsterSave}
+                  >
                   ADD MONSTER
                 </Button>
+                <br />
+                <Button
+              onClick={() => {
+                destroyMonster();
+              }}
+              color="primary"
+              size="small"
+              variant="contained"
+            >
+              Delete Monster
+            </Button>
+
 
               </FormControl>
             </Grid>
           </Grid>
         </CardContent>
       </Card>
-    </>
+
+     </>
   );
 }
 

@@ -16,10 +16,21 @@ export const theme = createMuiTheme({
     background:{
       default: "#212626"
     },
- 
-    
   },
-
+  typography: {
+    fontFamily: [
+      'Texturina',
+      'BlinkMacSystemFont',
+      '"Segoe UI"',
+      'Roboto',
+      '"Helvetica Neue"',
+      'Arial',
+      'sans-serif',
+      '"Apple Color Emoji"',
+      '"Segoe UI Emoji"',
+      '"Segoe UI Symbol"',
+    ].join(','),
+  },
   // overrides: {
   //   MuiCssBaseline: {
   //     "@global": {
