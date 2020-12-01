@@ -7,7 +7,7 @@ import Login from "./components/Login";
 import Armory from "./components/Armory";
 import User from "./components/User";
 import MakeNewCharacterList from "./components/MakeNewCharacter/MakeNewCharacterList";
-
+import Paper from "@material-ui/core/Paper";
 import {
   BrowserRouter as Router,
   Switch,
@@ -84,18 +84,20 @@ class App extends Component<IProps, IState> {
               <Grid xs={12} sm={8}>
                 <Switch>
                   <Route path="/login">
-                    <Login
-                      handleSuccessfulLogin={this.handleSuccessfulLogin}
-                      loggedIn={this.state.loggedInStatus}
-                    />
+                    <Grid container spacing={8} direction={"row"}>
+                      <Login
+                        handleSuccessfulLogin={this.handleSuccessfulLogin}
+                        loggedIn={this.state.loggedInStatus}
+                      />
+                    </Grid>
                   </Route>
                   <Route path="/signup">
                     <Signup />
                   </Route>
                   <Route path="/armory">
-                  <Grid container spacing={2}>
-                    <Armory user={this.state.user} />
-                  </Grid>
+                    <Grid container spacing={2}>
+                      <Armory user={this.state.user} />
+                    </Grid>
                   </Route>
                   <Route path="/lobby">
                     <Grid item>
@@ -111,10 +113,9 @@ class App extends Component<IProps, IState> {
                   <Route path="/newcharacter">
                     <Grid item>
                       <Grid item>
-                        <MakeNewCharacterList user={this.state.user}/>
+                        <MakeNewCharacterList user={this.state.user} />
                       </Grid>
                     </Grid>
-
                   </Route>
                   <Route path="/user">
                     <User user={this.state.user} />

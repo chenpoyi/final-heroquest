@@ -102,9 +102,8 @@ export default function MakeNewCharacterList({ user }: any) {
 
   const handleCharacterSave = () => {
     //sending data to db to be saved
-    // alert(`${id}, ${bodyState}, ${mindState}, ${goldState}`);
     // updateCharacterPoints(id, bodyState, mindState, goldState)
-    alert(heroes[selectedIndex].race);
+   
     addCharacter(nameState, heroes[selectedIndex].id, user.id);
   };
 
