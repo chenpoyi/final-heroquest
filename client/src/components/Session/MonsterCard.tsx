@@ -147,6 +147,16 @@ export default function MonsterCard({ monster, setcurrentlySelectedMonsters, cur
      
                     </Grid>
               </CardContent>
+              <Button
+              onClick={() => {
+                destroyMonster(monster.id);
+              }}
+              color="primary"
+              size="small"
+              variant="contained"
+            >
+              Delete
+            </Button>)
             </Grid>
           </Grid>
         </Card>
