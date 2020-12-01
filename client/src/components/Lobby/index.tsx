@@ -66,18 +66,18 @@ export default function Lobby({ user }: LobbyProps) {
     
   }, [])
   
-  //FOR POLLING
-  // useInterval(() => {
-  //   setCount((currentCount) => currentCount + 1);
-  //   getUsersOfLobby(id)
-  //   .then((newUsers)=>{
-  //     setUsers(newUsers);
-  //     getCharactersOfLobby(id)
-  //     .then((newCharacters)=>{
-  //       setCharacters(newCharacters)
-  //     })
-  //   })
-  // }, 10000);
+  // FOR POLLING
+  useInterval(() => {
+    setCount((currentCount) => currentCount + 1);
+    getUsersOfLobby(id)
+    .then((newUsers)=>{
+      setUsers(newUsers);
+      getCharactersOfLobby(id)
+      .then((newCharacters)=>{
+        setCharacters(newCharacters)
+      })
+    })
+  }, 10000);
 
   return (
     <>
@@ -85,7 +85,7 @@ export default function Lobby({ user }: LobbyProps) {
         Lobby: {id}
       </Typography>
       <Grid container spacing={3}>
-        <CharacterSelection users={users} characters={characters} lobby_id={id} />
+        <CharacterSelection users={users} characters={characters} lobby_id={id} currentUser={user} />
         <Link className={classes.menuLink} to={`/session/${lobbyID}`} >
         <Button variant="contained" size="small" color="primary">
           Start Game

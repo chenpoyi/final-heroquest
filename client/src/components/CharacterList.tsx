@@ -123,7 +123,7 @@ export default function CharacterList({ user }: any) {
           </Link>
         </Grid>
         <Grid item xs={6}>
-          <CharacterCard refreshCharacters={refreshCharacters} character={characters[selectedIndex]} user={user}/>
+          <CharacterCard refreshCharacters={refreshCharacters} character={characters[selectedIndex]} user={user} button={true}/>
           
         </Grid>
       <Grid item xs={3}>

@@ -45,18 +45,18 @@ const useStyles = makeStyles({
 });
 type Character = {
   id: number,
-  name :string, 
-  dateCreated :string, 
-  lastUsed :string, 
-  race :string, 
-  questsCompleted :number, 
-  image :string,
-  body :number,
-  mind :number,
-  attack :number,
-  defend :number,
-  movement :number,
-  gold :number
+  name: string,
+  dateCreated: string,
+  lastUsed: string,
+  race: string,
+  questsCompleted: number,
+  image: string,
+  body: number,
+  mind: number,
+  attack: number,
+  defend: number,
+  movement: number,
+  gold: number
 }
 // List Functions //
 
@@ -67,26 +67,27 @@ type Character = {
 //maps through the users in the lobby and creates a card for each user => is a button for the modal
 
 // Fake Data for Card //
-const  userData :User[] = [
-  {id: 1, email: "scott@m.ca"},
-  { id: 2, email: "paul@c.ca"},
-  { id: 3, email: "jake@p.ca"},
-  { id: 4, email: "john@m.ca"},
-  { id: 5, email: "howard@c.ca"}
+const userData: User[] = [
+  { id: 1, email: "scott@m.ca" },
+  { id: 2, email: "paul@c.ca" },
+  { id: 3, email: "jake@p.ca" },
+  { id: 4, email: "john@m.ca" },
+  { id: 5, email: "howard@c.ca" }
 ];
 
 
 type User = {
-  id :number,
-  email :string
+  id: number,
+  email: string
 };
 type charSelectionProps = {
-  users : User[],
-  characters : Character[],
-  lobby_id :number
+  users: User[],
+  characters: Character[],
+  lobby_id: number,
+  currentUser: User
 };
 
-export default function CharacterSelection({users, characters, lobby_id}:charSelectionProps) {
+export default function CharacterSelection({ users, characters, lobby_id, currentUser }: charSelectionProps) {
   const classes = useStyles();
   const [usersState, setUsersState] = React.useState<User[]>(users);
   const [charState, setCharState] = React.useState<Character[]>(characters);
@@ -94,40 +95,40 @@ export default function CharacterSelection({users, characters, lobby_id}:charSel
     setUsersState(users)
     setCharState(characters)
   }, [users, characters]);
- const playerCards = usersState.map((user, index) => {
-   return ( 
-<>
-    { charState[index] && (<CharacterCard character={charState[index]} user={user}/> )}
-    {!charState[index] && (<Card className={classes.root}>
-        <CardContent>
-        <Typography
-    className={classes.title}
-    color="textSecondary"
-    gutterBottom
-  >
-    {user.email}
-  
-  </Typography>
-          <Divider />
-          <Typography variant="h6" component="h2">
-            <List component="nav" aria-label="Pick a Character">   
-                <CharacterModal user={user} setCharacter={(characters: Character[])=>{setCharState(characters)}} index={index} charState={charState} lobby_id ={lobby_id} />
-            </List>
-          </Typography>
-        </CardContent>
-      </Card>)}
+  const playerCards = usersState.map((user, index) => {
+    return (
+      <>
+        { charState[index] && (<CharacterCard character={charState[index]} user={user} />)}
+        {!charState[index] && (<Card className={classes.root}>
+          <CardContent>
+            <Typography
+              className={classes.title}
+              color="textSecondary"
+              gutterBottom
+            >
+              {user.email}
 
-   </>
-   )
- })
+            </Typography>
+            <Divider />
+            <Typography variant="h6" component="h2">
+              <List component="nav" aria-label="Pick a Character">
+                <CharacterModal user={user} currentUser={currentUser} setCharacter={(characters: Character[]) => { setCharState(characters) }} index={index} charState={charState} lobby_id={lobby_id} />
+              </List>
+            </Typography>
+          </CardContent>
+        </Card>)}
+
+      </>
+    )
+  })
 
   return (
     <>
-  <Grid container spacing={3} justify="center">
-      {playerCards}
+      <Grid container spacing={3} justify="center">
+        {playerCards}
 
-  </Grid>
-   
+      </Grid>
+
     </>
   );
 }

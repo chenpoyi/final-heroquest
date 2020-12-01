@@ -48,8 +48,9 @@ const useStyles = makeStyles({
 
 type CharacterCardProps = {
   character: Character;
-  refreshCharacters?: () => void;
   user: any;
+  refreshCharacters?: () => void;
+  button?: boolean;
 };
 type Character = {
   id: number;
@@ -69,8 +70,9 @@ type Character = {
 
 export default function CharacterCard({
   character,
-  refreshCharacters = () => {},
   user,
+  refreshCharacters = () => {},
+  button = false
 }: CharacterCardProps) {
   const classes = useStyles();
   // const bull = <span className={classes.bullet}>•</span>;
@@ -122,7 +124,7 @@ export default function CharacterCard({
           </Card>
 
           <CardActions>
-            <Button
+            {button && (<Button
               onClick={() => {
                 destroyCharacter(character.id);
               }}
@@ -131,7 +133,7 @@ export default function CharacterCard({
               variant="contained"
             >
               Delete
-            </Button>
+            </Button>)}
           </CardActions>
         </>
       )}

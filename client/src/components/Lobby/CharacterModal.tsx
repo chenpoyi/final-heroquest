@@ -19,7 +19,7 @@ function getModalStyle() {
   return {
     top:'10%',
     left:'10%',
-    //overflow:'scroll',
+    overflow:'scroll',
     height:'80%',
     width: '60%',
     display:'flex',
@@ -60,6 +60,7 @@ const useStyles = makeStyles((theme: Theme) =>
 type CharacterModalProps = {
 
   user :any,
+  currentUser :any,
   setCharacter :any,
   index :number,
   charState: Character[],
@@ -81,7 +82,7 @@ type Character = {
   gold :number
 }
 
-export default function CharacterModal({user, setCharacter, index, charState, lobby_id}:CharacterModalProps) {
+export default function CharacterModal({user, currentUser, setCharacter, index, charState, lobby_id}:CharacterModalProps) {
   const classes = useStyles();
   // getModalStyle is not a pure function, we roll the style only on the first render
   const [modalStyle] = React.useState(getModalStyle);
@@ -138,9 +139,9 @@ export default function CharacterModal({user, setCharacter, index, charState, lo
 
   return (
     <>
-      <button type="button" onClick={handleOpen}>
+      {(currentUser.email == user.email) && (<button type="button" onClick={handleOpen}>
         Choose Character
-      </button>
+      </button>)}
       <Modal
         className={classes.modal}
         open={open}
