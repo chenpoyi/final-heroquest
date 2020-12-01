@@ -49,6 +49,9 @@ const useStyles = makeStyles({
   },
   button: {
     margin: 10
+  },
+  lobbytitle: {
+    marginBottom: 40,
   }
 });
 const emptyPlayer: User = {
@@ -92,7 +95,7 @@ export default function Lobby({ user }: LobbyProps) {
   return (
     <Grid container className={classes.root}>
       <Grid item>
-      <Typography gutterBottom variant="h1" component="h2">
+      <Typography className={classes.lobbytitle}gutterBottom variant="h2" component="h2">
         Lobby: {id}
       </Typography>
       </Grid>
