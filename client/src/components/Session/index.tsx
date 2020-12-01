@@ -8,6 +8,7 @@ import CharacterCard from "../CharacterCard";
 import { Grid } from "@material-ui/core";
 import Paper from '@material-ui/core/Paper';
 import useInterval from '@use-it/interval';
+import Typography from '@material-ui/core/Typography';
 
 import {
   BrowserRouter as Router,
@@ -106,7 +107,7 @@ export default function Session({ user }: SessionProps) {
 
   const list = characters.sort(function (x, y) { return x.user_id == user.id ? -1 : y.user_id == user.id ? 1 : 0; })
     .map((character, index) => {
-      return ( 
+      return (
         <>
           {character && lobbyMonsters && (character.user_id == user.id && character.name == 'Zargon') && (<Grid item sm={12}><ZargonCard lobbyMonsters={lobbyMonsters} user={user} /></Grid>)}
           {character && character.user_id == user.id && character.name != 'Zargon' && (<Grid item sm={12}><MyCharacterCard {...character} user={user} users={users} /></Grid>)}
@@ -147,9 +148,13 @@ export default function Session({ user }: SessionProps) {
 
   return (
     <Paper className={classes.charpaper} elevation={10}>
+      <Typography gutterBottom variant="h1" component="h2">
+                  Session: {id}
+                </Typography>
       <Grid container className={classes.root} spacing={3} alignItems="flex-start" justify="flex-start" direction="row">
+    
         {list}
-
+     
       </Grid>
     </Paper>);
 }

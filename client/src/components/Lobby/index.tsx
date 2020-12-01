@@ -36,10 +36,20 @@ type User = {
   email: string
 }
 const useStyles = makeStyles({
- 
+  root: {
+    display: 'flex',
+    justifyContent: 'center',
+    marginTop: 50
+  },
   menuLink: {
     textDecoration: 'none',
   },
+  main: {
+    marginBottom: 20
+  },
+  button: {
+    margin: 10
+  }
 });
 const emptyPlayer: User = {
   id: 0,
@@ -56,45 +66,49 @@ export default function Lobby({ user }: LobbyProps) {
 
   React.useEffect(() => {
     getUsersOfLobby(id)
-    .then((newUsers)=>{
-      setUsers(newUsers);
-      getCharactersOfLobby(id)
-      .then((newCharacters)=>{
-        setCharacters(newCharacters)
+      .then((newUsers) => {
+        setUsers(newUsers);
+        getCharactersOfLobby(id)
+          .then((newCharacters) => {
+            setCharacters(newCharacters)
+          })
       })
-    })
-    
+
   }, [])
-  
+
   // FOR POLLING
   useInterval(() => {
     setCount((currentCount) => currentCount + 1);
     getUsersOfLobby(id)
-    .then((newUsers)=>{
-      setUsers(newUsers);
-      getCharactersOfLobby(id)
-      .then((newCharacters)=>{
-        setCharacters(newCharacters)
+      .then((newUsers) => {
+        setUsers(newUsers);
+        getCharactersOfLobby(id)
+          .then((newCharacters) => {
+            setCharacters(newCharacters)
+          })
       })
-    })
   }, 10000);
 
   return (
-    <>
+    <Grid container className={classes.root}>
+      <Grid item>
       <Typography gutterBottom variant="h1" component="h2">
         Lobby: {id}
       </Typography>
-      <Grid container spacing={3}>
-        <CharacterSelection users={users} characters={characters} lobby_id={id} currentUser={user} />
-        <Link className={classes.menuLink} to={`/session/${lobbyID}`} >
-        <Button variant="contained" size="small" color="primary">
-          Start Game
-            </Button>
-      </Link>
       </Grid>
-
-
+      <Grid className={classes.main} item container spacing={3}>
+        <CharacterSelection users={users} characters={characters} lobby_id={id} currentUser={user} />
+        
+      </Grid>
+      <Grid item >
+        
+        <Link className={classes.menuLink} to={`/session/${lobbyID}`} >
+        <Button className={classes.button} variant="contained" size="small" color="primary">
+          Start Game
+        </Button>
+        </Link>
+      </Grid>
       {/* <CharacterModal user={user} setCharacter={setCharacter} /> */}
-    </>
+    </Grid>
   );
 } 
