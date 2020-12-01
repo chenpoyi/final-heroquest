@@ -110,7 +110,7 @@ export default function CharacterList({ user }: any) {
      <Grid container justify={"center"} spacing={6} className={classes.root}>
        
  
-      <Grid item xs={2}>
+      <Grid item xs={2} sm={3}>
           <Typography className={classes.list}>
             <List component="nav" aria-label="main mailbox folders">
               {characterList}
@@ -122,11 +122,11 @@ export default function CharacterList({ user }: any) {
               </Button>
           </Link>
         </Grid>
-        <Grid item xs={4}>
+        <Grid item xs={8} sm={6} md={4}>
           <CharacterCard refreshCharacters={refreshCharacters} character={characters[selectedIndex]} user={user} button={true}/>
           
         </Grid>
-      <Grid item xs={4}>
+      <Grid item xs={12} sm={12} md={8} lg={3} >
       <WeaponList character={characters[selectedIndex]} />
       {/* Weapon picture?? */}
       </Grid>
