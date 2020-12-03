@@ -134,7 +134,7 @@ export default function Session({ user }: SessionProps) {
             setCharacters(newCharacters)
           })
       })
-  }, 10000);
+  }, 1000);
 
   React.useEffect(() => {
     getUsersOfLobby(id)

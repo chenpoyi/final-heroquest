@@ -34,7 +34,7 @@ heroes = Hero.create({
   })
 
 heroes = Hero.create({
-  race: 'dwarf', 
+  race: 'Dwarf', 
   attack: 2, 
   defend: 2, 
   body: 7, 
@@ -44,7 +44,7 @@ heroes = Hero.create({
   })
 
 heroes = Hero.create({
-  race: 'elf', 
+  race: 'Elf', 
   attack: 2, 
   defend: 2, 
   body: 6, 
@@ -54,7 +54,7 @@ heroes = Hero.create({
   })
   
 heroes = Hero.create({
-  race: 'wizard', 
+  race: 'Wizard', 
   attack: 1, 
   defend: 2, 
   body: 4, 
@@ -64,13 +64,13 @@ heroes = Hero.create({
   })
 
 heroes = Hero.create({
-  race: 'zargon', 
+  race: 'Zargon', 
   attack: 0, 
   defend: 0, 
   body: 0, 
   mind: 0, 
   default_weapon: 4, ## don't show this 
-  image:'https://i.imgur.com/PEM18xf.gif'
+  image:'https://pbs.twimg.com/profile_images/827355229381414912/UOfej4Va_400x400.jpg'
   })
 
   ## Users
@@ -716,7 +716,7 @@ character_lobby = CharacterLobby.create!({
 })
 
 character_lobby = CharacterLobby.create!({
-  character_id: 7,
+  # character_id: 7,
   user_id: 1,
   lobby_id: 3,
 })
