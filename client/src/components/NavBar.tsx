@@ -30,11 +30,16 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     title: {
       flexGrow: 1,
+  
     },
     navbar: {
     },
     logo: {
       maxHeight: 50,
+      position: 'absolute',
+      left: '50%',
+      marginLeft: '-75px',
+      top: '0'
 
     }
 
@@ -56,19 +61,6 @@ export default function NavBar({ loggedInStatus, handleSuccessfulLogout, user }:
   const [auth, setAuth] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
-
-
-  // useEffect(() => {
-  //   if(localStorage.getItem('email')){
-  //     console.log('here')
-  //     setAuth(true)
-  //     setEmail(localStorage.getItem('email'))
-  //   }
-  //   else {
-  //     setAuth(false)
-  //     setEmail(null)
-  //   }
-  // });
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setAuth(event.target.checked);
@@ -116,6 +108,7 @@ export default function NavBar({ loggedInStatus, handleSuccessfulLogout, user }:
            <>
               
               <IconButton
+               
                 aria-label="account of current user"
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
