@@ -458,6 +458,6 @@ const newHero = [
     mind: 0, 
     movement: 0,
     default_weapon: 4, 
-    image:'https://i.imgur.com/PEM18xf.gif'
+    image:'https://pbs.twimg.com/profile_images/827355229381414912/UOfej4Va_400x400.jpg'
     }
 ];

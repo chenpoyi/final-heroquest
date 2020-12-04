@@ -96,7 +96,7 @@ export default function Lobby({ user }: LobbyProps) {
             setCharacters(newCharacters)
           })
       })
-  }, 10000);
+  }, 1000);
 
   return (
     <Paper className={classes.charpaper} elevation={10}>
