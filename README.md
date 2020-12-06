@@ -22,7 +22,8 @@ In the other terminal, `cd` into `client`. Run `npm install`. Then run `npm star
 The main important part is that the React project has `proxy` set to `localhost:3001` in the `package.json` file. 
 
 # Current Features
-
+## Making a new character
+![movie](https://github.com/davidsmorton/scheduler/blob/master/documents/Scheduler.gif)
 
 
 
