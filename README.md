@@ -23,8 +23,10 @@ The main important part is that the React project has `proxy` set to `localhost:
 
 # Current Features
 ## Making a new character
-![movie](https://github.com/davidsmorton/scheduler/blob/master/documents/Scheduler.gif)
+![movie](documents/New_Character.gif)
 
+## Using the Armory
+![movie](documents/Character_Armory.gif)
 
 
 ## Future Plans
