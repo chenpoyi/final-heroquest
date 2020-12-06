@@ -6,7 +6,7 @@ An online companion app for the classic board game HeroQuest! Allows for charact
 Have you ever lost your Hero Quest character sheets? Do you want to play HeroQuest online with your friends? Jump in and join the fun but beware of the monsters lurking in the dungons!!!!
 
 ## For Employers
-There is a copy of our final presentation in the public folder `app/client/public/Final Presentation`.
+There is a copy of our final presentation in the public folder `app/client/public/Final Presentation`. Group members for the project were Paul Chen and Scott Morton. 
 
 # Setup
 
